@@ -5,8 +5,8 @@ from jsonrpclib import Server
 
 user = str(raw_input("Username: "))
 passwd = getpass.getpass()
-input_string = str(raw_input("What host or hosts would you like to connect to separated by a comma: "))
-host = input_string.split(",")
+input = str(raw_input("What host or hosts would you like to retrieve summary from. If list of hosts, use a comma to separate hosts: "))
+host = input.split(",")
 
 def main():
     try:
