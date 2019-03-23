@@ -32,13 +32,6 @@ def main():
                     # Write to CSV File
                     writer.writerow({'Switch ID': a, 'Peers': b, 'BGP State': state, 'Prefix(es) Received': prfxrcvd, 'AS Number': asnum, 'Up/Down Status': updown})
 
-                    #print "\t################## BGP stats for %s ##################" % a
-                    #print "\tPeer IP Address: %s" % b
-                    #print "\tPeer State: %s" % state
-                    #print "\tPrefixes Received: %s" % prfxrcvd
-                    #print "\tAS Number: %s" % asnum
-                    #print "\tUP/Down Time: %s\n" % updown
-
     except:
         sys.exit(2)
 
