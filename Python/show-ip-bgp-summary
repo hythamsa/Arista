@@ -15,7 +15,6 @@ def main():
             summ = cmdapi.runCmds(1,["show ip bgp summary"])
 
             for b in summ[0]['vrfs']['default']['peers']:
-                peers = summ[0]['vrfs']['default']['peers'][b]
                 state = summ[0]['vrfs']['default']['peers'][b]['peerState']
                 prfxrcvd = summ[0]['vrfs']['default']['peers'][b]['prefixReceived']
                 asnum = summ[0]['vrfs']['default']['peers'][b]['asn']
