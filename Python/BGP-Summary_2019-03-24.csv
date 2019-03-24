@@ -1,0 +1,15 @@
+Switch ID,Peers,BGP State,Prefix(es) Received,AS Number,Up/Down Status
+leaf1,1.1.1.101,Established,6,65000,1549909376.0
+leaf1,1.1.1.100,Established,6,65000,1549909376.0
+leaf1,10.0.0.8,Established,5,65000,1549909376.0
+leaf1,172.16.254.2,Established,6,65001,1549909376.0
+leaf1,10.0.0.0,Established,5,65000,1549909376.0
+leaf2,1.1.1.101,Established,6,65000,1549433344.0
+leaf2,1.1.1.100,Established,6,65000,1549433344.0
+leaf2,10.0.0.10,Established,4,65000,1549433600.0
+leaf2,172.16.254.1,Established,6,65001,1549911424.0
+leaf2,10.0.0.2,Established,4,65000,1549433600.0
+leaf3,10.0.0.4,Established,4,65000,1548888192.0
+leaf3,1.1.1.101,Established,6,65000,1548886912.0
+leaf3,1.1.1.100,Established,6,65000,1548888192.0
+leaf3,10.0.0.12,Established,4,65000,1548886528.0
