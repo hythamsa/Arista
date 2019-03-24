@@ -67,7 +67,7 @@ def term():
                 asnum = summ[0]['vrfs']['default']['peers'][b]['asn']
                 updown = summ[0]['vrfs']['default']['peers'][b]['upDownTime']
 
-                print "\t######### BGP stats for %s #################" % a
+                print "######### BGP stats for %s #################" % a
                 print "\tPeer IP Address: %s" % b
                 print "\tPeer State: %s" % state
                 print "\tPrefixes Received: %s" % prfxrcvd
