@@ -16,7 +16,7 @@ Pretty self explanatory. Retrieves a concatenated "sh ip bgp summ" for hosts you
 Username and password are entered on the command line without necessity of modifying script. getpass() used to prevent password echo to terminal.
 
 # show-version (Python 2.7.x)
-Retrieves versioning information for a host or multiple hosts. The script allows you to select whether output is to be displayed in the terminal or output to a CSV file if number of hosts is > 5. Up to you. The script returns the following values:
+Retrieves versioning information for a host or multiple hosts. The script allows you to select whether output is to be displayed in the terminal or output to a CSV file that I recommend that you use if # of hosts is > 5. Up to you. The script returns the following values:
 
 - Switch ID
 - Serial Number
