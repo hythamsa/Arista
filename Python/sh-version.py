@@ -24,7 +24,6 @@ user = str(raw_input("Username: "))
 passwd = getpass.getpass()
 
 
-
 def main():
     if choice == "csvout":
         csvout()
