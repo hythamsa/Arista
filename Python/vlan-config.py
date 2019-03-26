@@ -1,47 +1,45 @@
 #!/usr/bin/python
-
+  
 import sys, getpass, csv
 from jsonrpclib import Server
 
 user = str(raw_input("Username: "))
 passwd = getpass.getpass()
 
+while True:
+    try:
+        method = str(raw_input("Which input method will you use [term/csvinput]? "))
+    except ValueError:
+        print ("Please enter term or csvinput")
+        continue
+    if (method == "csvinput"):
+        filename = str(raw_input("What is the name of your csvfile (Please append with .csv)? "))
+        break
+    if (method == "term"):
+        # Request switch name or IP addresses to be configured
+        input = str(raw_input("What switch or switches would you like to connect to separated by a comma: "))
+        host = input.split(",")
+
+        # Create empty list, ask user to define total # of entries to be made, append to list
+        user_list = []
+        entries = int(raw_input("How many entries do you require? "))
+
+        for i in range(entries):
+            user_vlanid = str(raw_input("What is the VLAN ID? "))
+            user_vlanname = str(raw_input("What is the VLAN name? "))
+
+            user_list.append({
+                "vlanid": user_vlanid,
+                "vlanname": user_vlanname
+                })
+        break
+
+
 def main():
-    while True:
-        try:
-            method = str(raw_input("Which input method will you use [term/csvinput]? "))
-        except ValueError:
-            print ("Please enter term or csvinput")
-            continue
-        if (method == "csvinput"):
-            filename = str(raw_input("What is the name of your csvfile (Please append with .csv)? "))
-            if filename.lower().endswith('.csv'):
-                break
-            else:
-                continue
-        if (method == "term"):
-            # Request switch name or IP addresses to be configured
-            input = str(raw_input("What switch or switches would you like to connect to separated by a comma: "))
-            host = input.split(",")
-
-            # Create empty list, ask user to define total # of entries to be made, append to list
-            user_list = []
-            entries = int(raw_input("How many entries do you require? "))
-
-            for i in range(entries):
-                user_vlanid = str(raw_input("What is the VLAN ID? "))
-                user_vlanname = str(raw_input("What is the VLAN name? "))
-
-                user_list.append({
-                    "vlanid": user_vlanid,
-                    "vlanname": user_vlanname
-                    })
-            break
-
     if method == "term":
         term()
     if method == "csvinput":
-        csvinput()
+csvinput()
 
 def term():
     for i in user_list:
@@ -67,6 +65,7 @@ def csvinput():
                 #    intfconf = cmdapi.runCmds(1,["enable", "configure", "interface " + intf, "description " + descr, "no switchport", "ip address " + ip])
                     vlconf = cmdapi.runCmds(1,["enable", "configure", "vlan " + vlid, "name " + vname])
     except:
+        sys.exit(2)
         sys.exit(2)
 
 if __name__ == '__main__':
