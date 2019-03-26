@@ -1,25 +1,25 @@
 #!/usr/bin/python
-  
+
 import sys, getpass, csv
 from jsonrpclib import Server
 
 user = str(raw_input("Username: "))
 passwd = getpass.getpass()
 
+
 while True:
-    try:
+     try:
         method = str(raw_input("Which input method will you use [term/csvinput]? "))
-    except ValueError:
+     except ValueError:
         print ("Please enter term or csvinput")
         continue
-    if (method == "csvinput"):
+     if (method == "csvinput"):
         filename = str(raw_input("What is the name of your csvfile (Please append with .csv)? "))
         if filename.lower().endswith('.csv'):
             break
         else:
             continue
-        break
-    if (method == "term"):
+     if (method == "term"):
         # Request switch name or IP addresses to be configured
         input = str(raw_input("What switch or switches would you like to connect to separated by a comma: "))
         host = input.split(",")
@@ -35,9 +35,8 @@ while True:
             user_list.append({
                 "vlanid": user_vlanid,
                 "vlanname": user_vlanname
-                })
+                })  
         break
-
 
 def main():
     if method == "term":
@@ -48,11 +47,11 @@ def main():
 def term():
     for i in user_list:
         vlid = i['vlanid']
-        vname = i['vlanname']
+        vlan_name = i['vlanname']
 
         for a in host:
             cmdapi = Server("http://%s:%s@%s/command-api" % (user,passwd,a))
-            vlconf = cmdapi.runCmds(1,["enable", "configure", "vlan " + vlid, "name " + vname])
+            vlconf = cmdapi.runCmds(1,["enable", "configure", "vlan " + vlid, "name " + vlan_name])
 
 def csvinput():
     try:
@@ -66,6 +65,7 @@ def csvinput():
 
                 for a in host:
                     cmdapi = Server("http://%s:%s@%s/command-api" % (user,passwd,host))
+                #    intfconf = cmdapi.runCmds(1,["enable", "configure", "interface " + intf, "description " + descr, "no switchport", "ip address " + ip])
                     vlconf = cmdapi.runCmds(1,["enable", "configure", "vlan " + vlid, "name " + vname])
     except:
         sys.exit(2)
