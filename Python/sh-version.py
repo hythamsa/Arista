@@ -23,14 +23,22 @@ def main():
 
 
 def csvout():
-    input = str(raw_input("What switch, or switches, would you like to connect to separated by a comma: "))
-    host = input.split(",")
-
     today = datetime.date.today()
     ssl._create_default_https_context = ssl._create_unverified_context
 
+    input = str(raw_input("What switch, or switches, would you like to connect to separated by a comma: "))
+    host = input.split(",")
+
     user = str(raw_input("Username: "))
     passwd = getpass.getpass()
+
+    while True:
+        try:
+            prot = str(raw_input("Which eAPI protocol do you want to use [http or https]? "))
+            break
+        except ValueError:
+            print ("Please enter http or https")
+            continue
 
     try:
         with open ('Version' + '_' + str(today) + '.csv', 'w') as csvfile:
@@ -39,7 +47,7 @@ def csvout():
             writer.writeheader()
 
             for a in host:
-                cmdapi = Server("https://%s:%s@%s/command-api" % (user,passwd,a))
+                cmdapi = Server("%s://%s:%s@%s/command-api" % (prot,user,passwd,a))
                 getver = cmdapi.runCmds(1,["show version"])
 
                 serial = getver[0]["serialNumber"]
@@ -53,15 +61,25 @@ def csvout():
 
 
 def term():
+    ssl._create_default_https_context = ssl._create_unverified_context
+    
     input = str(raw_input("What switch, or switches, would you like to connect to separated by a comma: "))
     host = input.split(",")
 
     user = str(raw_input("Username: "))
     passwd = getpass.getpass()
 
+    while True:
+        try:
+            prot = str(raw_input("Which eAPI protocol do you want to use [http or https]? "))
+            break
+        except ValueError:
+            print ("Please enter http or https")
+            continue
+
     try:
         for a in host:
-            cmdapi = Server("https://%s:%s@%s/command-api" % (user,passwd,a))
+            cmdapi = Server("%s://%s:%s@%s/command-api" % (prot,user,passwd,a))
             getver = cmdapi.runCmds(1,["show version"])
 
             for b in getver:
