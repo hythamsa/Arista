@@ -3,28 +3,20 @@
 import sys, getpass, datetime, csv
 from jsonrpclib import Server
 
-today = datetime.date.today()
-
-input = str(raw_input("What host or hosts would you like to connect to separated by a comma: "))
-host = input.split(",")
-
-while True:
-    try:
-        choice = str(raw_input("How would you like your data output [csvout/term]? "))
-    except ValueError:
-        print ("Please enter csvout or term")
-        continue
-    if (choice == "csvout") or (choice == "term"):
-        break
-    else:
-        print ("Please enter csvout or term")
-
-user = str(raw_input("Username: "))
-passwd = getpass.getpass()
-
 
 
 def main():
+    while True:
+        try:
+            choice = str(raw_input("How would you like your data output [csvout/term]? "))
+        except ValueError:
+            print ("Please enter csvout or term")
+            continue
+        if (choice == "csvout") or (choice == "term"):
+            break
+        else:
+            print ("Please enter csvout or term")
+
     if choice == "csvout":
         csvout()
     if choice == "term":
@@ -32,6 +24,14 @@ def main():
 
 
 def csvout():
+    user = str(raw_input("Username: "))
+    passwd = getpass.getpass()
+
+    today = datetime.date.today()
+
+    input = str(raw_input("What host or hosts would you like to connect to separated by a comma: "))
+    host = input.split(",")
+
     try:
         with open ('BGP-Summary' + '_' + str(today) + '.csv', 'w') as csvfile:
             headers = ['Switch ID', 'Peers', 'BGP State', 'Prefix(es) Received', 'AS Number', 'Up/Down Status']
@@ -56,6 +56,12 @@ def csvout():
 
 
 def term():
+    user = str(raw_input("Username: "))
+    passwd = getpass.getpass()
+
+    input = str(raw_input("What switch, or switches, would you like to connect to separated by a comma(,): "))
+    host = input.split(",")
+
     try:
         for a in host:
             cmdapi = Server("http://%s:%s@%s/command-api" % (user,passwd,a))
@@ -66,8 +72,8 @@ def term():
                 prfxrcvd = summ[0]['vrfs']['default']['peers'][b]['prefixReceived']
                 asnum = summ[0]['vrfs']['default']['peers'][b]['asn']
                 updown = summ[0]['vrfs']['default']['peers'][b]['upDownTime']
-
-                print "######### BGP stats for %s #################" % a
+            
+                print "\t######### BGP stats for %s #################" % a
                 print "\tPeer IP Address: %s" % b
                 print "\tPeer State: %s" % state
                 print "\tPrefixes Received: %s" % prfxrcvd
