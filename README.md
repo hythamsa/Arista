@@ -23,3 +23,9 @@ Retrieves versioning information for a host or multiple hosts. The script allows
 - Model Name
 - Software Version
 - Uptime
+
+# vlan-config (Python 2.7.x)
+Configures a VLAN or mutliple VLANs across a single switch or multiple switches leveraging a CSV file as input or allowing the user to input via the terminal from which the script is run. 
+
+When selecting "csvinput" input, please be sure to input the file name in its entirety including extension and that it is located in the same working directory as the script.
+- EG: vlan-config.csv
