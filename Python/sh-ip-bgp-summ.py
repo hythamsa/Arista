@@ -1,8 +1,7 @@
 #!/usr/bin/python
 
-import sys, getpass, datetime, csv
+import sys, getpass, datetime, csv, ssl
 from jsonrpclib import Server
-
 
 
 def main():
@@ -27,6 +26,8 @@ def csvout():
     user = str(raw_input("Username: "))
     passwd = getpass.getpass()
 
+    ssl._create_default_https_context = ssl._create_unverified_context
+
     today = datetime.date.today()
 
     input = str(raw_input("What switch, or switches, would you like to connect to separated by a comma: "))
@@ -39,7 +40,7 @@ def csvout():
             writer.writeheader()
 
             for a in host:
-                cmdapi = Server("http://%s:%s@%s/command-api" % (user,passwd,a))
+                cmdapi = Server("https://%s:%s@%s/command-api" % (user,passwd,a))
                 bgpsumm = cmdapi.runCmds(1,["show ip bgp summary"])
 
                 for b in bgpsumm[0]['vrfs']['default']['peers']:
@@ -59,12 +60,14 @@ def term():
     user = str(raw_input("Username: "))
     passwd = getpass.getpass()
 
+    ssl._create_default_https_context = ssl._create_unverified_context
+
     input = str(raw_input("What switch, or switches, would you like to connect to separated by a comma(,): "))
     host = input.split(",")
 
     try:
         for a in host:
-            cmdapi = Server("http://%s:%s@%s/command-api" % (user,passwd,a))
+            cmdapi = Server("https://%s:%s@%s/command-api" % (user,passwd,a))
             summ = cmdapi.runCmds(1,["show ip bgp summary"])
 
             for b in summ[0]['vrfs']['default']['peers']:
@@ -82,6 +85,7 @@ def term():
 
     except:
         sys.exit(2)
+
 
 if __name__ == '__main__':
     main()
