@@ -4,6 +4,7 @@ import sys, getpass, datetime, csv, ssl
 from jsonrpclib import Server
 
 
+
 def main():
     while True:
         try:
@@ -23,12 +24,20 @@ def main():
 
 
 def csvout():
+    today = datetime.date.today()
+    ssl._create_default_https_context = ssl._create_unverified_context
+
     user = str(raw_input("Username: "))
     passwd = getpass.getpass()
 
-    ssl._create_default_https_context = ssl._create_unverified_context
 
-    today = datetime.date.today()
+    while True:
+        try:
+            prot = str(raw_input("Which eAPI protocol do you want to use [http or https]? "))
+            break
+        except ValueError:
+            print ("Please enter http or https")
+            continue
 
     input = str(raw_input("What switch, or switches, would you like to connect to separated by a comma: "))
     host = input.split(",")
@@ -40,7 +49,7 @@ def csvout():
             writer.writeheader()
 
             for a in host:
-                cmdapi = Server("https://%s:%s@%s/command-api" % (user,passwd,a))
+                cmdapi = Server("%s://%s:%s@%s/command-api" % (prot,user,passwd,a))
                 bgpsumm = cmdapi.runCmds(1,["show ip bgp summary"])
 
                 for b in bgpsumm[0]['vrfs']['default']['peers']:
@@ -51,23 +60,30 @@ def csvout():
 
                     # Write to CSV File
                     writer.writerow({'Switch ID': a, 'Peers': b, 'BGP State': state, 'Prefix(es) Received': prfxrcvd, 'AS Number': asnum, 'Up/Down Status': updown})
-
     except:
         sys.exit(2)
 
 
 def term():
+    ssl._create_default_https_context = ssl._create_unverified_context
+
     user = str(raw_input("Username: "))
     passwd = getpass.getpass()
 
-    ssl._create_default_https_context = ssl._create_unverified_context
+    while True:
+        try:
+            prot = str(raw_input("Which eAPI protocol do you want to use [http or https]? "))
+            break
+        except ValueError:
+            print ("Please enter http or https")
+            continue
 
     input = str(raw_input("What switch, or switches, would you like to connect to separated by a comma(,): "))
     host = input.split(",")
 
     try:
         for a in host:
-            cmdapi = Server("https://%s:%s@%s/command-api" % (user,passwd,a))
+            cmdapi = Server("%s://%s:%s@%s/command-api" % (prot,user,passwd,a))
             summ = cmdapi.runCmds(1,["show ip bgp summary"])
 
             for b in summ[0]['vrfs']['default']['peers']:
@@ -82,7 +98,6 @@ def term():
                 print "\tPrefixes Received: %s" % prfxrcvd
                 print "\tAS Number: %s" % asnum
                 print "\tUP/Down Time: %s\n" % updown
-
     except:
         sys.exit(2)
 
