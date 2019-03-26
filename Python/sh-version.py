@@ -23,7 +23,7 @@ def main():
 
 
 def csvout():
-    input = str(raw_input("What switch or switches would you like to connect to separated by a comma: "))
+    input = str(raw_input("What switch, or switches, would you like to connect to separated by a comma: "))
     host = input.split(",")
 
     today = datetime.date.today()
@@ -52,7 +52,7 @@ def csvout():
 
 
 def term():
-    input = str(raw_input("What switch or switches would you like to connect to separated by a comma: "))
+    input = str(raw_input("What switch, or switches, would you like to connect to separated by a comma: "))
     host = input.split(",")
 
     user = str(raw_input("Username: "))
