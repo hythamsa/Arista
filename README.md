@@ -1,7 +1,12 @@
 # Arista
 
 # Python
-A collection of python (duh...) scripts that can be used to retrieve data or for configuring tasks across a single host or multiple hosts
+A collection of python (duh...) scripts that can be used to retrieve data or for configuring tasks across a single host or multiple hosts.
+
+Please note that you will require jsonrpclib in order to execute the scripts.
+
+To install:
+- pip install jsonrpclib
 
 # sh-ip-bgp-summ (Python 2.7.x)
 Pretty self explanatory. Retrieves a concatenated "sh ip bgp summ" for hosts you select allowing the user to display the output directly to their terminal window OR output the data to a CSV file. The script will return the following:
