@@ -62,7 +62,6 @@ def csvinput():
 
                 for a in host:
                     cmdapi = Server("http://%s:%s@%s/command-api" % (user,passwd,host))
-                #    intfconf = cmdapi.runCmds(1,["enable", "configure", "interface " + intf, "description " + descr, "no switchport", "ip address " + ip])
                     vlconf = cmdapi.runCmds(1,["enable", "configure", "vlan " + vlid, "name " + vname])
     except:
         sys.exit(2)
