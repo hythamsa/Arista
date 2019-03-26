@@ -4,7 +4,6 @@ import sys, getpass, datetime, csv, ssl
 from jsonrpclib import Server
 
 
-
 def main():
     while True:
         try:
