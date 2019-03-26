@@ -34,3 +34,6 @@ Configures a VLAN or mutliple VLANs across a single switch or multiple switches 
 
 When selecting "csvinput" input, please be sure to input the file name in its entirety including extension and that it is located in the same working directory as the script.
 - EG: vlan-config.csv
+
+# ssltest.py
+Just a stupid little script testing out non-verification of ssl self-signed certs
