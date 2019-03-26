@@ -20,6 +20,8 @@ def main():
 
 
 def term():
+    ssl._create_default_https_context = ssl._create_unverified_context
+    
     user = str(raw_input("Username: "))
     passwd = getpass.getpass()
 
@@ -30,8 +32,6 @@ def term():
         except ValueError:
             print ("Please enter http or https")
             continue
-
-    ssl._create_default_https_context = ssl._create_unverified_context
 
     # Request switch name or IP addresses to be configured
     input = str(raw_input("What switch, or switches, would you like to connect to separated by a comma: "))
@@ -60,6 +60,8 @@ def term():
 
 
 def csvinput():
+    ssl._create_default_https_context = ssl._create_unverified_context
+
     user = str(raw_input("Username: "))
     passwd = getpass.getpass()
 
@@ -70,8 +72,6 @@ def csvinput():
         except ValueError:
             print ("Please enter http or https")
             continue
-
-    ssl._create_default_https_context = ssl._create_unverified_context
 
     while True:
         try:
