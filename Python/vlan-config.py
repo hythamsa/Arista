@@ -39,7 +39,7 @@ def main():
     if method == "term":
         term()
     if method == "csvinput":
-csvinput()
+        csvinput()
 
 def term():
     for i in user_list:
