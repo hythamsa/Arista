@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import sys, getpass, datetime, csv
+import sys, getpass, datetime, csv, ssl
 from jsonrpclib import Server
 
 
@@ -27,6 +27,7 @@ def csvout():
     host = input.split(",")
 
     today = datetime.date.today()
+    ssl._create_default_https_context = ssl._create_unverified_context
 
     user = str(raw_input("Username: "))
     passwd = getpass.getpass()
@@ -38,7 +39,7 @@ def csvout():
             writer.writeheader()
 
             for a in host:
-                cmdapi = Server("http://%s:%s@%s/command-api" % (user,passwd,a))
+                cmdapi = Server("https://%s:%s@%s/command-api" % (user,passwd,a))
                 getver = cmdapi.runCmds(1,["show version"])
 
                 serial = getver[0]["serialNumber"]
@@ -60,7 +61,7 @@ def term():
 
     try:
         for a in host:
-            cmdapi = Server("http://%s:%s@%s/command-api" % (user,passwd,a))
+            cmdapi = Server("https://%s:%s@%s/command-api" % (user,passwd,a))
             getver = cmdapi.runCmds(1,["show version"])
 
             for b in getver:
@@ -74,9 +75,9 @@ def term():
                 print "\tModel Number: \t%s" % model
                 print "\tSW Version: \t%s" % swver
                 print "\tUp Time: \t%s" % uptime
-
     except:
         sys.exit(2)
+
 
 if __name__ == '__main__':
     main()
