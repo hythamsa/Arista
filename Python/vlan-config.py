@@ -44,11 +44,11 @@ def main():
 def term():
     for i in user_list:
         vlid = i['vlanid']
-        vlan_name = i['vlanname']
+        vname = i['vlanname']
 
         for a in host:
             cmdapi = Server("http://%s:%s@%s/command-api" % (user,passwd,a))
-            vlconf = cmdapi.runCmds(1,["enable", "configure", "vlan " + vlid, "name " + vlan_name])
+            vlconf = cmdapi.runCmds(1,["enable", "configure", "vlan " + vlid, "name " + vname])
 
 def csvinput():
     try:
