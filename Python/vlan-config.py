@@ -65,7 +65,6 @@ def csvinput():
                     vlconf = cmdapi.runCmds(1,["enable", "configure", "vlan " + vlid, "name " + vname])
     except:
         sys.exit(2)
-        sys.exit(2)
 
 if __name__ == '__main__':
     main()
