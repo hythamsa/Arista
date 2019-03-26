@@ -1,0 +1,9 @@
+hosts,vlan-id,vlname
+leaf1,100,corp
+leaf1,200,data
+leaf1,300,qa
+leaf1,400,dev
+leaf2,100,corp
+leaf2,200,data
+leaf2,300,qa
+leaf2,400,dev
