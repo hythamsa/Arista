@@ -23,6 +23,14 @@ def term():
     user = str(raw_input("Username: "))
     passwd = getpass.getpass()
 
+    while True:
+        try:
+            prot = str(raw_input("Which eAPI protocol do you want to use [http or https]? "))
+            break
+        except ValueError:
+            print ("Please enter http or https")
+            continue
+
     ssl._create_default_https_context = ssl._create_unverified_context
 
     # Request switch name or IP addresses to be configured
@@ -47,13 +55,21 @@ def term():
             vlan_name = i['vlanname']
 
             for a in host:
-                cmdapi = Server("https://%s:%s@%s/command-api" % (user,passwd,a))
+                cmdapi = Server("%s://%s:%s@%s/command-api" % (prot,user,passwd,a))
                 vlconf = cmdapi.runCmds(1,["enable", "configure", "vlan " + vlid, "name " + vlan_name])
 
 
 def csvinput():
     user = str(raw_input("Username: "))
     passwd = getpass.getpass()
+
+    while True:
+        try:
+            prot = str(raw_input("Which eAPI protocol do you want to use [http or https]? "))
+            break
+        except ValueError:
+            print ("Please enter http or https")
+            continue
 
     ssl._create_default_https_context = ssl._create_unverified_context
 
@@ -77,7 +93,8 @@ def csvinput():
             vname = row['vlname']
 
             for a in host:
-                cmdapi = Server("https://%s:%s@%s/command-api" % (user,passwd,host))
+                cmdapi = Server("%s://%s:%s@%s/command-api" % (prot,user,passwd,host))
+            #   intfconf = cmdapi.runCmds(1,["enable", "configure", "interface " + intf, "description " + descr, "no switchport", "ip address " + ip])
                 vlconf = cmdapi.runCmds(1,["enable", "configure", "vlan " + vlid, "name " + vname])
 
 
