@@ -29,7 +29,7 @@ def csvout():
 
     today = datetime.date.today()
 
-    input = str(raw_input("What host or hosts would you like to connect to separated by a comma: "))
+    input = str(raw_input("What switch, or switches, would you like to connect to separated by a comma: "))
     host = input.split(",")
 
     try:
