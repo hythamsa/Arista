@@ -14,7 +14,7 @@ while True:
         continue
     if (method == "csvinput"):
         filename = str(raw_input("What is the name of your csvfile (Please append with .csv)? "))
-        if filename.endswith('.csv'):
+        if filename.lower().endswith('.csv'):
             break
         break
     if (method == "term"):
