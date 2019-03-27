@@ -75,7 +75,7 @@ if csvoutfile is None:
 			 	print "\t\t\tLate Collisions: \t%s" % late_coll
 			 	print "\n"
 else:
-	with open ('Error Counters' + str(today) + '.csv', 'w') as csvfile:
+	with open ('Error Counters_' + str(today) + '.csv', 'w') as csvfile:
 		headers = ['Switch ID', 'Interface', 'Total Input Errors', 'Total Runt Frames', 'Total RX Pause Frames', 'Total FCS Errors', 'Total Alignment Errors', 'Total Giant Frames', 'Total Symbol Errors', 'Total Deferred Transmissions', 'Total TX Pause Frames', 'Total Collisions', 'Total Late Collisions']
 		writer = csv.DictWriter(csvfile, fieldnames=headers)
 		writer.writeheader()
