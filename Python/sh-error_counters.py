@@ -35,8 +35,6 @@ intf = intf_list.split(",")
 
 
 if csvoutfile is None:
-	print "\tPrinting Output to Terminal"
-	print "============================================================================\n"
 	ssl._create_default_https_context = ssl._create_unverified_context
 
 	for host in switch:
@@ -61,7 +59,9 @@ if csvoutfile is None:
 
 
 
-			 	print "########## Error counters for switch %s interface %s ##########" % (host,a)
+			 	#print "########## Error counters for switch %s interface %s ##########" % (host,a)
+			 	print "\t\tError Counters for Switch %s interface %s:" % (host,a)
+				print "==================================================================================\n"
 			 	print "\t\t\tTotal Input Errors: \t%s" % totInErrors
 			 	print "\t\t\tTotal Runt Frames: \t%s" % runt_frames
 			 	print "\t\t\tTotal RX Pause Frames: \t%s" % rxpause
