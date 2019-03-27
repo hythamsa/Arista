@@ -49,3 +49,6 @@ Usage for a single interface, two switches:
 
 Usage for two interfaces, two switches:
 - ./sh-error_counters.py -u admin -p admin -m http -s leaf1,leaf2 -i Ethernet49/1,Ethernet50/1
+
+To do:
+- implement output to CSV file switch with default output to TERM
