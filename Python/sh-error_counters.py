@@ -36,7 +36,7 @@ intf = intf_list.split(",")
 
 if csvoutfile is None:
 	print "\tPrinting Output to Terminal"
-	print "================================================================="
+	print "============================================================================\n"
 	ssl._create_default_https_context = ssl._create_unverified_context
 
 	for host in switch:
@@ -62,17 +62,17 @@ if csvoutfile is None:
 
 
 			 	print "########## Error counters for switch %s interface %s ##########" % (host,a)
-			 	print "\tTotal Input Errors: \t%s" % totInErrors
-			 	print "\tTotal Runt Frames: \t%s" % runt_frames
-			 	print "\tTotal RX Pause Frames: \t%s" % rxpause
-			 	print "\tTotal FCS Errors: \t%s" % fcs_errors
-			 	print "\tTotal Align Errors: \t%s" % align_errors
-			 	print "\tTotal Giant Frames: \t%s" % giant_frames
-			 	print "\tTotal Symbol Errors: \t%s" % sym_errors
-			 	print "\tTotal Def Transmits: \t%s" % def_trans
-			 	print "\tTotal TX Pause Frames: \t%s" % txpause
-			 	print "\tTotal Collisions: \t%s" % collisions
-			 	print "\tLate Collisions: \t%s" % late_coll
+			 	print "\t\t\tTotal Input Errors: \t%s" % totInErrors
+			 	print "\t\t\tTotal Runt Frames: \t%s" % runt_frames
+			 	print "\t\t\tTotal RX Pause Frames: \t%s" % rxpause
+			 	print "\t\t\tTotal FCS Errors: \t%s" % fcs_errors
+			 	print "\t\t\tTotal Align Errors: \t%s" % align_errors
+			 	print "\t\t\tTotal Giant Frames: \t%s" % giant_frames
+			 	print "\t\t\tTotal Symbol Errors: \t%s" % sym_errors
+			 	print "\t\t\tTotal Def Transmits: \t%s" % def_trans
+			 	print "\t\t\tTotal TX Pause Frames: \t%s" % txpause
+			 	print "\t\t\tTotal Collisions: \t%s" % collisions
+			 	print "\t\t\tLate Collisions: \t%s" % late_coll
 			 	print "\n"
 else:
 	with open ('Error Counters' + str(today) + '.csv', 'w') as csvfile:
