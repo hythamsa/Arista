@@ -12,7 +12,7 @@ parser.add_argument('-m', '--proto', dest='proto', action='store', help='http or
 parser.add_argument('-e', '--enable', dest='enable', action='store', help='Enable password if configured')
 parser.add_argument('-s', '--switch', dest='switch', action='store', help='Enter a switch or list of switches separated by a comma')
 parser.add_argument('-i', '--intf', dest='intf', action='store', help='Enter interface(s) to retrive counters separated by a comma')
-parser.add_argument('-c', '--csvoutfile', dest='csvoutfile', action='store', help='Out put to CSV file')
+parser.add_argument('-c', '--csvoutfile', dest='csvoutfile', action='store', help='Output to CSV file. No argument required')
 
 if len(sys.argv[1:]) == 0:
 	parser.print_help()
@@ -75,7 +75,7 @@ if csvoutfile is None:
 			 	print "\t\t\tLate Collisions: \t%s" % late_coll
 			 	print "\n"
 else:
-	with open ('Error Counters_' + str(today) + '.csv', 'w') as csvfile:
+	with open (csvoutfile + '_' + str(today) + '.csv', 'w') as csvfile:
 		headers = ['Switch ID', 'Interface', 'Total Input Errors', 'Total Runt Frames', 'Total RX Pause Frames', 'Total FCS Errors', 'Total Alignment Errors', 'Total Giant Frames', 'Total Symbol Errors', 'Total Deferred Transmissions', 'Total TX Pause Frames', 'Total Collisions', 'Total Late Collisions']
 		writer = csv.DictWriter(csvfile, fieldnames=headers)
 		writer.writeheader()
