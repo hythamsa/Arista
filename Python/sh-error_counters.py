@@ -42,6 +42,11 @@ for host in switch:
 			 giant_frames = get_counters[0]["interfaces"][a]["interfaceCounters"]["inputErrorsDetail"]["giantFrames"]
 			 sym_errors = get_counters[0]["interfaces"][a]["interfaceCounters"]["inputErrorsDetail"]["symbolErrors"]
 
+			 def_trans = get_counters[0]["interfaces"][a]["interfaceCounters"]["outputErrorsDetail"]["deferredTransmissions"]
+			 txpause = get_counters[0]["interfaces"][a]["interfaceCounters"]["outputErrorsDetail"]["txPause"]
+			 collisions = get_counters[0]["interfaces"][a]["interfaceCounters"]["outputErrorsDetail"]["collisions"]
+			 late_coll = get_counters[0]["interfaces"][a]["interfaceCounters"]["outputErrorsDetail"]["lateCollisions"]
+
 
 
 			 print "########## Error counters for switch %s interface %s ##########" % (host,a)
@@ -52,4 +57,8 @@ for host in switch:
 			 print "\tTotal Align Errors: \t%s" % align_errors
 			 print "\tTotal Giant Frames: \t%s" % giant_frames
 			 print "\tTotal Symbol Errors: \t%s" % sym_errors
+			 print "\tTotal Def Transmits: \t%s" % def_trans
+			 print "\tTotal TX Pause Frames: \t%s" % txpause
+			 print "\tTotal Collisions: \t%s" % collisions
+			 print "\tLate Collisions: \t%s" % late_coll
 			 print "\n"
