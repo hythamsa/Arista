@@ -39,7 +39,9 @@ When selecting "csvinput" input, please be sure to input the file name in its en
 Just a stupid little script testing out non-verification of ssl self-signed certs
 
 # sh-error_counters.py (Python 2.7.x)
-Retrieves (in/out)put error counters for a single interface, or multiple interfaces on a single switch or multiple switches. Supports output to both CSV and Terminal. If "-c" flag is NOT specified, the script will default to terminal output. If "-c" flag is used, an argument is required for file naming
+Retrieves (in/out)put error counters for a single interface, or multiple interfaces on a single switch or multiple switches. Supports output to both CSV and Terminal. If "-c" flag is NOT specified, the script will default to terminal output. If "-c" flag is used, an argument is required for file naming.
+
+In fact, required flags are: -u, -p, -m, -e, -s, & -i
 
 Usage for single interface, single switch:
 - ./sh-error_counters.py -u admin -p admin -m http -s leaf1 -i Ethernet49/1
