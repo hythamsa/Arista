@@ -53,7 +53,7 @@ for host in switch:
 
 
 
-			 print "########## Error counters for switch %s interface %s ##########" % (host,a)
+			 print "########### Error counters for switch %s interface %s ###########" % (host,a)
 			 print "\tTotal Input Errors: \t%s" % totInErrors
 			 print "\tTotal Runt Frames: \t%s" % runt_frames
 			 print "\tTotal RX Pause Frames: \t%s" % rxpause
