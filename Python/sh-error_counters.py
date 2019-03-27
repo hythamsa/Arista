@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import ssl, argparse
+import ssl, argparse, sys
 from jsonrpclib import Server
 
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -12,6 +12,10 @@ parser.add_argument('-m', '--proto', dest='proto', action='store', help='http or
 parser.add_argument('-e', '--enable', dest='enable', action='store', help='Enable password if configured')
 parser.add_argument('-s', '--switch', dest='switch', action='store', help='Enter a switch or list of switches separated by a comma')
 parser.add_argument('-i', '--intf', dest='intf', action='store', help='Enter interface(s) to retrive counters separated by a comma')
+
+if len(sys.argv[1:]) == 0:
+	parser.print_help()
+	parser.exit()
 args = parser.parse_args()
 
 user = args.user
