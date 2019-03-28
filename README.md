@@ -53,4 +53,4 @@ Usage for two interfaces, two switches:
 - ./sh-error_counters.py -u admin -p admin -m http -s leaf1,leaf2 -i Ethernet49/1,Ethernet50/1
 
 Usage for two interfaces, one switch:
-./sh-error_counters.py -u admin -p admin -m http -s leaf1 -i Ethernet49/1,Ethernet50/1 -c Errors
+- ./sh-error_counters.py -u admin -p admin -m http -s leaf1 -i Ethernet49/1,Ethernet50/1 -c Errors
