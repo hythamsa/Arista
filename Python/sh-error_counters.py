@@ -36,7 +36,6 @@ intf = intf_list.split(",")
 
 
 if csvoutfile is None:
-
 	for host in switch:
 		cmdapi = Server("%s://%s:%s@%s/command-api" % (proto,user,password,host))
 		for a in intf:
