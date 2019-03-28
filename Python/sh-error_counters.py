@@ -3,6 +3,7 @@
 import ssl, argparse, sys, datetime, csv
 from jsonrpclib import Server
 
+ssl._create_default_https_context = ssl._create_unverified_context
 today = datetime.date.today()
 
 parser = argparse.ArgumentParser()
@@ -35,7 +36,6 @@ intf = intf_list.split(",")
 
 
 if csvoutfile is None:
-	ssl._create_default_https_context = ssl._create_unverified_context
 
 	for host in switch:
 		cmdapi = Server("%s://%s:%s@%s/command-api" % (proto,user,password,host))
@@ -58,8 +58,7 @@ if csvoutfile is None:
 			 	late_coll = get_counters[0]["interfaces"][a]["interfaceCounters"]["outputErrorsDetail"]["lateCollisions"]
 
 
-
-			 	#print "########## Error counters for switch %s interface %s ##########" % (host,a)
+			 	print "\n"
 			 	print "\t\tError Counters for Switch %s interface %s:" % (host,a)
 				print "==================================================================================\n"
 			 	print "\t\t\tTotal Input Errors: \t%s" % totInErrors
