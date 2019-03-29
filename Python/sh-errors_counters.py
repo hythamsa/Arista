@@ -13,7 +13,7 @@ parser.add_argument('-m', '--proto', dest='proto', required='True', help='http o
 parser.add_argument('-e', '--enable', dest='enable', help='Enable password if configured')
 parser.add_argument('-s', '--switch', dest='switch', required='True', help='Enter a switch or list of switches separated by a comma')
 parser.add_argument('-i', '--intf', dest='intf', required='True', help='Enter interface(s) to retrive counters separated by a comma')
-parser.add_argument('-c', '--csvoutfile', dest='csvoutfile', help='Output to CSV file. No argument required')
+parser.add_argument('-c', '--csvoutfile', dest='csvoutfile', help='Output to CSV file. Specify output file name')
 
 if len(sys.argv[1:]) == 0:
 	parser.print_help()
