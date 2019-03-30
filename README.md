@@ -35,9 +35,6 @@ Configures a VLAN or mutliple VLANs across a single switch or multiple switches 
 When selecting "csvinput" input, please be sure to input the file name in its entirety including extension and that it is located in the same working directory as the script.
 - EG: vlan-config.csv
 
-# ssltest.py (Python 2.7.x)
-Just a stupid little script testing out non-verification of ssl self-signed certs
-
 # sh-error_counters.py (Python 2.7.x)
 Retrieves (in/out)put error counters for a single interface, or multiple interfaces on a single switch or multiple switches. Supports output to both CSV and Terminal. If "-c" flag is NOT specified, the script will default to terminal output. If "-c" flag is used, an argument is required for file naming.
 
@@ -54,3 +51,8 @@ Usage for two interfaces, two switches:
 
 Usage for two interfaces, one switch:
 - ./sh-error_counters.py -u admin -p admin -m http -s leaf1 -i Ethernet49/1,Ethernet50/1 -c Errors
+
+# df.py (Python 2.7.x)
+An incredibly simple script highlighting the ability to pass bash shell commands via eAPI. Please note that when passing shell commands the the timeout (measured in seconds) argument is required.
+
+- EG: "bash timeout 30 df -h"
