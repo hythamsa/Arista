@@ -1,9 +1,8 @@
 #!/usr/bin/python
 
 '''
-Basic script highlighting the ability to pass bash commands via eAPI
+Basic script highlighting the ability to pass bash shell commands via eAPI
 '''
-
 
 from jsonrpclib import Server
 import ssl
@@ -11,6 +10,6 @@ import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
 cmdapi = Server("https://admin:admin@leaf1/command-api")
-getver = cmdapi.runCmds(1,["bash timeout 30 df -h"])
+getdf = cmdapi.runCmds(1,["bash timeout 30 df -h"])
 
-print getver[0]['messages'][0]
+print getdf[0]['messages'][0]
