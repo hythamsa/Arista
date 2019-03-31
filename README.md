@@ -52,7 +52,7 @@ Usage for two interfaces, two switches:
 Usage for two interfaces, one switch:
 - ./sh-error_counters.py -u admin -p admin -m http -s leaf1 -i Ethernet49/1,Ethernet50/1 -c Errors
 
-# df.py (Python 2.7.x)
+# eAPI-bash_command-example.py (Python 2.7.x)
 An incredibly simple script highlighting the ability to pass bash shell commands via eAPI. Please note that when passing shell commands the the timeout (measured in seconds) argument is required.
 
 - EG: "bash timeout 30 df -h"
