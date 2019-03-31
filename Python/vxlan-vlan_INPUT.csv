@@ -1,0 +1,3 @@
+switch,vlan-id,vlan_name,ip_address,description,vrf
+leaf1,100,corp_floor1,192.168.100.1/24,corp_access_fl1,red
+leaf2,100,corp_floor1,192.168.100.1/24,corp_access_fl1,red
