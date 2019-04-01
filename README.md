@@ -57,7 +57,7 @@ An incredibly simple script highlighting the ability to pass bash shell commands
 
 - EG: "bash timeout 30 df -h"
 
-# add-vxlan-vlan.py (Python 2.7.x)
+# provision-vxlan-vlan.py (Python 2.7.x)
 Makes use of an input CSV (for now) to create VLANs, SVIs and assigning them to EXISTING VRFs. The format of the CSV (please see vxlan-vlan_INPUT.csv) requires the following headers:
 
 - switch
