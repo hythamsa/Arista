@@ -56,3 +56,26 @@ Usage for two interfaces, one switch:
 An incredibly simple script highlighting the ability to pass bash shell commands via eAPI. Please note that when passing shell commands the the timeout (measured in seconds) argument is required.
 
 - EG: "bash timeout 30 df -h"
+
+# add-vxlan-vlan.py (Python 2.7.x)
+Makes use of an input CSV (for now) to create VLANs, SVIs and assigning them to EXISTING VRFs. The format of the CSV (please see vxlan-vlan_INPUT.csv) requires the following headers:
+
+- switch
+- vlan-id
+- vlan_name
+- ip_address
+- vrf
+- description
+
+The "description" header is used as a description for the SVI interface.
+
+Flags required for proper operation:
+- -u <username>
+- -p <password>
+- -m <method[choices: http or https]>
+- -c <CSV INPUT file name>
+
+Use:
+- ./add-vxlan-vlan.py -u admin -p admin -m http -c vxlan-vlan_INPUT.csv
+
+Future revisions will allow for L2 VXLAN, tenant/vrf creation and leaf/spine expansion
