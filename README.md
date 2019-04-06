@@ -76,6 +76,4 @@ Flags required for proper operation:
 - -c (CSV INPUT file name)
 
 Use:
-- ./add-vxlan-vlan.py -u admin -p admin -m http -c vxlan-vlan_INPUT.csv
-
-Future revisions will allow for L2 VXLAN, tenant/vrf creation and leaf/spine expansion
+- python provision-vxlan-vlan.py -u admin -p admin -m http -c vxlan-vlan_INPUT.csv
