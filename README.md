@@ -70,10 +70,10 @@ Makes use of an input CSV (for now) to create VLANs, SVIs and assigning them to 
 The "description" header is used as a description for the SVI interface.
 
 Flags required for proper operation:
-- -u <username>
-- -p <password>
+- -u (username)
+- -p (password)
 - -m <method[choices: http or https]>
-- -c <CSV INPUT file name>
+- -c (CSV INPUT file name)
 
 Use:
 - ./add-vxlan-vlan.py -u admin -p admin -m http -c vxlan-vlan_INPUT.csv
