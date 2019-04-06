@@ -8,7 +8,7 @@ Please note that you will require jsonrpclib in order to execute the scripts.
 To install:
 - pip install jsonrpclib
 
-# sh-ip-bgp-summ (Python 2.7.x)
+# sh-ip-bgp-summ.py (Python 2.7.x)
 Pretty self explanatory. Retrieves a concatenated "sh ip bgp summ" for hosts you select allowing the user to display the output directly to their terminal window OR output the data to a CSV file. The script will return the following:
 
 - Switch ID
@@ -20,7 +20,7 @@ Pretty self explanatory. Retrieves a concatenated "sh ip bgp summ" for hosts you
 
 Username and password are entered on the command line without necessity of modifying script. getpass() used to prevent password echo to terminal. I didn't see the need to leverage getpass.getuser() to prevent echoing of username in terminal window.
 
-# sh-version (Python 2.7.x)
+# sh-version.py (Python 2.7.x)
 Retrieves versioning information for a host or multiple hosts. The script allows you to select whether output is to be displayed in the terminal or output to a CSV file that I recommend that you use if # of hosts is > 5. Up to you. The script returns the following values:
 
 - Switch ID
@@ -29,7 +29,7 @@ Retrieves versioning information for a host or multiple hosts. The script allows
 - Software Version
 - Uptime
 
-# vlan-config (Python 2.7.x)
+# provision-vlan.py (Python 2.7.x)
 Configures a VLAN or mutliple VLANs across a single switch or multiple switches leveraging a CSV file as input or allowing the user to input via the terminal from which the script is run. 
 
 When selecting "csvinput" input, please be sure to input the file name in its entirety including extension and that it is located in the same working directory as the script.
