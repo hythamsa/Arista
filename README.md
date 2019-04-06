@@ -76,4 +76,4 @@ Flags required for proper operation:
 - -c (CSV INPUT file name)
 
 Use:
-- python provision-vxlan-vlan.py -u admin -p admin -m http -c vxlan-vlan_INPUT.csv
+- ./provision-vxlan-vlan.py -u admin -p admin -m http -c vxlan-vlan_INPUT.csv
