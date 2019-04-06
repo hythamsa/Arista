@@ -72,7 +72,7 @@ The "description" header is used as a description for the SVI interface.
 Flags required for proper operation:
 - -u (username)
 - -p (password)
-- -m <method[choices: http or https]>
+- -m (choices: http or https)
 - -c (CSV INPUT file name)
 
 Use:
