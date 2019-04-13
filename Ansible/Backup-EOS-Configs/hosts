@@ -1,0 +1,15 @@
+[leaf]
+leaf1
+leaf2
+leaf3
+
+[spine]
+spine1
+spine2
+
+[fabric]
+spine1
+spine2
+leaf1
+leaf2
+leaf3
