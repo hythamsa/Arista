@@ -79,7 +79,7 @@ def main():
 
 
     # Alernative password input which will NOT ECHO to terminal and will not display on command line. Uncomment below (line 82) to enable non-ECHO/Display
-    passwd = getpass.getpass()
+    #passwd = getpass.getpass()
 
 
     continue_upgrade = []
