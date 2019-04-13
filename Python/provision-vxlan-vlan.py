@@ -4,7 +4,7 @@
 Add new VXLAN enabled VLANs, along with associated SVIs assigned to existing VRFs. Please note that this script will NOT create a new VRF
 
 Example use:
-python add-vxlan-vlan.py -u admin -p admin -m http -c vxlan-vlan_INPUT.csv
+python provision-vxlan-vlan.py -u admin -p admin -m http -c vxlan-vlan_INPUT.csv
 '''
 
 import ssl, csv, datetime, argparse, sys
@@ -22,7 +22,7 @@ parser.add_argument('-e', '--enable', dest='enable', help='Enable password if co
 parser.add_argument('-c', '--csvinfile', dest='csvinfile', help='Provide the name of the CSV input file.')
 args = parser.parse_args()
 
-# If not argument is supplied, print help
+# If no argument is supplied, print help
 if len(sys.argv[1:]) ==	0:
 	parser.print_help()
 	parser.exit()
