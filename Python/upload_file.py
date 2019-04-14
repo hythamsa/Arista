@@ -2,34 +2,42 @@
 
 import paramiko, getpass
 
-file_list = []
-entries = int(raw_input("How many files would you like to upload? "))
+def main():
 
-for i in range(entries):
-	local_file = str(raw_input("Enter the name of the file to be uploaded: "))
-	remote_file = str(raw_input("Remote filename: "))
+	file_list = []
+	entries = int(raw_input("How many files would you like to upload? "))
 
-	file_list.append({
-		"loc": local_file,
-		"rem": remote_file
-		})
+	for i in range(entries):
+		local_file = str(raw_input("Enter the name of the file to be uploaded: "))
+		remote_file = str(raw_input("Remote filename: "))
 
-input = str(raw_input("Enter a switch, or switches, to upload to separated by a comma(,): "))
-host = input.split(",")
-port = int(raw_input("SSH listening port? "))
+		file_list.append({
+			"loc": local_file,
+			"rem": remote_file
+			})
 
-user = str(raw_input("Username: "))
-passwd = getpass.getpass()
+	input = str(raw_input("Enter a switch, or switches, to upload to separated by a comma(,): "))
+	host = input.split(",")
+	port = int(raw_input("SSH listening port? "))
 
-for a in file_list:
-	lf = a['loc']
-	rf = a['rem']
+	user = str(raw_input("Username: "))
+	passwd = getpass.getpass()
 
-	for b in host:
-		transport = paramiko.Transport((b, port))
-		transport.connect(username = user, password = passwd)
-		sftp = paramiko.SFTPClient.from_transport(transport)
+	for a in file_list:
+		lf = a['loc']
+		rf = a['rem']
 
-		sftp.put(lf,"/mnt/flash/" + rf)
-		sftp.close()
-		transport.close()
+		for b in host:
+			transport = paramiko.Transport((b, port))
+			transport.connect(username = user, password = passwd)
+			sftp = paramiko.SFTPClient.from_transport(transport)
+
+			sftp.put(lf,"/mnt/flash/" + rf,callback=byte_track,confirm=True)
+			sftp.close()
+			transport.close()
+
+def byte_track(transfer, rem_transfer):
+	print "Transferred {0} out of {1}".format(transfer, rem_transfer)
+
+if __name__ == '__main__':
+	main()
