@@ -3,7 +3,6 @@
 import paramiko, getpass
 
 def main():
-
 	file_list = []
 	entries = int(raw_input("How many files would you like to upload? "))
 
