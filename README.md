@@ -108,13 +108,13 @@ upgrade on secondary before moving on to primary.
 
 Note regarding password input below:
 - I have given you option the to use password input either leveraging the "-p" flag OR one can input directly into terminal where it will not be ECHO'd.
-Uncomment out line 82 for alternative password input. By doing so, you DO NOT NEED TO specify the "-p" flag
+To use; uncomment the following line: #passwd = getpass.getpass() . By doing so, you DO NOT NEED TO specify the "-p" flag
 
 Example execution using "-p":
 ./upgrade.py -u admin -p admin -m https -BN EOS-4.21.5F.swi -s leaf1,leaf2,leaf3
 
 Example execution without use of "-p":
-Mac:Python $ ./upgrade.py -u admin -m http -BN EOS-4.21.5F.swi -s leaf1,leaf2,leaf3
+Mac:Python $ ./upgrade.py -u admin -m http -bn EOS-4.21.5F.swi -s leaf1,leaf2,leaf3
 Password:
 
 ^^Enter password when prompted
