@@ -119,5 +119,9 @@ Password:
 
 ^^Enter password when prompted
 
-# upload_eos.py (Python 2.7.x)
+# upload_file.py (Python 2.7.x)
 Simple script to upload a single file to your switches defaulting to /mnt/flash as the remote directory. When asked for the "Remote filename"; you are to specify the name of the file as you would like it to appear in the remote directory.
+
+Oringally written to upload EOS binary images, but can be used to upload additional files.
+
+Future rev will leverage command-line options/flags.
