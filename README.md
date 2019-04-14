@@ -118,3 +118,6 @@ Mac:Python $ ./upgrade.py -u admin -m http -bn EOS-4.21.5F.swi -s leaf1,leaf2,le
 Password:
 
 ^^Enter password when prompted
+
+# upload_eos.py (Python 2.7.x)
+Simple script to upload a single file to your switches defaulting to /mnt/flash as the remote directory. When asked for the "Remote filename"; you are to specify the name of the file as you would like it to appear in the remote directory.
