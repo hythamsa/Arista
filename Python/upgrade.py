@@ -74,13 +74,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-    #for j in summ[0]['vrfs']['default']['peers']:
-        #prefix = summ[0]['vrfs']['default']['peers'][b]['peerState']   
-        #print "\t######### BGP stats for %s #################\n" % a
-        #if state != "Established":
-        #    print "\t\t**** PEER NOT ESTABLISHED ****"
-        #    print "\t\tPeer %s State: %s" % (b,state)
-        #    print "\t\t******************************\n"
-        #else:
-        #    print "\t\tPeer %s State: %s\n" % (b,state)
