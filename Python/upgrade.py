@@ -3,11 +3,11 @@
 import sys, getpass, ssl, argparse
 from jsonrpclib import Server
 from paramiko import SSHClient
+#from scp import SCPClient
 
 
 def main():
 
-    print sys.path
     # Do not verify self-signed certs
     ssl._create_default_https_context = ssl._create_unverified_context
     min_time = 604800
