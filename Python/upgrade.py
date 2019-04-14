@@ -2,9 +2,6 @@
 
 import sys, getpass, ssl, argparse
 from jsonrpclib import Server
-from paramiko import SSHClient
-#from scp import SCPClient
-
 
 def main():
 
