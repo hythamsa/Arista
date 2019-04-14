@@ -121,4 +121,8 @@ Password:
 ^^Enter password when prompted
 
 # upload_file.py (Python 2.7.x)
+Requirements: Paramiko
+
+To install: pip install paramiko
+
 Script allowing user to upload a single file, or multiple files, to your switches & routers defaulting to /mnt/flash as the remote directory. When asked for the "Remote filename"; you are to specify the name of the file as you would like it to appear in the remote directory.
