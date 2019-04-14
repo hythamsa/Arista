@@ -78,7 +78,7 @@ Flags required for proper operation:
 Use:
 - ./provision-vxlan-vlan.py -u admin -p admin -m http -c vxlan-vlan_INPUT.csv
 
-# upgrade.py (Python 2.7.x)
+# upgrade_eos.py (Python 2.7.x)
 This script was written as a demonstration for a customer looking to automate upgrades based ONLY on switch "uptime". If the switch has not been up for a time
 that is equal to or longer than 1 (one) week (604800s), upgrade will not proceed.
 
@@ -108,6 +108,7 @@ upgrade on secondary before moving on to primary.
 
 Note regarding password input below:
 - I have given you option the to use password input either leveraging the "-p" flag OR one can input directly into terminal where it will not be ECHO'd.
+
 To use; uncomment the following line: #passwd = getpass.getpass() . By doing so, you DO NOT NEED TO specify the "-p" flag
 
 Example execution using "-p":
@@ -120,8 +121,4 @@ Password:
 ^^Enter password when prompted
 
 # upload_file.py (Python 2.7.x)
-Simple script to upload a single file to your switches defaulting to /mnt/flash as the remote directory. When asked for the "Remote filename"; you are to specify the name of the file as you would like it to appear in the remote directory.
-
-Oringally written to upload EOS binary images, but can be used to upload additional files.
-
-Future rev will leverage command-line options/flags.
+Script allowing user to upload a single file, or multiple files, to your switches & routers defaulting to /mnt/flash as the remote directory. When asked for the "Remote filename"; you are to specify the name of the file as you would like it to appear in the remote directory.
