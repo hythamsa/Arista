@@ -10,6 +10,8 @@ def main():
 
     # Do not verify self-signed certs
     ssl._create_default_https_context = ssl._create_unverified_context
+    
+    # Define minimum uptime
     min_time = 604800
 
     parser = argparse.ArgumentParser()
