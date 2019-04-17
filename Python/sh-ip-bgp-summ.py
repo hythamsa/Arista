@@ -26,9 +26,8 @@ def csvout():
     today = datetime.date.today()
     ssl._create_default_https_context = ssl._create_unverified_context
 
-    user = str(raw_input("Username: "))
-    passwd = getpass.getpass()
-
+    input = str(raw_input("What switch, or switches, would you like to connect to separated by a comma: "))
+    host = input.split(",")
 
     while True:
         try:
@@ -38,8 +37,8 @@ def csvout():
             print ("Please enter http or https")
             continue
 
-    input = str(raw_input("What switch, or switches, would you like to connect to separated by a comma: "))
-    host = input.split(",")
+    user = str(raw_input("Username: "))
+    passwd = getpass.getpass()
 
     try:
         with open ('BGP-Summary' + '_' + str(today) + '.csv', 'w') as csvfile:
@@ -66,8 +65,8 @@ def csvout():
 def term():
     ssl._create_default_https_context = ssl._create_unverified_context
 
-    user = str(raw_input("Username: "))
-    passwd = getpass.getpass()
+    input = str(raw_input("What switch, or switches, would you like to connect to separated by a comma(,): "))
+    host = input.split(",")
 
     while True:
         try:
@@ -77,8 +76,8 @@ def term():
             print ("Please enter http or https")
             continue
 
-    input = str(raw_input("What switch, or switches, would you like to connect to separated by a comma(,): "))
-    host = input.split(",")
+    user = str(raw_input("Username: "))
+    passwd = getpass.getpass()
 
     try:
         for a in host:
@@ -91,12 +90,14 @@ def term():
                 asnum = summ[0]['vrfs']['default']['peers'][b]['asn']
                 updown = summ[0]['vrfs']['default']['peers'][b]['upDownTime']
             
-                print "\t######### BGP stats for %s #################" % a
-                print "\tPeer IP Address: %s" % b
-                print "\tPeer State: %s" % state
-                print "\tPrefixes Received: %s" % prfxrcvd
-                print "\tAS Number: %s" % asnum
-                print "\tUP/Down Time: %s\n" % updown
+                print "\t", '#' * 9, "BGP stats for %s" % a, '#' * 17
+                print "\t\tPeer IP Address: %s" % b
+                print "\t\tPeer State: %s" % state
+                print "\t\tPrefixes Received: %s" % prfxrcvd
+                print "\t\tAS Number: %s" % asnum
+                print "\t\tUP/Down Time: %s" % updown
+                print ('')
+
     except:
         sys.exit(2)
 

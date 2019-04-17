@@ -83,18 +83,19 @@ else:
 					late_coll = get_counters[0]["interfaces"][a]["interfaceCounters"]["outputErrorsDetail"]["lateCollisions"]
 
 
-					print "\n"
+					print ('')
 					print "\t\tError Counters for Switch %s interface %s:" % (host,a)
-					print "==================================================================================\n"
-					print "\t\t\tTotal Input Errors: \t%s" % totInErrors
-					print "\t\t\tTotal Runt Frames: \t%s" % runt_frames
-					print "\t\t\tTotal RX Pause Frames: \t%s" % rxpause
-					print "\t\t\tTotal FCS Errors: \t%s" % fcs_errors
-					print "\t\t\tTotal Align Errors: \t%s" % align_errors
-					print "\t\t\tTotal Giant Frames: \t%s" % giant_frames
-					print "\t\t\tTotal Symbol Errors: \t%s" % sym_errors
-					print "\t\t\tTotal Def Transmits: \t%s" % def_trans
-					print "\t\t\tTotal TX Pause Frames: \t%s" % txpause
-					print "\t\t\tTotal Collisions: \t%s" % collisions
-					print "\t\t\tLate Collisions: \t%s" % late_coll
-					print "\n"
+					print "\t", '#' * 82
+					print ('')
+					print "\t\t\t\tTotal Input Errors: \t%s" % totInErrors
+					print "\t\t\t\tTotal Runt Frames: \t%s" % runt_frames
+					print "\t\t\t\tTotal RX Pause Frames: \t%s" % rxpause
+					print "\t\t\t\tTotal FCS Errors: \t%s" % fcs_errors
+					print "\t\t\t\tTotal Align Errors: \t%s" % align_errors
+					print "\t\t\t\tTotal Giant Frames: \t%s" % giant_frames
+					print "\t\t\t\tTotal Symbol Errors: \t%s" % sym_errors
+					print "\t\t\t\tTotal Def Transmits: \t%s" % def_trans
+					print "\t\t\t\tTotal TX Pause Frames: \t%s" % txpause
+					print "\t\t\t\tTotal Collisions: \t%s" % collisions
+					print "\t\t\t\tLate Collisions: \t%s" % late_coll
+					print ('')

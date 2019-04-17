@@ -88,7 +88,7 @@ def term():
                 swver = getver[0]["version"]
                 uptime = getver[0]["uptime"]
 
-                print "######### Version Data for %s #################" % a
+                print '#' * 8, "Version Data for %s" %a, '#' * 12
                 print "\tSerial Number: \t%s" % ser
                 print "\tModel Number: \t%s" % model
                 print "\tSW Version: \t%s" % swver
