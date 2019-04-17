@@ -29,9 +29,6 @@ def csvout():
     input = str(raw_input("What switch, or switches, would you like to connect to separated by a comma: "))
     host = input.split(",")
 
-    user = str(raw_input("Username: "))
-    passwd = getpass.getpass()
-
     while True:
         try:
             prot = str(raw_input("Which eAPI protocol do you want to use [http or https]? "))
@@ -39,6 +36,9 @@ def csvout():
         except ValueError:
             print ("Please enter http or https")
             continue
+
+    user = str(raw_input("Username: "))
+    passwd = getpass.getpass()
 
     try:
         with open ('Version' + '_' + str(today) + '.csv', 'w') as csvfile:
@@ -66,9 +66,6 @@ def term():
     input = str(raw_input("What switch, or switches, would you like to connect to separated by a comma: "))
     host = input.split(",")
 
-    user = str(raw_input("Username: "))
-    passwd = getpass.getpass()
-
     while True:
         try:
             prot = str(raw_input("Which eAPI protocol do you want to use [http or https]? "))
@@ -76,6 +73,9 @@ def term():
         except ValueError:
             print ("Please enter http or https")
             continue
+
+    user = str(raw_input("Username: "))
+    passwd = getpass.getpass()
 
     try:
         for a in host:
