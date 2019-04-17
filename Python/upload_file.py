@@ -31,9 +31,18 @@ def main():
 			transport.connect(username = user, password = passwd)
 			sftp = paramiko.SFTPClient.from_transport(transport)
 
+			print ('#' * 48)
+			print "Transferring file %s to %s now" % (lf,b)
+			print ('#' * 48)
+
 			sftp.put(lf,"/mnt/flash/" + rf,callback=byte_track,confirm=True)
 			sftp.close()
 			transport.close()
+
+			print('#' * 48)
+			print "%s upload to %s complete" % (lf,b)
+			print('#' * 48)
+			print('')
 
 def byte_track(transfer, rem_transfer):
 	print "Transferred {0} out of {1}".format(transfer, rem_transfer)
