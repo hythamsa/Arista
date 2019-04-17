@@ -55,7 +55,27 @@ Usage for two interfaces, one switch:
 # eAPI-bash_command-example.py (Python 2.7.x)
 An incredibly simple script highlighting the ability to pass bash shell commands via eAPI. Please note that when passing shell commands, the timeout (measured in seconds) argument is required.
 
-- EG: "bash timeout 30 df -h"
+- EG: "bash timeout 3 df -h"
+
+Example Usage:
+- ./eAPI-bash_command-example.py -u admin -p admin -m https -s leaf1,leaf2 -c "df -h"
+
+Sample output:
+############ 	df -h for leaf1 	##################
+Filesystem      Size  Used Avail Use% Mounted on
+none            569M   65M  505M  12% /
+none            569M   65M  505M  12% /.overlay
+devtmpfs        8.0M     0  8.0M   0% /dev
+tmpfs           1.9G     0  1.9G   0% /dev/shm
+tmpfs           1.9G  1.1M  1.9G   1% /run
+tmpfs           1.9G     0  1.9G   0% /sys/fs/cgroup
+tmpfs           569M  592K  569M   1% /tmp
+tmpfs            64M  900K   64M   2% /.deltas
+tmpfs           1.9G     0  1.9G   0% /var/run/netns
+tmpfs           380M     0  380M   0% /var/core
+tmpfs           380M  111M  269M  30% /var/log
+tmpfs           948M   78M  871M   9% /var/shmem
+/dev/sda1       3.4G  1.6G  1.9G  46% /mnt/flash
 
 # provision-vxlan-vlan.py (Python 2.7.x)
 Makes use of an input CSV (for now) to create VLANs, SVIs and assigning them to EXISTING VRFs. The format of the CSV (please see vxlan-vlan_INPUT.csv) requires the following headers:
