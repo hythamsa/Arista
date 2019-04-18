@@ -16,7 +16,6 @@ pip3 install requests
 pip3 install json
 pip3 install argparse
 
-
 Quick Description:
 Bulk upload switches into CVP assigned to "undefined" container (for now). No CSV input (again... for now), and switch definition is only done via "-s" flag for the time being
 
