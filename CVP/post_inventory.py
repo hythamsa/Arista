@@ -17,7 +17,7 @@ pip3 install json
 pip3 install argparse
 
 Quick Description:
-Bulk upload switches into CVP assigned to "undefined" container (for now). Now CSV input (again... for now), and upload via command line.
+Bulk upload switches into CVP assigned to "undefined" container (for now). No CSV input (again... for now), and switch definition is only done via "-s" flag for the time being
 
 Required flags:
 -u (username)
