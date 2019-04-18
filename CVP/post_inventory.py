@@ -1,6 +1,34 @@
 import requests, json, csv, argparse, sys
 
+'''
+Python 3.x
 
+Requires:
+Python3
+
+Module requirements:
+requests
+json
+argparse
+
+To install modules:
+pip3 install requests
+pip3 install json
+pip3 install argparse
+
+Quick Description:
+Bulk upload switches into CVP assigned to "undefined" container (for now). Now CSV input (again... for now), and upload via command line.
+
+Required flags:
+-u (username)
+-p (password)
+-sr (CVP Server Name/IP)
+-s (list of switches separated by a comma) This is only a requirement until CSV infile is coded
+
+Usage:
+python3 test-code.py -u cvpadmin -p arista123 --server cvp -s 10.92.62.47,10.92.62.48,10.92.61.208,10.92.61.207,10.92.61.206,10.92.61.210,10.92.61.205
+
+'''
 def main():
 	# Define command line flags
 	parser = argparse.ArgumentParser()
