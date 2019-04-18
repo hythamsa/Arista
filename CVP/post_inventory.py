@@ -16,6 +16,7 @@ pip3 install requests
 pip3 install json
 pip3 install argparse
 
+
 Quick Description:
 Bulk upload switches into CVP assigned to "undefined" container (for now). No CSV input (again... for now), and switch definition is only done via "-s" flag for the time being
 
@@ -26,7 +27,7 @@ Required flags:
 -s (list of switches separated by a comma) This is only a requirement until CSV infile is coded
 
 Usage:
-python3 test-code.py -u cvpadmin -p arista123 --server cvp -s 10.92.62.47,10.92.62.48,10.92.61.208,10.92.61.207,10.92.61.206,10.92.61.210,10.92.61.205
+python3 test-code.py -u cvpadmin -p cvpadmin --server cvp -s 10.92.62.47,10.92.62.48,10.92.61.208,10.92.61.207,10.92.61.206,10.92.61.210,10.92.61.205
 
 '''
 def main():
