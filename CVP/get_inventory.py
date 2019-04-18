@@ -33,8 +33,8 @@ def main():
 	
 	inventory = (baseuri + "/inventory/devices")
 	get_inventory = requests.get(inventory, cookies=cookies, verify=False)
-	#get_inventory_json = get_inventory.json()
-	#pprint(get_inventory_json)
+	get_inventory_json = get_inventory.json()
+	pprint(get_inventory_json)
 
 if __name__ == '__main__':
 	main()
