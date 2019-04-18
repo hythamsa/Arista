@@ -1,5 +1,4 @@
 import requests, json, csv, argparse, sys
-from pprint import pprint
 
 
 def main():
