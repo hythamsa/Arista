@@ -52,7 +52,6 @@ def main():
 		switch = switch_list.split(",")
 	server = args.server
 
-
 	hosts = json.dumps({'hosts': switch})
 	baseuri = "https://{}/cvpservice".format(server)
 
