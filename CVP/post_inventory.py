@@ -27,7 +27,7 @@ def readme():
 	print('')
 	print(color.RED + color.BOLD + color.UNDERLINE + 'To install modules:' + color.END)
 	print('pip3 install requests')
-	print('pip3 install json')
+	print('pip3 install jsonrpclib')
 	print('pip3 install argparse')
 	print('')
 	print(color.RED + color.BOLD + color.UNDERLINE + 'Quick Description:' + color.END)
