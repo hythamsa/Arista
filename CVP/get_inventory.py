@@ -6,6 +6,9 @@ from pprint import pprint
 
 
 def main():
+	# Disable SSL self-signed cert warnings
+	requests.packages.urllib3.disable_warnings()
+
 	# Define command line flags
 	parser = argparse.ArgumentParser()
 	parser.add_argument('-u', '--user', dest='user', required='True', help='Username for switch auth')
