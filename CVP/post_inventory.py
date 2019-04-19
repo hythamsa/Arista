@@ -31,7 +31,7 @@ def readme():
 	print('pip3 install argparse')
 	print('')
 	print(color.RED + color.BOLD + color.UNDERLINE + 'Quick Description:' + color.END)
-	print('Bulk upload switches into CVP assigned to "undefined" container (for now) using either input directly from the command line using the "-s" switch OR using a CSV Input file leveraging "-c"')
+	print('Bulk upload switches into CVP assigned to "undefined" container (for now) using input directly from the command line using the "-s" switch OR using a CSV Input file leveraging "-c"')
 	print(color.BOLD + 'Please NOTE that you cannot use both "-s" or "-c" at the same time. See usage below' + color.END)
 	print('')
 	print(color.RED + color.BOLD + color.UNDERLINE + 'Required Flags:' + color.END)
