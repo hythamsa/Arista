@@ -31,7 +31,7 @@ def readme():
 	print('pip3 install argparse')
 	print('')
 	print(color.RED + color.BOLD + color.UNDERLINE + 'Quick Description:' + color.END)
-	print('Bulk upload switches into CVP assigned to "undefined" container (for now) using either input directly into the command line using the "-s" switch OR using a CSV Input file leveraging "-c"')
+	print('Bulk upload switches into CVP assigned to "undefined" container (for now) using either input directly from the command line using the "-s" switch OR using a CSV Input file leveraging "-c"')
 	print(color.BOLD + 'Please NOTE that you cannot use both "-s" or "-c" at the same time. See usage below' + color.END)
 	print('')
 	print(color.RED + color.BOLD + color.UNDERLINE + 'Required Flags:' + color.END)
@@ -54,8 +54,8 @@ def main():
 
 	# Define command line flags
 	parser = argparse.ArgumentParser()
-	parser.add_argument('-u', '--user', dest='user', required='True', help='Username for switch auth')
-	parser.add_argument('-p', '--passwd', dest='passwd', required='True', help='Password for switch auth')
+	parser.add_argument('-u', '--user', dest='user', help='Username for switch auth')
+	parser.add_argument('-p', '--passwd', dest='passwd', help='Password for switch auth')
 	parser.add_argument('-s', '--switch', dest='switch', help='Provide a switch or a list of switches separated by a comma (,). Name or IP address are accepted')
 	parser.add_argument('-c', '--csvinfile', dest='csvinfile', help='CSV Input File')
 	parser.add_argument('-sr', '--server', dest='server', help='IP adddress or hostname of the CVP server')
@@ -64,6 +64,9 @@ def main():
 	# If no argument is supplied, print help
 	if len(sys.argv[1:]) == 0:
 		parser.print_help()
+		print(color.BOLD + '#' * 180 + color.END)
+		readme()
+		print(color.BOLD + '#' * 180 + color.END)
 		parser.exit()
 
 	user = args.user
@@ -93,6 +96,7 @@ def main():
 		print(color.BOLD + '#' * 180 + color.END)
 		readme()
 		print(color.BOLD + '#' * 180 + color.END)
+		parser.exit()
 
 
 def csvinput():
