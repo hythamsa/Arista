@@ -33,9 +33,9 @@ cmd = args.cmd
 
 
 for a in switch:
-	cmdapi = Server("%s://%s:%s@%s/command-api" % (method,user,passwd,a))
+	cmdapi = Server("{}://{}:{}@{}/command-api".format(method,user,passwd,a))
 	exec_cmd = cmdapi.runCmds(1,["bash timeout 3 " + cmd])
 
-	print ('')
-	print '#' * 12, "\t", "%s for %s" % (cmd,a), "\t", '#' * 18
-	print exec_cmd[0]['messages'][0]
+	print('')
+	print('#' * 12 + '\t' + 'Executing {} for {}'.format(cmd,a) + '\t' + '#' * 18)
+	print(exec_cmd[0]['messages'][0])
