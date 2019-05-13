@@ -40,4 +40,4 @@ with open (csvinfile, 'r') as csvfile:
 		shipbgp = cmdapi.runCmds(1,["show ip bgp summary"])
 		asn = shipbgp[0]['vrfs']['default']['asn']
 		rtrid = shipbgp[0]['vrfs']['default']['routerId']
-		config_rdrt = cmdapi.runCmds(1,["enable", "configure", "router bgp " + str(asn), "no vlan " + vlid, "rd " + rtrid+":"+vlid])
+		config_rdrt = cmdapi.runCmds(1,["enable", "configure", "router bgp " + str(asn), "no vlan " + vlid])
