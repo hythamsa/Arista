@@ -12,7 +12,6 @@ from jsonrpclib import Server
 
 # Non-verfication of self-signed certificate - BAD
 ssl._create_default_https_context = ssl._create_unverified_context
-today = datetime.date.today()
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-u', '--user', dest='user', help='Username for switch auth')
