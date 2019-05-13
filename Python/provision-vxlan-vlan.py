@@ -7,7 +7,7 @@ Example use:
 python provision-vxlan-vlan.py -u admin -p admin -m http -c vxlan-vlan_INPUT.csv
 '''
 
-import ssl, csv, datetime, argparse, sys
+import ssl, csv, argparse, sys
 from jsonrpclib import Server
 
 # Non-verfication of self-signed certificate - BAD
