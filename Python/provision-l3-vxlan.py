@@ -4,7 +4,7 @@
 Add new VXLAN enabled VLANs, along with associated SVIs assigned to existing VRFs. Please note that this script will NOT create a new VRF
 
 Example use:
-python provision-vxlan-vlan.py -u admin -p admin -m http -c vxlan-vlan_INPUT.csv
+python provision-l3-vxlan.py -u admin -p admin -m http -c vxlan-vlan_INPUT.csv
 '''
 
 import ssl, csv, argparse, sys
