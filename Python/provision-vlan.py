@@ -39,7 +39,7 @@ def term():
         
     # Create empty list, ask user to define total # of entries to be made, append to list
     user_list = []
-    entries = int(raw_input("How many entries do you require? "))
+    entries = int(raw_input("How many vlan entries do you require? "))
         
     for i in range(entries):
         user_vlanid = str(raw_input("What is the VLAN ID? "))
