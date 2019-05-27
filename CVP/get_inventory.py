@@ -10,7 +10,7 @@ def main():
 	requests.packages.urllib3.disable_warnings()
 
 	# Define command line flags
-	parser = argparse.ArgumentParser(decription='Retrieve Inventory from CVP')
+	parser = argparse.ArgumentParser(description='Retrieve Inventory from CVP')
 	parser.add_argument('-u', '--user', dest='user', required='True', help='Username for switch auth')
 	parser.add_argument('-p', '--passwd', dest='passwd', required='True', help='Password for switch auth')
 	parser.add_argument('-s', '--server', dest='server', required='True', help='IP adddress or hostname of the CVP server')

@@ -162,6 +162,45 @@ To install: pip install paramiko
 
 Script allowing user to upload a single file, or multiple files, to your switches & routers defaulting to /mnt/flash as the remote directory. When asked for the "Remote filename"; you are to specify the name of the file as you would like it to appear in the remote directory.
 
-#
-#
-#
+# CVP
+
+A collection of python scripts leveraging the CloudVision Portal API to automate tasks against ... you guessed it... Arista's CloudVision Portal (CVP).
+
+Please note that for some of the scripts you will require CVP API modules installed within your python environment (virtual or otherwise) in order to leverage the scripts contained within this directory. You can find the CVP modules in Arista's software download page within the CloudVision Portal menu.
+
+Other scripts leverage the CVP RESTful API which will be stated (at least that's my intent...if it is not stated, scream at me. It's pretty obvious just by looking at the import modules).
+
+# get_inventory.py (Python 3.x) - leverages REST API
+Straightforward. Retrieves a list of inventory from your CVP server dumping the JSON data to your screen... I'll ... uh... need to clean up the returned data to make it presentable. My bad.
+
+Use:
+- python3 get_inventory.py -u cvpadmin -p cvpadmin -s <IP address of CVP server>
+
+# post_inventory.py (Python 3.x) - leverages REST API
+Module requirements:
+- requests
+- json
+- argparse
+
+To install modules:
+pip3 install requests
+pip3 install jsonrpclib
+pip3 install argparse
+
+Description:
+Bulk upload switches into CVP assigned to "undefined" container (for now) using input directly from the command line using the "-s" switch OR using a CSV Input file leveraging "-c"
+
+Please NOTE that you cannot use both "-s" or "-c" at the same time. See usage below
+
+Required Flags:
+- -u (username)
+- -p (password)
+- -sr (CVP FQDN or IP)
+
+Optional Flags:
+- -s (switch names or IP addresses separated by a comma (,) )
+- -c (CSV file name)
+
+Usage:
+- python3 post_inventory.py -u cvpadmin -p cvpadmin --server cvp -s 10.92.62.47,10.92.62.48,10.92.61.208,10.92.61.207,10.92.61.206,10.92.61.210,10.92.61.205
+- python3 post_inventory.py -u cvpadmin -p cvpadmin --server cvp -c post_inventory_upload.csv
