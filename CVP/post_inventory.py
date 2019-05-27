@@ -45,7 +45,7 @@ def readme():
 	print('')
 	print(color.RED + color.BOLD + color.UNDERLINE + 'Usage:' + color.END)
 	print('python3 post_inventory.py -u cvpadmin -p cvpadmin --server cvp -s 10.92.62.47,10.92.62.48,10.92.61.208,10.92.61.207,10.92.61.206,10.92.61.210,10.92.61.205')
-	print('python3 post_inventory.py -u cvpadmin -p cvpadmin --server cvp -c inventory.csv')
+	print('python3 post_inventory.py -u cvpadmin -p cvpadmin --server cvp -c post_inventory_upload.csv')
 
 
 def main():
@@ -53,7 +53,7 @@ def main():
 	requests.packages.urllib3.disable_warnings()
 
 	# Define command line flags
-	parser = argparse.ArgumentParser()
+	parser = argparse.ArgumentParser(description='Upload Switch Inventory into cvp')
 	parser.add_argument('-u', '--user', dest='user', help='Username for switch auth')
 	parser.add_argument('-p', '--passwd', dest='passwd', help='Password for switch auth')
 	parser.add_argument('-s', '--switch', dest='switch', help='Provide a switch or a list of switches separated by a comma (,). Name or IP address are accepted')

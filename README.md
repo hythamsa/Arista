@@ -60,8 +60,39 @@ An incredibly simple script highlighting the ability to pass bash shell commands
 Example Usage:
 - ./eAPI-bash_command-example.py -u admin -p admin -m https -s leaf1,leaf2 -c "df -h"
 
+# provision-l2-vxlan.py (Python 2.7.x)
+Makes use of an input CSV to create VXLAN enabled VLANs across an L2 EVPN fabric. For the time being I have not written the script to make use of argprase module to allow for command-line input, so... this will have to do for now.
 
-# provision-vxlan-vlan.py (Python 2.7.x)
+Following headers in the CSV file are necessary with the exact names (unless you go and modify the script to look for something different):
+
+- switch (this can be a hostname or IP address)
+- vlan-id (pretty self explanatory... 2 - 4094)
+- vlname (VLAN name)
+
+Flags reqruired for proper operation:
+- -u (username)
+- -p (password)
+- -m (choices: http or https)
+- -c (CSV INPUT file name)
+
+Use:
+- python provision-l2-vxlan.py -u admin -p admin -m https -c provision-l2-vxlan_INPUT.csv
+
+# delete-l2-vxlan.py (Python 2.7.x)
+If you guessed that this will delete VXLAN enabled VLANs (VXeVLs), you win! I use this script in conjunction with the provision-l2-vxlan.py script when working in lab environments to quickly spin up and spin down VXeVLs.
+
+The format of the CSV file is idential to what is described for provision-l2-vxlan.py. Refer to provision-l2-vxlan_INPUT.csv for more info.
+
+Flags reqruired for proper operation:
+- -u (username)
+- -p (password)
+- -m (choices: http or https)
+- -c (CSV INPUT file name)
+
+Use:
+- python delete-l2-vxlan.py -u admin -p admin -m https -c delete-l2-vxlan_INPUT.csv
+
+# provision-l3-vxlan.py (Python 2.7.x)
 Makes use of an input CSV (for now) to create VLANs, SVIs and assigning them to EXISTING VRFs. The format of the CSV (please see vxlan-vlan_INPUT.csv) requires the following headers:
 
 - switch
@@ -80,7 +111,7 @@ Flags required for proper operation:
 - -c (CSV INPUT file name)
 
 Use:
-- ./provision-vxlan-vlan.py -u admin -p admin -m http -c vxlan-vlan_INPUT.csv
+- python provision-l3-vxlan.py -u admin -p admin -m http -c provision-l3-vxlan_INPUT.csv
 
 # upgrade_eos.py (Python 2.7.x)
 This script was written as a demonstration for a customer looking to automate upgrades based ONLY on switch "uptime". If the switch has not been up for a time
