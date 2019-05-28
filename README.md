@@ -211,8 +211,8 @@ The purpose of the script is to create the container topology, and then import s
 It was written in Python 2.7.x because the CVP API does not support Python 3.x (as of 2019.1.0).
 
 Supporting CSV input files:
-https://github.com/hythamsa/Arista/blob/master/CVP/containers.csv
-https://github.com/hythamsa/Arista/blob/master/CVP/switch-to-container-provisioning.csv
+- https://github.com/hythamsa/Arista/blob/master/CVP/containers.csv
+- https://github.com/hythamsa/Arista/blob/master/CVP/switch-to-container-provisioning.csv
 
 Usage:
 
