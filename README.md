@@ -204,3 +204,36 @@ Optional Flags:
 Usage:
 - python3 post_inventory.py -u cvpadmin -p cvpadmin --server cvp -s 10.92.62.47,10.92.62.48,10.92.61.208,10.92.61.207,10.92.61.206,10.92.61.210,10.92.61.205
 - python3 post_inventory.py -u cvpadmin -p cvpadmin --server cvp -c post_inventory_upload.csv
+
+# provision-container.py (Python 2.7.x) - leverages CVP API
+The purpose of the script is to create the container topology, and then import switches into their respective containers. You have the option of creating the containers without inventory import, or importing inventory into existing containers without the need to create new containers, and as already stated... creating containers and importing inventory. More changes to come.
+
+It was written in Python 2.7.x because the CVP API does not support Python 3.x (as of 2019.1.0).
+
+Supporting CSV input files:
+https://github.com/hythamsa/Arista/blob/master/CVP/containers.csv
+https://github.com/hythamsa/Arista/blob/master/CVP/switch-to-container-provisioning.csv
+
+Usage:
+
+Create containers and import switches into their respective container:
+- python provision-container.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --container containers.csv --inventory switch-to-container-provisioning.csv
+
+Creating Toronto container beneath parent container Tenant
+Creating San Jose container beneath parent container Tenant
+Creating Spines-YYZ container beneath parent container Toronto
+Creating Leaves-YYZ container beneath parent container Toronto
+Creating Spines-SJC container beneath parent container San Jose
+Creating Leaves-SJC container beneath parent container San Jose
+
+Importing 10.92.62.47 into container Spines-YYZ...
+Importing 10.92.61.208 into container Leaves-YYZ...
+Importing 10.92.61.207 into container Leaves-YYZ...
+Importing 10.92.62.48 into container Spines-SJC...
+Importing 10.92.61.206 into container Leaves-SJC...
+
+Create containers only:
+- python provision-container.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --container containers.csv --inventory
+
+Import switches only:
+- python provision-container.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --inventory switch-to-container-provisioning.csv
