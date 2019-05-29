@@ -89,7 +89,7 @@ def createcontainer(cvpsvcauth,container):
 			pck = row['parentContainerKey']
 
 			if (pck == 'root'):
-				print('Creating {} container beneath {}'.format(cn,cpn))
+				print('Creating {} container beneath parent container {}'.format(cn,cpn))
 				cvpsvcauth.addContainer(cn,cpn,pck)
 
 			if (pck == ''):
@@ -112,7 +112,7 @@ def createcontainer(cvpsvcauth,container):
 
 	end = time.time()
 	exec_time = end - start
-	
+
 	print(color.HEADER + color.BOLD + "Time taken to execute: {}\n".format(exec_time) + color.END)
 
 
