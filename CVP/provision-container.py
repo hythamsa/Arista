@@ -113,7 +113,7 @@ def createcontainer(cvpsvcauth,container):
 	end = time.time()
 	exec_time = end - start
 
-	print(color.HEADER + color.BOLD + "Time taken to execute: {}\n".format(exec_time) + color.END)
+	print(color.HEADER + color.BOLD + "Process completed in {}\n".format(exec_time) + color.END)
 
 
 def importinventory(cvpauth,inventory,execute):
@@ -132,7 +132,7 @@ def importinventory(cvpauth,inventory,execute):
 			end = time.time()
 
 			exec_time = end - start
-			print(color.HEADER + color.BOLD + "Time taken to execute: {}\n".format(exec_time) + color.END)
+			print(color.HEADER + color.BOLD + "Process completed in {}\n".format(exec_time) + color.END)
 			print('')
 
 
