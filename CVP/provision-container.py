@@ -33,9 +33,9 @@ def readme():
 	print(color.RED + color.BOLD + color.UNDERLINE + 'Usage to create container topology:' + color.END)
 	print('python provision-container.py --user cvpadmin --password cvpadmin --cvpserver <IP of CVP server> --container containers.csv\n')
 	print(color.RED + color.BOLD + color.UNDERLINE + 'Usage to import switch inventory into container topology:' + color.END)
-	print('python provision-container.py --user cvpadmin --password arista123 --cvpserver 10.92.59.17 --inventory switch-to-container-provisioning.csv\n')
+	print('python provision-container.py --user cvpadmin --password cvpadmin --cvpserver <IP of CVP server> --inventory switch-to-container-provisioning.csv\n')
 	print(color.RED + color.BOLD + color.UNDERLINE + 'Usage to import inventory and place into container topology:' + color.END)
-	print('python provision-container.py --user cvpadmin --password arista123 --cvpserver 10.92.59.17 --container containers.csv --inventory switch-to-container-provisioning.csv\n')
+	print('python provision-container.py --user cvpadmin --password cvpadmin --cvpserver <IP of CVP server> --container containers.csv --inventory switch-to-container-provisioning.csv\n')
 
 
 def Arguments():
