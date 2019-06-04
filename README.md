@@ -8,7 +8,7 @@ Please note that you will require jsonrpclib in order to execute the scripts.
 To install:
 - pip install jsonrpclib
 
-## *sh-ip-bgp-summ.py (Python 2.7.x)*
+## [*sh-ip-bgp-summ.py (Python 2.7.x)*](https://github.com/hythamsa/Arista/blob/master/Python/sh-ip-bgp-summ.py)
 Pretty self explanatory. Retrieves a concatenated "sh ip bgp summ" for hosts you select allowing the user to display the output directly to their terminal window OR output the data to a CSV file. The script will return the following:
 
 - Switch ID
@@ -113,7 +113,7 @@ Flags required for proper operation:
 Use:
 - python provision-l3-vxlan.py -u admin -p admin -m http -c provision-l3-vxlan_INPUT.csv
 
-## *upgrade_eos.py (Python 2.7.x)*
+## *upgrade_eos.py (Python 2.7.x)* :boom:
 This script was written as a demonstration for a customer looking to automate upgrades based ONLY on switch "uptime". If the switch has not been up for a time
 that is equal to or longer than 1 (one) week (604800s), upgrade will not proceed.
 
