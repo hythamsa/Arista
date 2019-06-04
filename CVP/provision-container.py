@@ -43,7 +43,7 @@ def Arguments():
 	parser.add_argument('--user', dest='user', nargs='?', help='CVP username')
 	parser.add_argument('--password', dest='passwd', help='CVP administrative password')
 	parser.add_argument('--inventory', dest='inventory', help='CSV file with the names/IPs of switches with their associated container')
-	parser.add_argument('--execute', dest='execute', default=False, type=bool, choices=[True, False], help='Execute tasks immediately after import.')
+	parser.add_argument('--execute', dest='execute', default=True, type=bool, choices=[True, False], help='Execute tasks immediately after import.')
 	parser.add_argument('--container', dest='container', help='CSV File with the name of containers to be created')
 	parser.add_argument('--cvpserver', dest='cvpserver', nargs='?', help='Name of IP address of CVP server')
 	parser.add_argument('--port', dest='port', default='443', type=int, help='Web port service CVP is listening on')
