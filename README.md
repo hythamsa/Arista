@@ -193,13 +193,13 @@ Bulk upload switches into CVP assigned to "undefined" container (for now) using 
 Please NOTE that you cannot use both "-s" or "-c" at the same time. See usage below
 
 Required Flags:
-- -u (username)
-- -p (password)
-- -sr (CVP FQDN or IP)
+* -u (username)
+* -p (password)
+* -sr (CVP FQDN or IP)
 
 Optional Flags:
-- -s (switch names or IP addresses separated by a comma (,) )
-- -c (CSV file name)
+* -s (switch names or IP addresses separated by a comma (,) )
+* -c (CSV file name)
 
 Usage:\
 *python3 post_inventory.py -u cvpadmin -p cvpadmin --server cvp -s 10.92.62.47,10.92.62.48,10.92.61.208,10.92.61.207,10.92.61.206,10.92.61.210,10.92.61.205*\
@@ -267,3 +267,6 @@ _python provision-container.py --user cvpadmin --password cvpadmin --cvpserver <
 
 **Import switches only:**\
 _python provision-container.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --inventory switch-to-container-provisioning.csv_
+
+**Run compliance check only:**\
+_python provision-container.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --compliance Tenant_
