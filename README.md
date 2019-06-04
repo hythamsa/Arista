@@ -1,6 +1,6 @@
 # Arista
 
-# Python
+# **Python**
 A collection of python (duh...) scripts that can be used to retrieve data or for configuring tasks across a single host or multiple hosts.
 
 Please note that you will require jsonrpclib in order to execute the scripts.
@@ -8,7 +8,7 @@ Please note that you will require jsonrpclib in order to execute the scripts.
 To install:
 - pip install jsonrpclib
 
-# sh-ip-bgp-summ.py (Python 2.7.x)
+## *sh-ip-bgp-summ.py (Python 2.7.x)*
 Pretty self explanatory. Retrieves a concatenated "sh ip bgp summ" for hosts you select allowing the user to display the output directly to their terminal window OR output the data to a CSV file. The script will return the following:
 
 - Switch ID
@@ -20,7 +20,7 @@ Pretty self explanatory. Retrieves a concatenated "sh ip bgp summ" for hosts you
 
 Username and password are entered on the command line without necessity of modifying script. getpass() used to prevent password echo to terminal. I didn't see the need to leverage getpass.getuser() to prevent echoing of username in terminal window.
 
-# sh-version.py (Python 2.7.x)
+## #sh-version.py (Python 2.7.x)*
 Retrieves versioning information for a host or multiple hosts. The script allows you to select whether output is to be displayed in the terminal or output to a CSV file that I recommend that you use if # of hosts is > 5. Up to you. The script returns the following values:
 
 - Switch ID
@@ -29,13 +29,13 @@ Retrieves versioning information for a host or multiple hosts. The script allows
 - Software Version
 - Uptime
 
-# provision-vlan.py (Python 2.7.x)
+## *provision-vlan.py (Python 2.7.x)*
 Configures a VLAN or mutliple VLANs across a single switch or multiple switches leveraging a CSV file as input or allowing the user to input via the terminal from which the script is run. 
 
 When selecting "csvinput" input, please be sure to input the file name in its entirety including extension and that it is located in the same working directory as the script.
 - EG: vlan-config.csv
 
-# sh-error_counters.py (Python 2.7.x)
+## *sh-error_counters.py (Python 2.7.x)*
 Retrieves (in/out)put error counters for a single interface, or multiple interfaces on a single switch or multiple switches. Supports output to both CSV and Terminal. If "-c" flag is NOT specified, the script will default to terminal output. If "-c" flag is used, an argument is required for file naming.
 
 In fact, required flags are: -u, -p, -m, -e, -s, & -i
@@ -52,7 +52,7 @@ Usage for two interfaces, two switches:
 Usage for two interfaces, one switch:
 - ./sh-error_counters.py -u admin -p admin -m http -s leaf1 -i Ethernet49/1,Ethernet50/1 -c Errors
 
-# eAPI-bash_command-example.py (Python 2.7.x)
+## *eAPI-bash_command-example.py (Python 2.7.x)*
 An incredibly simple script highlighting the ability to pass bash shell commands via eAPI. Please note that when passing shell commands, the timeout (measured in seconds) argument is required.
 
 - EG: "bash timeout 3 df -h"
@@ -60,7 +60,7 @@ An incredibly simple script highlighting the ability to pass bash shell commands
 Example Usage:
 - ./eAPI-bash_command-example.py -u admin -p admin -m https -s leaf1,leaf2 -c "df -h"
 
-# provision-l2-vxlan.py (Python 2.7.x)
+## *provision-l2-vxlan.py (Python 2.7.x)*
 Makes use of an input CSV to create VXLAN enabled VLANs across an L2 EVPN fabric. For the time being I have not written the script to make use of argprase module to allow for command-line input, so... this will have to do for now.
 
 Following headers in the CSV file are necessary with the exact names (unless you go and modify the script to look for something different):
@@ -78,7 +78,7 @@ Flags reqruired for proper operation:
 Use:
 - python provision-l2-vxlan.py -u admin -p admin -m https -c provision-l2-vxlan_INPUT.csv
 
-# delete-l2-vxlan.py (Python 2.7.x)
+## *delete-l2-vxlan.py (Python 2.7.x)*
 If you guessed that this will delete VXLAN enabled VLANs (VXeVLs), you win! I use this script in conjunction with the provision-l2-vxlan.py script when working in lab environments to quickly spin up and spin down VXeVLs.
 
 The format of the CSV file is idential to what is described for provision-l2-vxlan.py. Refer to provision-l2-vxlan_INPUT.csv for more info.
@@ -92,7 +92,7 @@ Flags reqruired for proper operation:
 Use:
 - python delete-l2-vxlan.py -u admin -p admin -m https -c delete-l2-vxlan_INPUT.csv
 
-# provision-l3-vxlan.py (Python 2.7.x)
+## *provision-l3-vxlan.py (Python 2.7.x)*
 Makes use of an input CSV (for now) to create VLANs, SVIs and assigning them to EXISTING VRFs. The format of the CSV (please see vxlan-vlan_INPUT.csv) requires the following headers:
 
 - switch
@@ -113,7 +113,7 @@ Flags required for proper operation:
 Use:
 - python provision-l3-vxlan.py -u admin -p admin -m http -c provision-l3-vxlan_INPUT.csv
 
-# upgrade_eos.py (Python 2.7.x)
+## *upgrade_eos.py (Python 2.7.x)*
 This script was written as a demonstration for a customer looking to automate upgrades based ONLY on switch "uptime". If the switch has not been up for a time
 that is equal to or longer than 1 (one) week (604800s), upgrade will not proceed.
 
@@ -155,7 +155,7 @@ Password:
 
 ^^Enter password when prompted
 
-# upload_file.py (Python 2.7.x)
+## *upload_file.py (Python 2.7.x)*
 Requirements: Paramiko
 
 To install: pip install paramiko
@@ -170,13 +170,13 @@ Please note that for some of the scripts you will require CVP API modules instal
 
 Other scripts leverage the CVP RESTful API which will be stated (at least that's my intent...if it is not stated, scream at me. It's pretty obvious just by looking at the import modules).
 
-# get_inventory.py (Python 3.x) - leverages REST API
+## *get_inventory.py (Python 3.x) - leverages REST API*
 Straightforward. Retrieves a list of inventory from your CVP server dumping the JSON data to your screen... I'll ... uh... need to clean up the returned data to make it presentable. My bad.
 
 Use:
 - python3 get_inventory.py -u cvpadmin -p cvpadmin -s <IP address of CVP server>
 
-# post_inventory.py (Python 3.x) - leverages REST API
+## *post_inventory.py (Python 3.x) - leverages REST API*
 Module requirements:
 - requests
 - json
@@ -205,7 +205,7 @@ Usage:
 - python3 post_inventory.py -u cvpadmin -p cvpadmin --server cvp -s 10.92.62.47,10.92.62.48,10.92.61.208,10.92.61.207,10.92.61.206,10.92.61.210,10.92.61.205
 - python3 post_inventory.py -u cvpadmin -p cvpadmin --server cvp -c post_inventory_upload.csv
 
-# provision-container.py (Python 2.7.x) - leverages CVP API
+## *provision-container.py (Python 2.7.x) - leverages CVP API*
 The purpose of the script is to create the container topology, and then import switches into their respective containers. You have the option of creating the containers without inventory import, or importing inventory into existing containers without the need to create new containers, and as already stated... creating containers and importing inventory. More changes to come.
 
 It was written in Python 2.7.x because the CVP API does not support Python 3.x (as of 2019.1.0).
