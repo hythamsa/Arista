@@ -137,12 +137,14 @@ def importinventory(cvpauth,inventory,execute):
 def chkcompliance(cvpauth,compliance):
 	get_cont = cvpauth.getContainer(compliance)
 	chk_compliance = cvpauth.containerComplianceCheck(get_cont,True)
+	print(chk_compliance)
 
+	print('')
+	print(color.HEADER + color.BOLD + 'Verifying compliance within {}:'.format(get_cont) + color.END)
 	for i in chk_compliance:
-		if i.addlData['complianceCode'] == "0000":
-			print("Device is in compliance")
-		else:
+		if i is not None:
 			print("Device is not in compliance")
+	print('')
 
 
 def main():
