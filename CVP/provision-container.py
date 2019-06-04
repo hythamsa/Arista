@@ -140,9 +140,9 @@ def chkcompliance(cvpauth,compliance):
 
 	for i in chk_compliance:
 		if i.addlData['complianceCode'] == "0000":
-			print("Device in compliance")
+			print("Device is in compliance")
 		else:
-			print("=> Device not in compliance")
+			print("Device is not in compliance")
 
 
 def main():
