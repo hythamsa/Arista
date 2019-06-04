@@ -201,22 +201,28 @@ Optional Flags:
 - -s (switch names or IP addresses separated by a comma (,) )
 - -c (CSV file name)
 
-Usage:
-- python3 post_inventory.py -u cvpadmin -p cvpadmin --server cvp -s 10.92.62.47,10.92.62.48,10.92.61.208,10.92.61.207,10.92.61.206,10.92.61.210,10.92.61.205
-- python3 post_inventory.py -u cvpadmin -p cvpadmin --server cvp -c post_inventory_upload.csv
+Usage:\
+*python3 post_inventory.py -u cvpadmin -p cvpadmin --server cvp -s 10.92.62.47,10.92.62.48,10.92.61.208,10.92.61.207,10.92.61.206,10.92.61.210,10.92.61.205*\
+*python3 post_inventory.py -u cvpadmin -p cvpadmin --server cvp -c post_inventory_upload.csv*\
 
 ## [*provision-container.py (Python 2.7.x) - leverages CVP API*](https://github.com/hythamsa/Arista/blob/master/CVP/provision-container.py)
-The purpose of the script is to create the container topology, and then import switches into their respective containers. You have the option of creating the containers without inventory import, or importing inventory into existing containers without the need to create new containers, and as already stated... creating containers and importing inventory. More changes to come.
+The purpose of the script is to create the container topology, and then import switches into their respective containers. You have the option of creating the containers without inventory import, or importing inventory into existing containers without the need to create new containers, and as already stated... creating containers and importing inventory. This will further allow the user to execute container move automatically during script execution or to wait until completion with manual execution.\
+
+
+## *Note:*\
+
+* Upon detection of (a) duplicate container(s), script will terminate. I plan on adding error handling in a future revision\
+* Container creation is limited to two levels only as can be seen in the "switch-to-container-provisioning.csv" file. I absolutely plan on correcting this to allow for larger container topology creation\
 
 It was written in Python 2.7.x because the CVP API does not support Python 3.x (as of 2019.1.0).
 
-Supporting CSV input files:
-- https://github.com/hythamsa/Arista/blob/master/CVP/containers.csv
-- https://github.com/hythamsa/Arista/blob/master/CVP/switch-to-container-provisioning.csv
+Supporting CSV input files:\
+[Containers CSV](https://github.com/hythamsa/Arista/blob/master/CVP/containers.csv)\
+[Switch to Container Mappings](https://github.com/hythamsa/Arista/blob/master/CVP/switch-to-container-provisioning.csv)
 
 Usage:
 
-Create containers and import switches into their respective container:  
+Create containers, import switches into their respective container with a compliance check across entire "Tenant":  
 python provision-container.py --user cvpadmin --password arista123 --cvpserver cvp --execute True --container containers.csv --inventory switch-to-container-provisioning.csv --compliance Tenant  
 
 Creating Toronto container beneath parent container Tenant  
