@@ -260,7 +260,7 @@ Process completed in 4.19532990456
 => Device not in compliance\
 => Device not in compliance\
 => Device not in compliance\
-=> Device not in compliance\
+=> Device not in compliance
 
 Create containers only:\
 python provision-container.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --container containers.csv --inventory
