@@ -206,13 +206,13 @@ Usage:\
 *python3 post_inventory.py -u cvpadmin -p cvpadmin --server cvp -c post_inventory_upload.csv*\
 
 ## [*provision-container.py (Python 2.7.x) - leverages CVP API*](https://github.com/hythamsa/Arista/blob/master/CVP/provision-container.py)
-The purpose of the script is to create the container topology, and then import switches into their respective containers. You have the option of creating the containers without inventory import, or importing inventory into existing containers without the need to create new containers, and as already stated... creating containers and importing inventory. This will further allow the user to execute container move automatically during script execution or to wait until completion with manual execution.\
+The purpose of the script is to create the container topology, and then import switches into their respective containers. You have the option of creating the containers without inventory import, or importing inventory into existing containers without the need to create new containers, and as already stated... creating containers and importing inventory. This will further allow the user to execute container move automatically during script execution or to wait until completion with manual execution.
 
 
-## *Note:*\
+## *Note:*
 
-* Upon detection of (a) duplicate container(s), script will terminate. I plan on adding error handling in a future revision\
-* Container creation is limited to two levels only as can be seen in the "switch-to-container-provisioning.csv" file. I absolutely plan on correcting this to allow for larger container topology creation\
+* Upon detection of (a) duplicate container(s), script will terminate. I plan on adding error handling in a future revision
+* Container creation is limited to two levels only as can be seen in the "switch-to-container-provisioning.csv" file. I absolutely plan on correcting this to allow for larger container topology creation
 
 It was written in Python 2.7.x because the CVP API does not support Python 3.x (as of 2019.1.0).
 
@@ -222,38 +222,39 @@ Supporting CSV input files:\
 
 Usage:
 
-Create containers, import switches into their respective container with a compliance check across entire "Tenant":  
-python provision-container.py --user cvpadmin --password arista123 --cvpserver cvp --execute True --container containers.csv --inventory switch-to-container-provisioning.csv --compliance Tenant  
+**Create containers, import switches into their respective container with a compliance check across entire "Tenant":**  
 
-Creating Toronto container beneath parent container Tenant  
-Creating San Jose container beneath parent container Tenant  
+_python provision-container.py --user cvpadmin --password arista123 --cvpserver cvp --execute True --container containers.csv --inventory switch-to-container-provisioning.csv --compliance Tenant_\
+
+Creating Toronto container beneath parent container Tenant\
+Creating San Jose container beneath parent container Tenant\
 Creating Spines-YYZ container beneath parent container Toronto\
 Creating Leaves-YYZ container beneath parent container Toronto\
 Creating Spines-SJC container beneath parent container San Jose\
 Creating Leaves-SJC container beneath parent container San Jose\
-Process completed in 3.40671896935\
+Process completed in 3.40671896935
 
 
 Importing 10.92.61.205 into container Undefined...\
-Process completed in 0.937718868256\
+Process completed in 0.937718868256
 
 Importing 10.92.61.206 into container Leaves-SJC...\
-Process completed in 4.14273691177\
+Process completed in 4.14273691177
 
 Importing 10.92.61.207 into container Leaves-YYZ...\
-Process completed in 4.1131169796\
+Process completed in 4.1131169796
 
 Importing 10.92.61.208 into container Leaves-YYZ...\
-Process completed in 4.3007068634\
+Process completed in 4.3007068634
 
 Importing 10.92.61.210 into container Undefined...\
-Process completed in 1.11522197723\
+Process completed in 1.11522197723
 
 Importing 10.92.62.47 into container Spines-YYZ...\
-Process completed in 5.31286692619\
+Process completed in 5.31286692619
 
 Importing 10.92.62.48 into container Spines-SJC...\
-Process completed in 4.19532990456\
+Process completed in 4.19532990456
 
 => Device not in compliance\
 => Device not in compliance\
@@ -262,7 +263,7 @@ Process completed in 4.19532990456\
 => Device not in compliance\
 
 Create containers only:\
-python provision-container.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --container containers.csv --inventory\
+python provision-container.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --container containers.csv --inventory
 
 Import switches only:\
-python provision-container.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --inventory switch-to-container-provisioning.csv\
+python provision-container.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --inventory switch-to-container-provisioning.csv
