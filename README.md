@@ -263,7 +263,7 @@ Process completed in 4.19532990456
 => Device not in compliance
 
 **Create containers only:**\
-python provision-container.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --container containers.csv --inventory
+_python provision-container.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --container containers.csv --inventory_
 
 **Import switches only:**\
-python provision-container.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --inventory switch-to-container-provisioning.csv
+_python provision-container.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --inventory switch-to-container-provisioning.csv_
