@@ -43,12 +43,12 @@ def Arguments():
 	parser.add_argument('--user', dest='user', nargs='?', help='CVP username')
 	parser.add_argument('--password', dest='passwd', help='CVP administrative password')
 	parser.add_argument('--inventory', dest='inventory', help='CSV file with the names/IPs of switches with their associated container')
-	parser.add_argument('--execute', dest='execute', default='False', choices=['True', 'False'], help='Execute tasks immediately after import.')
+	parser.add_argument('--execute', dest='execute', default=False, type=bool, choices=[True, False], help='Execute tasks immediately after import.')
 	parser.add_argument('--container', dest='container', help='CSV File with the name of containers to be created')
 	parser.add_argument('--cvpserver', dest='cvpserver', nargs='?', help='Name of IP address of CVP server')
 	parser.add_argument('--port', dest='port', default='443', type=int, help='Web port service CVP is listening on')
-	parser.add_argument('--compliance', dest='compliance', action='store_true', help='Use this flag if a compliance check is to be run after devices are uploaded')
-	args=parser.parse_args()
+	parser.add_argument('--compliance', dest='compliance', help='Specify the name of the container to run a compliance check against')
+	args = parser.parse_args()
 
 	if len(sys.argv[1:]) == 0:
 		parser.print_help()
@@ -61,7 +61,6 @@ def Arguments():
 
 
 def verifyargs(args):
-
 	if args.cvpserver is None:
 		args.cvpserver = str(raw_input("What is the name or the IP address of the CVP server? "))
 
@@ -75,7 +74,6 @@ def verifyargs(args):
 
 
 def createcontainer(cvpsvcauth,container):
-
 	start = time.time()
 
 	data = []
@@ -117,7 +115,6 @@ def createcontainer(cvpsvcauth,container):
 
 
 def importinventory(cvpauth,inventory,execute):
-
 	with open(inventory, 'r') as rf:
 		reader = csv.DictReader(rf)
 
@@ -128,12 +125,24 @@ def importinventory(cvpauth,inventory,execute):
  			
 			print('Importing {} into container {}...'.format(sw,cn))
 			start = time.time()
+			#import pdb; pdb.set_trace();
 			cvpauth.importDevice(sw,cn,execute)
 			end = time.time()
 
 			exec_time = end - start
 			print(color.HEADER + color.BOLD + "Process completed in {}\n".format(exec_time) + color.END)
 			print('')
+
+
+def chkcompliance(cvpauth,compliance):
+	get_cont = cvpauth.getContainer(compliance)
+	chk_compliance = cvpauth.containerComplianceCheck(get_cont,True)
+
+	for i in chk_compliance:
+		if i.addlData['complianceCode'] == "0000":
+			print("Device in compliance")
+		else:
+			print("=> Device not in compliance")
 
 
 def main():
@@ -153,11 +162,8 @@ def main():
 	if (options.inventory is not None):
 		importinventory(cvpauth,options.inventory,options.execute)
 
-	'''
-	# NOT YET CODED
 	if (options.compliance is not None):
-		checkcompliance()
-	'''
+		chkcompliance(cvpauth,options.compliance)
 
 if __name__ == '__main__':
 	main()
