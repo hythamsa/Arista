@@ -211,10 +211,10 @@ The purpose of the script is to create the container topology, and then import s
 
 ## *Note:*
 
-* Upon detection of (a) duplicate container(s), script will terminate. I plan on adding error handling in a future revision
+* Upon detection of (a) duplicate container(s), or inventory, script will terminate. Error handling to be added in a future revision to allow for continued execution
 * Container creation is limited to two levels only as can be seen in the "switch-to-container-provisioning.csv" file. I absolutely plan on correcting this to allow for larger container topology creation
-
-It was written in Python 2.7.x because the CVP API does not support Python 3.x (as of 2019.1.0).
+* Compliance check does not associate host ID to non-compliance for now. Reports that devices in inventory under Container "X" are out of compliance. A manual check of the GUI highlights the devices out of compliance in yellow
+* Written in Python 2.7.x because the CVP API does not support Python 3.x (as of 2019.1.0)
 
 Supporting CSV input files:\
 [Containers CSV](https://github.com/hythamsa/Arista/blob/master/CVP/containers.csv)\
@@ -223,7 +223,6 @@ Supporting CSV input files:\
 Usage:
 
 **Create containers, import switches into their respective container with a compliance check across entire "Tenant":**  
-
 _python provision-container.py --user cvpadmin --password arista123 --cvpserver cvp --execute True --container containers.csv --inventory switch-to-container-provisioning.csv --compliance Tenant_\
 
 Creating Toronto container beneath parent container Tenant\
