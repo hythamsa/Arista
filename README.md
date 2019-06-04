@@ -8,7 +8,7 @@ Please note that you will require jsonrpclib in order to execute the scripts.
 To install:
 - pip install jsonrpclib
 
-###### _*sh-ip-bgp-summ.py (Python 2.7.x)*_
+## *sh-ip-bgp-summ.py (Python 2.7.x)*
 Pretty self explanatory. Retrieves a concatenated "sh ip bgp summ" for hosts you select allowing the user to display the output directly to their terminal window OR output the data to a CSV file. The script will return the following:
 
 - Switch ID
