@@ -150,18 +150,6 @@ def chkcompliance(cvpauth,compliance):
 	for i in range(len(chk_compliance)):
 		#geteventid = cvpauth.getEvent(chk_compliance[i])
 		print(chk_compliance[i])
-	
-
-'''
-def hostvariable(inventory):
-	with open(inventory, 'r') as rf:
-		reader = csv.DictReader
-
-		for row in reader:
-			sw = row['switch']
-
-	return sw
-'''
 
 
 def main():
