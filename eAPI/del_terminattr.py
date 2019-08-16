@@ -17,6 +17,10 @@ def main():
 	method = args.method
 	csvinfile = args.csvinfile
 
+	if len(sys.argv[1:]) == 0:
+		parser.print_help()
+		parser.exit()
+
 	with open (csvinfile, 'r') as rf:
 		reader = csv.DictReader(rf)
 		for row in reader:

@@ -25,7 +25,6 @@ def main():
 	passwd = args.passwd
 	server = args.server
 
-
 	baseuri = "https://{}/cvpservice".format(server)
 
 	auth_data = json.dumps({'userId': user, 'password': passwd})
@@ -33,7 +32,6 @@ def main():
 	auth_resp = requests.post(auth_url,data=auth_data,verify=False)
 	cookies = auth_resp.cookies
 
-	
 	inventory = (baseuri + "/inventory/devices")
 	get_inventory = requests.get(inventory, cookies=cookies, verify=False)
 	get_inventory_json = get_inventory.json()
