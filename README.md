@@ -274,7 +274,7 @@ _python provision-container.py --user cvpadmin --password cvpadmin --cvpserver <
 ## [*export-devices.py (Python 2.7.x) - leverages CVP API*](https://github.com/hythamsa/Arista/blob/master/CVP/CVP%20API/export-devices.py)
 Quickly written for a customer that required device export from Arista CVP (Cloud Vision Platform) into a CSV file for reporting purposes. Please note that when leveraging the "--provisioned" flag it is set to "False" by default. This means that **ALL** onboarded devices will be retrieved from CVP, whereas setting the "--provisioned" flag to "True" will only retrieve provisioned devices. 
 
-Currently the only reported metrics are:\
+Currently the only reported metrics are:
 * Hostname
 * Serial Number
 * Model Number
