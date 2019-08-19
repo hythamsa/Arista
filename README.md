@@ -287,6 +287,6 @@ Of course metrics collected can be adjusted based on your needs.\
 **Export all onboarded devices (default execution):**\
 _python export-devices.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --provisioned False_
 
-**Export all provisioned devices:**\
+**Export only provisioned devices:**\
 _python export-devices.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --provisioned True_
 
