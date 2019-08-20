@@ -19,7 +19,6 @@ def Arguments():
 	parser.add_argument('--user', dest='user', nargs='?', help='CVP Username')
 	parser.add_argument('--password', dest='passwd', help='CVP Admin Password')
 	parser.add_argument('--cvpserver', dest='cvpserver', help='Name or IP Address of the CVP Server')
-	parser.add_argument('--csvoutput', dest='csvoutput', help='Name of the output CSV')
 	parser.add_argument('--port', dest='port', default='443', type=int, help='Web port service CVP is listening on')
 	parser.add_argument('--provisioned', dest='provisioned', default=False, type=bool, choices=[True,False], help='False retrieves all onboarded devices. True retrieves only provisioned devices')
 	args=parser.parse_args()
