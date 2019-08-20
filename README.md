@@ -113,33 +113,29 @@ Flags required for proper operation:
 Use:
 - python provision-l3-vxlan.py -u admin -p admin -m http -c provision-l3-vxlan_INPUT.csv
 
-## *upgrade_eos.py (Python 2.7.x)*
+## [*upgrade_eos.py (Python 2.7.x)*](https://github.com/hythamsa/Arista/blob/master/eAPI/upgrade_EOS.py)
 This script was written as a demonstration for a customer looking to automate upgrades based ONLY on switch "uptime". If the switch has not been up for a time
-that is equal to or longer than 1 (one) week (604800s), upgrade will not proceed.
+that is equal to or longer than 1 (one) week (604800s), or in an active MLAG domain, the upgrade will not proceed.
 
 I CANNOT even begin to express how simplistic this script is with regards to the lack of any verifcation performed prior to upgrade execution. As stated: it
-simply checks "uptime". Nothing more.
+simply checks "uptime", & MLAG status. NOTHING MORE!
 
-For the time being the script assumes you have already staged the EOS binary on each switch, though, there is an "upload" flag, I have yet to write the code. Soon.
-The name specified under the "BN" flag must match the name of the EOS binary found in "flash:/", and if not, no upgrade proceeds.
 
 DO NOT:
-
-- run this script on switches configured as MLAG pairs (future revisions will take this into account). Want to take down a whole pod/zone... that's how you do it
 - automically reload swithches. VERIFY UPGRADE HAS BEEN SUCCESSFUL MANUALLY through "sh boot | json" at minimum (future revisions will take this into account)
 
 This script can be run if:
 - switches are fully independent in a non-MLAG pair
 - you're ballsy enough to run it on a prod environment. It works exactly as it is written. Nothing more.
-- you know how to python, and add verifications
+- you know how to python, and add verifications beyond the incredibly basic verification check I've implemented post-upgrade. Verification of EOS image
 
 Future revisions:
-- write "upload" python code leveraging scp and paramiko (I may write for both key and password auth)
 - write additional pre-checks prior to code execution (BGP, IS-IS, OSPF neighbours)
-- write post upgrade verification
+- write post upgrade verification (only EOS sanity check is performed)
 - write MLAG pair determination and sequencing based on: peer-config status fist (if inconsistent, determine partner and skip upgrade for pair). If consistent;
 determine MLAG state (active vs disabled), then determine primary vs secondary state, determine link in use, determine partner via LLDP, once determined, perform
-upgrade on secondary before moving on to primary.
+upgrade on secondary before moving on to primary
+- add arguments check to eliminate the ridiculous need to uncomment for specific functions (I was being stupendously lazy to rush out sample code)
 
 Note regarding password input below:
 - I have given you option the to use password input either leveraging the "-p" flag OR one can input directly into terminal where it will not be ECHO'd.
