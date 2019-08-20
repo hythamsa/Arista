@@ -282,7 +282,7 @@ Currently the only reported metrics are:
 * IP Address
 * System MAC Address
 
-Of course metrics collected can be adjusted based on your needs.\
+Of course metrics collected can be adjusted based on your needs.
 
 **Export all onboarded devices (default execution):**\
 _python export-devices.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --provisioned False_
