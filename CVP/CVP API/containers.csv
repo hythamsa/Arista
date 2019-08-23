@@ -1,7 +1,5 @@
 containerName,containerParentName,parentContainerKey
-Toronto,Tenant,root
 San Jose,Tenant,root
-Spines-YYZ,Toronto,
-Leaves-YYZ,Toronto,
 Spines-SJC,San Jose,
 Leaves-SJC,San Jose,
+Harness-SJC,San Jose,

@@ -6,10 +6,10 @@ def main():
 	ssl._create_default_https_context = ssl._create_unverified_context
 
 	parser = argparse.ArgumentParser()
-	parser.add_argument('--user', dest='user')
+	parser.add_argument('--user', default='admin', dest='user')
 	parser.add_argument('--password', dest='passwd')
 	parser.add_argument('--csvinfile', dest='csvinfile')
-	parser.add_argument('--method', dest='method', choices=['http', 'https'])
+	parser.add_argument('--method', default='https', dest='method', choices=['http', 'https'])
 	args = parser.parse_args()
 
 	user = args.user
