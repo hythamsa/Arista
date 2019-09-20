@@ -8,7 +8,7 @@ Please note that you will require jsonrpclib in order to execute the scripts.
 To install:
 - pip install jsonrpclib
 
-## [*sh-ip-bgp-summ.py (Python 2.7.x)*](https://github.com/hythamsa/Arista/blob/master/Python/sh-ip-bgp-summ.py)
+## [*sh-ip-bgp-summ.py (Python 2.7.x)*](https://github.com/hythamsa/Arista/blob/master/eAPI/sh-ip-bgp-summ.py)
 Pretty self explanatory. Retrieves a concatenated "sh ip bgp summ" for hosts you select allowing the user to display the output directly to their terminal window OR output the data to a CSV file. The script will return the following:
 
 - Switch ID
@@ -20,7 +20,7 @@ Pretty self explanatory. Retrieves a concatenated "sh ip bgp summ" for hosts you
 
 Username and password are entered on the command line without necessity of modifying script. getpass() used to prevent password echo to terminal. I didn't see the need to leverage getpass.getuser() to prevent echoing of username in terminal window.
 
-## [*sh-version.py (Python 2.7.x)*](https://github.com/hythamsa/Arista/blob/master/Python/sh-version.py)
+## [*sh-version.py (Python 2.7.x)*](https://github.com/hythamsa/Arista/blob/master/eAPI/sh-version.py)
 Retrieves versioning information for a host or multiple hosts. The script allows you to select whether output is to be displayed in the terminal or output to a CSV file that I recommend that you use if # of hosts is > 5. Up to you. The script returns the following values:
 
 - Switch ID
@@ -29,13 +29,13 @@ Retrieves versioning information for a host or multiple hosts. The script allows
 - Software Version
 - Uptime
 
-## [*provision-vlan.py (Python 2.7.x)*](https://github.com/hythamsa/Arista/blob/master/Python/provision-vlan.py)
+## [*provision-vlan.py (Python 2.7.x)*](https://github.com/hythamsa/Arista/blob/master/eAPI/provision-vlan.py)
 Configures a VLAN or mutliple VLANs across a single switch or multiple switches leveraging a CSV file as input or allowing the user to input via the terminal from which the script is run. 
 
 When selecting "csvinput" input, please be sure to input the file name in its entirety including extension and that it is located in the same working directory as the script.
 - EG: vlan-config.csv
 
-## [*sh-error_counters.py (Python 2.7.x)*](https://github.com/hythamsa/Arista/blob/master/Python/sh-errors_counters.py)
+## [*sh-error_counters.py (Python 2.7.x)*](https://github.com/hythamsa/Arista/blob/master/eAPI/sh-errors_counters.py)
 Retrieves (in/out)put error counters for a single interface, or multiple interfaces on a single switch or multiple switches. Supports output to both CSV and Terminal. If "-c" flag is NOT specified, the script will default to terminal output. If "-c" flag is used, an argument is required for file naming.
 
 In fact, required flags are: -u, -p, -m, -e, -s, & -i
@@ -52,7 +52,7 @@ Usage for two interfaces, two switches:
 Usage for two interfaces, one switch:
 - ./sh-error_counters.py -u admin -p admin -m http -s leaf1 -i Ethernet49/1,Ethernet50/1 -c Errors
 
-## [*eAPI-bash_command-example.py (Python 2.7.x)*](https://github.com/hythamsa/Arista/blob/master/Python/eAPI-bash_command-example.py)
+## [*eAPI-bash_command-example.py (Python 2.7.x)*](https://github.com/hythamsa/Arista/blob/master/eAPI/eAPI-bash_command-example.py)
 An incredibly simple script highlighting the ability to pass bash shell commands via eAPI. Please note that when passing shell commands, the timeout (measured in seconds) argument is required.
 
 - EG: "bash timeout 3 df -h"
@@ -60,7 +60,7 @@ An incredibly simple script highlighting the ability to pass bash shell commands
 Example Usage:
 - ./eAPI-bash_command-example.py -u admin -p admin -m https -s leaf1,leaf2 -c "df -h"
 
-## [*provision-l2-vxlan.py (Python 2.7.x)*](https://github.com/hythamsa/Arista/blob/master/Python/provision-l2-vxlan.py)
+## [*provision-l2-vxlan.py (Python 2.7.x)*](https://github.com/hythamsa/Arista/blob/master/eAPI/provision-l2-vxlan.py)
 Makes use of an input CSV to create VXLAN enabled VLANs across an L2 EVPN fabric. For the time being I have not written the script to make use of argprase module to allow for command-line input, so... this will have to do for now.
 
 Following headers in the CSV file are necessary with the exact names (unless you go and modify the script to look for something different):
@@ -78,7 +78,7 @@ Flags reqruired for proper operation:
 Use:
 - python provision-l2-vxlan.py -u admin -p admin -m https -c provision-l2-vxlan_INPUT.csv
 
-## [*delete-l2-vxlan.py (Python 2.7.x)*](https://github.com/hythamsa/Arista/blob/master/Python/delete-l2-vxlan.py)
+## [*delete-l2-vxlan.py (Python 2.7.x)*](https://github.com/hythamsa/Arista/blob/master/eAPI/delete-l2-vxlan.py)
 If you guessed that this will delete VXLAN enabled VLANs (VXeVLs), you win! I use this script in conjunction with the provision-l2-vxlan.py script when working in lab environments to quickly spin up and spin down VXeVLs.
 
 The format of the CSV file is idential to what is described for provision-l2-vxlan.py. Refer to provision-l2-vxlan_INPUT.csv for more info.
@@ -92,7 +92,7 @@ Flags reqruired for proper operation:
 Use:
 - python delete-l2-vxlan.py -u admin -p admin -m https -c delete-l2-vxlan_INPUT.csv
 
-## [*provision-l3-vxlan.py (Python 2.7.x)*](https://github.com/hythamsa/Arista/blob/master/Python/provision-l3-vxlan.py)
+## [*provision-l3-vxlan.py (Python 2.7.x)*](https://github.com/hythamsa/Arista/blob/master/eAPI/provision-l3-vxlan.py)
 Makes use of an input CSV (for now) to create VLANs, SVIs and assigning them to EXISTING VRFs. The format of the CSV (please see vxlan-vlan_INPUT.csv) requires the following headers:
 
 - switch
@@ -151,7 +151,7 @@ Password:
 
 ^^Enter password when prompted
 
-## [*upload_file.py (Python 2.7.x)*](https://github.com/hythamsa/Arista/blob/master/Python/upload_file.py)
+## [*upload_file.py (Python 2.7.x)*](https://github.com/hythamsa/Arista/blob/master/eAPI/upload_file.py)
 Requirements: Paramiko
 
 To install: pip install paramiko
