@@ -166,13 +166,13 @@ Please note that for some of the scripts you will require CVP API modules instal
 
 Other scripts leverage the CVP RESTful API which will be stated (at least that's my intent...if it is not stated, scream at me. It's pretty obvious just by looking at the import modules).
 
-## [*get_inventory.py (Python 3.x) - leverages REST API*](https://github.com/hythamsa/Arista/blob/master/CVP/RESTFul%20API/get_inventory.py)
+## [*get_inventory.py (Python 3.x) - leverages REST API*](https://github.com/hythamsa/Arista/blob/master/CVP/REST%20API/get_inventory.py)
 Straightforward. Retrieves a list of inventory from your CVP server dumping the JSON data to your screen... I'll ... uh... need to clean up the returned data to make it presentable. My bad.
 
 Use:
 - python3 get_inventory.py -u cvpadmin -p cvpadmin -s <IP address of CVP server>
 
-## [*post_inventory.py (Python 3.x) - leverages REST API*](https://github.com/hythamsa/Arista/blob/master/CVP/RESTFul%20API/post_inventory.py)
+## [*post_inventory.py (Python 3.x) - leverages REST API*](https://github.com/hythamsa/Arista/blob/master/CVP/REST%20API/post_inventory.py)
 Module requirements:
 - requests
 - json
@@ -201,7 +201,7 @@ Usage:\
 *python3 post_inventory.py -u cvpadmin -p cvpadmin --server cvp -s 10.92.62.47,10.92.62.48,10.92.61.208,10.92.61.207,10.92.61.206,10.92.61.210,10.92.61.205*\
 *python3 post_inventory.py -u cvpadmin -p cvpadmin --server cvp -c post_inventory_upload.csv*\
 
-## [*provision-container.py (Python 2.7.x) - leverages CVP API*](https://github.com/hythamsa/Arista/blob/master/CVP/provision-container.py)
+## [*provision-container.py (Python 2.7.x) - leverages CVP API*](https://github.com/hythamsa/Arista/blob/master/CVP/CVP%20API/provision-container.py)
 The purpose of the script is to create the container topology, and then import switches into their respective containers. You have the option of creating the containers without inventory import, or importing inventory into existing containers without the need to create new containers, and as already stated... creating containers and importing inventory. This will further allow the user to execute container move automatically during script execution or to wait until completion with manual execution.
 
 
@@ -213,8 +213,8 @@ The purpose of the script is to create the container topology, and then import s
 * Written in Python 2.7.x because the CVP API does not support Python 3.x (as of 2019.1.0)
 
 Supporting CSV input files:\
-[Containers CSV](https://github.com/hythamsa/Arista/blob/master/CVP/containers.csv)\
-[Switch to Container Mappings](https://github.com/hythamsa/Arista/blob/master/CVP/switch-to-container-provisioning.csv)
+[Containers CSV](https://github.com/hythamsa/Arista/blob/master/CVP/CVP%20API/provision-container.py)\
+[Switch to Container Mappings](https://github.com/hythamsa/Arista/blob/master/CVP/CVP%20API/switch-to-container-provisioning.csv)
 
 Usage:
 
