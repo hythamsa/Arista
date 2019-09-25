@@ -286,3 +286,5 @@ _python export-devices.py --user cvpadmin --password cvpadmin --cvpserver <CVPSE
 **Export only provisioned devices:**\
 _python export-devices.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --provisioned True_
 
+## [*ConfigureMLAG.zip (CVP Configlet Builder)*](https://github.com/hythamsa/Arista/blob/master/CVP/Configlet%20Builder/ConfigureMLAG.zip)
+Leverages the CVP Configlet Builder tool to dynamically generate MLAG configurations for switch pairs. Download the .zip file, & import directly into CVP.
