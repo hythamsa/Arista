@@ -287,4 +287,7 @@ _python export-devices.py --user cvpadmin --password cvpadmin --cvpserver <CVPSE
 _python export-devices.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --provisioned True_
 
 ## [*ConfigureMLAG.zip (CVP Configlet Builder)*](https://github.com/hythamsa/Arista/blob/master/CVP/Configlet%20Builder/ConfigureMLAG.zip)
-Leverages the CVP Configlet Builder tool to dynamically generate MLAG configurations for switch pairs. Download the .zip file, & import directly into CVP.
+Leverages the CVP Configlet Builder tool to dynamically generate MLAG configurations for switch pairs. Download the .zip file, & import directly into CVP to run.
+
+## [*CreateVLAN.zip (CVP Configlet Builder)*](https://github.com/hythamsa/Arista/blob/master/CVP/Configlet%20Builder/CreateVLAN.zip)
+Leverages the CVP Configlet Builder tool to dynamically generate VLAN configurations along with the option to create and SVI if required. Download the .zip file, & import directly into CVP to run.
