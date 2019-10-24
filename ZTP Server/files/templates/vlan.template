@@ -1,0 +1,9 @@
+vlan 10
+  name Corp
+!
+vlan 20
+  name Dev
+!
+vlan 4093
+  name iBGP-Peer
+  trunk group ibgp-peer

@@ -1,0 +1,7 @@
+interface loopback0
+   description eBGP EVPN source
+   ip address $leaf_loop0_ip
+!
+interface loopback1
+   description vtep source IP
+   ip address $leaf_loop1_ip

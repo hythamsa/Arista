@@ -1,0 +1,55 @@
+# SYNTAX:
+#
+# variables:
+#   <VARIABLE_NAME>: <FUNCTION>
+#   <VARIABLE_NAME>: <VALUE>
+#   ...
+# patterns:
+#    - name: <DESCRIPTION>
+#      definition: <URL>
+#      node: <SYSTEM_MAC>                          // Optional
+#      variables:
+#        <VARIABLE_NAME>: <FUNCTION>               // Optional
+#        <VARIABLE_NAME>: <VALUE>                  // Optional
+#        ...
+#      interfaces:
+#        - <LOCAL_INTERFACE>: <REMOTE_DEVICE>:<REMOTE_INTERFACE>
+#        - <LOCAL_INTERFACE>: <REMOTE_DEVICE>
+#        - <LOCAL_INTERFACE>:
+#            device: <REMOTE_DEVICE>
+#            port: <REMOTE_INTERFACE>              // Optional
+#            ...
+#     ...
+#
+# See documentation for the detailed list of possible values.
+---
+patterns:
+  - name: leaf3 definition file
+    definition: leaf3_def
+    node: 444ca8250559
+    interfaces:
+      - any: any
+
+  - name: leaf1 definition file
+    definition: leaf1_def
+    node: 001c73e142c7
+    interfaces:
+      - any: any
+
+  - name: leaf2 definition file
+    definition: leaf2_def
+    node: 001c737d2119
+    interfaces:
+      - any: any
+
+  - name: spine1 definition file
+    definition: spine1_def
+    node: 444ca8261601
+    interfaces:
+      - any: any
+
+  - name: spine2 definition file
+    definition: spine2_def
+    node: 28993a156f09
+    interfaces:
+      - any: any

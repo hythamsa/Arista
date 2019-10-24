@@ -1,0 +1,17 @@
+interface vlan4093
+ ip address $vlan4093_ip
+!
+interface po2000
+ switchport trunk group ibgp-peer
+!
+router bgp $local_asn
+  neighbor mlag-ipv4-underlay-neighbour peer-group
+  neighbor mlag-ipv4-underlay-neighbour remote-as 65001
+  neighbor mlag-ipv4-underlay-neighbour next-hop-self
+  neighbor mlag-ipv4-underlay-neighbour password 7 0+Sf+n2WzD6JzIzqZyzXrg==
+  neighbor mlag-ipv4-underlay-neighbour send-community
+  neighbor mlag-ipv4-underlay-neighbour maximum-routes 12000
+  neighbor $ibgp_nei_ip peer-group mlag-ipv4-underlay-neighbour
+  !
+  address-family ipv4
+     neighbor mlag-ipv4-underlay-neighbour activate

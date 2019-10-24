@@ -1,0 +1,68 @@
+---
+actions:
+  -
+    action: add_config
+    attributes:
+      url: files/templates/spine_base.template
+      variables: 
+        hostname: allocate('hostnames')
+      onstart: "Configure base configuration to all spines..."
+      onsuccess: "Base configuration application completed"
+  -
+    action: install_image
+    downgrade: false
+    attributes:
+      url: files/images/EOS-4.21.7.1M.swi
+      version: 4.21.7.1M
+    name: "Image Upgrade"
+    onstart: "Image verification and Install"
+    onsuccess: "Image installation completed successfully"
+  -
+    action: add_config
+    attributes:
+      url: files/templates/ma1.template
+      variables:
+        ipaddress: allocate('mgmt_ip_add')
+    name: "Configure Mgmt IP address"
+    onstart: "Configure Management Interface IP Address and Subnet Mask"
+    onsuccess: "Management IP & Subnet Completed"
+  -
+    action: add_config
+    attributes:
+      url: files/templates/spine_ebgp.template
+      variables:
+        rtr_id: allocate('router-IDs')
+        overlay_range: 1.1.1.0/24
+        underlay_range: 10.0.0.0/24
+    name: "Configure BGP Parameters"
+    onstart: "Configuring BGP Parameters"
+    onsuccess: "Completed BGP Configuration Parameters"
+  -
+    action: add_config
+    attributes:
+      url: files/templates/spine_loopback.template
+      variables:
+        spine_loop0_ip: allocate('loop0_ip_add')
+    name: "Configure Loopback Interfaces"
+    onstart: "Configure Loopback IP addresses"
+    onsuccess: "Loopback interfaces configures successfully"
+  -
+    action: add_config
+    attributes:
+      url: files/templates/spine-p2p.template
+      variables:
+        iptoleaf1: 10.0.0.8/31
+        iptoleaf2: 10.0.0.10/31
+        iptoleaf3: 10.0.0.12/31
+    name: "Configure /31 P2P BGP Links"
+    onstart: "Configure all /31 P2P Links Now"
+    onsuccess: "/31 configuration complete"
+  -
+    action: add_config
+    attributes:
+      url: files/templates/spine-prefix-list.template
+      variables:
+        leaf_loop0_ip: allocate('loop0_ip_add')
+    name: "IP prefix-list configuration"
+    onstart: "Configuring IP prefix-list"
+    onsuccess: "IP Prefix-list configured successfully"

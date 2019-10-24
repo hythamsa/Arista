@@ -1,0 +1,23 @@
+router bgp $local_asn
+   !
+   vlan 10
+      rd $rtr_id:1
+      route-target both 1:1
+      redistribute learned
+   !
+   vlan 20
+      rd $rtr_id:2
+      route-target both 2:2
+      redistribute learned
+   !
+   vrf Corp
+      rd $rtr_id:1
+      route-target import evpn 1:1
+      route-target export evpn 1:1
+      redistribute connected
+   !
+   vrf Dev
+      rd $rtr_id:2
+      route-target import evpn 2:2
+      route-target export evpn 2:2
+      redistribute connected

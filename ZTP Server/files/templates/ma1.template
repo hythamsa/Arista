@@ -1,0 +1,4 @@
+interface management1
+  vrf forwarding mgmt
+  ip address $ipaddress
+  no shut

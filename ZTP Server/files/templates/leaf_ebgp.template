@@ -1,0 +1,29 @@
+router bgp $local_asn
+   router-id $rtr_id
+   update wait-install
+   no bgp default ipv4-unicast
+   maximum-paths 4
+   nei ipv4-underlay-neighbours peer-group
+   nei ipv4-underlay-neighbours remote-as 65000
+   nei ipv4-underlay-neighbours password arista123
+   nei ipv4-underlay-neighbours send-community
+   nei ipv4-underlay-neighbours maximum-routes 12000
+   nei evpn-overlay-neighbours peer-group
+   nei evpn-overlay-neighbours remote-as 65000
+   nei evpn-overlay-neighbours update-source Loopback0
+   nei evpn-overlay-neighbours fall-over bfd
+   nei evpn-overlay-neighbours ebgp-multihop 5
+   nei evpn-overlay-neighbours password arista123
+   nei evpn-overlay-neighbours send-community
+   nei evpn-overlay-neighbours maximum-routes 0
+   nei 1.1.1.100 peer-group evpn-overlay-neighbours
+   nei 1.1.1.101 peer-group evpn-overlay-neighbours
+   nei $spine1_nei_ip peer-group ipv4-underlay-neighbours
+   nei $spine2_nei_ip peer-group ipv4-underlay-neighbours
+   redistribute connected route-map dist-loopback
+   !
+   address-family evpn 
+      nei evpn-overlay-neighbours activate
+   !
+   address-family ipv4
+      nei ipv4-underlay-neighbours activate

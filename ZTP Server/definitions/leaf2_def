@@ -1,0 +1,91 @@
+---
+actions:
+  -
+    action: add_config
+    attributes:
+      url: files/templates/leaf_base.template
+      variables: 
+        hostname: allocate('hostnames')
+  -
+    action: install_image
+    downgrade: false
+    attributes:
+      url: files/images/EOS-4.21.7.1M.swi
+      version: 4.21.7.1M
+    name: "Image Upgrade"
+  -
+    action: add_config
+    attributes:
+      url: files/templates/ma1.template
+      variables:
+        ipaddress: allocate('mgmt_ip_add')
+    name: "Configure Mgmt IP address"
+  -
+    action: add_config
+    attributes:
+      url: files/templates/leaf_ebgp.template
+      variables:
+        local_asn: 65001
+        rtr_id: allocate('router-IDs')
+        spine1_nei_ip: 10.0.0.2
+        spine2_nei_ip: 10.0.0.10
+    name: "Configure BGP Parameters"
+  -
+    action: add_config
+    attributes:
+      url: files/templates/leaf_ibgp.template
+      variables:
+        local_asn: 65001
+        ibgp_nei_ip: 172.16.254.1
+        vlan4093_ip: allocate('vlan4093_ip')
+    name: "iBGP Configuration"
+  -
+    action: add_config
+    attributes:
+      url: files/templates/leaf_loopback.template
+      variables:
+        leaf_loop0_ip: allocate('loop0_ip_add')
+        leaf_loop1_ip: 2.2.2.1/32
+    name: "Configure Loopback Interfaces"
+  -
+    action: add_config
+    attributes:
+      url: files/templates/leaf1-2_p2p.template
+      variables:
+        iptospine1: 10.0.0.3/31
+        iptospine2: 10.0.0.11/31
+    name: "Configure /31 P2P BGP Links"
+  -
+    action: add_config
+    attributes:
+      url: files/templates/leaf-prefix-list.template
+      variables:
+        leaf_loop0_ip: allocate('loop0_ip_add')
+        leaf_loop1_ip: 2.2.2.1/32
+    name: "IP prefix-list configuration"
+  -
+    action: add_config
+    attributes:
+      url: files/templates/vlan.template
+    name: "VLAN Configuration"
+  -
+    action: add_config
+    attributes:
+      url: files/templates/address-virtual.template
+    name: "Configure Address virtual"
+  -
+    action: add_config
+    attributes:
+      url: files/templates/mlag.template
+      variables:
+        local_ip: 172.16.0.2/30
+        remote_ip: 172.16.0.1
+    name: "MLAG Configuration"
+  -
+    action: add_config
+    attributes:
+      url: files/templates/vrf.template
+      variables:
+        local_asn: 65001
+        rtr_id: allocate('router-IDs')
+    name: "VRF Configuration"

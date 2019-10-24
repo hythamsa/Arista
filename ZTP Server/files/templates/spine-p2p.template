@@ -1,0 +1,15 @@
+interface Ethernet5/1
+   description l3 to 50/1 leaf1
+   speed forced 40gfull
+   no switchport
+   ip address $iptoleaf1
+interface Ethernet6/1
+   description l3 to 49/1 leaf2
+   speed forced 40gfull
+   no switchport
+   ip address $iptoleaf2
+interface Ethernet13/1
+   description l3 to 51/1 leaf3
+   speed forced 40gfull
+   no switchport
+   ip address $iptoleaf3

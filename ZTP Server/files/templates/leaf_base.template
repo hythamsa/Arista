@@ -1,0 +1,61 @@
+no spanning-tree vlan 2-4094
+!
+vrf definition Dev
+!
+vrf definition Corp
+!
+vrf definition mgmt
+!
+daemon TerminAttr
+  exec /usr/bin/TerminAttr -ingestgrpcurl=10.92.59.17:9910 -taillogs -ingestauth=key,arista123 -smashexcludes=ale,flexCounter,hardware,kni,pulse,strata -ingestexclude=/Sysdb/cell/1/agent,/Sysdb/cell/2/agent -ingestvrf=mgmt
+  no shutdown
+!
+hostname $hostname
+ip name-server vrf mgmt 172.22.22.10
+ip name-server vrf mgmt 172.22.22.40
+ip domain-name aristanetworks.com
+!
+ntp server vrf mgmt 172.22.22.10 source Management1
+ntp server vrf mgmt 172.22.22.50 source Management1
+!
+aaa authorization exec default local
+!
+no aaa root
+!
+username admin privilege 15 role network-admin secret sha512 $6$61YRkSfdqSWeRjPy$Ni/CfMbKYCwJK4aE8TZSQbPM39/2jIIF89MTLvMGkmPo.G8MGcNZdDKTA/UwOVArW0qjQHgwGYiEyu6VRm1Sp1
+username cvpadmin secret sha512 $6$VBodX3DRjl7tAk6F$etN0pqKhz/FRycHb4ovRsckVSL10JS9XQOSPUCfHN9r1Hh2/SSCgsM67P.p2aZVQad1MQLe9FgPly6ivRtKIJ.
+!
+ip route vrf mgmt 0.0.0.0/0 10.92.61.193
+!
+management api http-commands
+   protocol http
+   protocol unix-socket
+   no shutdown
+   !
+   vrf mgmt
+      no shutdown
+!
+ip routing
+ip routing vrf mgmt
+ip routing vrf Dev
+ip routing vrf Corp
+!
+service interface unconnected expose
+service routing protocols model multi-agent
+!
+route-map dist-loopback permit 10
+   match ip address prefix-list loopback
+!
+interface vxlan1
+   vxlan source-interface Loopback1
+   vxlan udp-port 4789
+   vxlan vlan 10-20 vni 1000-1010
+   vxlan vrf Dev vni 100001
+!
+interface UnconnectedEthernet1
+   traffic-loopback source system device mac
+   channel-group recirculation 1
+!
+interface Recirc-Channel1
+   no switchport
+   switchport recirculation features vxlan

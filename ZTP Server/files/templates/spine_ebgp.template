@@ -1,0 +1,26 @@
+router bgp 65000   
+   router-id $rtr_id
+   update wait-install
+   maximum-paths 4 ecmp 4
+   no bgp default ipv4-unicast
+   bgp listen range $overlay_range peer-group evpn-overlay-neighbours peer-filter LEAF-AS-RANGE
+   bgp listen range $underlay_range peer-group ipv4-underlay-neighbours peer-filter LEAF-AS-RANGE
+   neighbor evpn-overlay-neighbours peer-group
+   neighbor evpn-overlay-neighbours next-hop-unchanged
+   neighbor evpn-overlay-neighbours update-source Loopback0
+   neighbor evpn-overlay-neighbours fall-over bfd
+   neighbor evpn-overlay-neighbours ebgp-multihop 3
+   neighbor evpn-overlay-neighbours password 7 aJP9N1ytTcG4po/nW3UU/g==
+   neighbor evpn-overlay-neighbours send-community
+   neighbor evpn-overlay-neighbours maximum-routes 0
+   neighbor ipv4-underlay-neighbours peer-group
+   neighbor ipv4-underlay-neighbours password 7 k5Ka/6E/SEyFAEYsz1/SGw==
+   neighbor ipv4-underlay-neighbours send-community
+   neighbor ipv4-underlay-neighbours maximum-routes 12000
+   redistribute connected route-map dist-loopback
+   !
+   address-family evpn
+      neighbor evpn-overlay-neighbours activate
+   !
+   address-family ipv4
+      neighbor ipv4-underlay-neighbours activate

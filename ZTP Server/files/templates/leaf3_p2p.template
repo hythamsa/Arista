@@ -1,0 +1,11 @@
+interface Ethernet49/1
+   description l3 to spine1
+   speed forced 40gfull
+   no switchport
+   ip address $iptospine1
+!
+interface Ethernet51/1
+   description l3 to spine2
+   speed forced 40gfull
+   no switchport
+   ip address $iptospine2

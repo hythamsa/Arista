@@ -1,0 +1,21 @@
+vlan 4094
+ name MLAGPeer
+ trunk group mlagpeer
+!
+interface port-channel 2000
+ switchport mode trunk
+ switchport trunk group mlagpeer
+!
+interface vlan 4094
+ ip address $local_ip
+!
+interface ethernet52/1
+ channel-group 2000 mode active
+!
+mlag configuration
+   domain-id rack16
+   local-interface vlan4094
+   peer-address $remote_ip
+   peer-link port-channel 2000
+   reload-delay mlag 300
+   reload-delay non-mlag 330

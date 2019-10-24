@@ -1,0 +1,36 @@
+daemon TerminAttr
+   exec /usr/bin/TerminAttr -ingestgrpcurl=10.92.59.17:9910 -cvcompression=gzip -taillogs -ingestauth=key,arista123 -smashexcludes=ale,flexCounter,hardware,kni,pulse,strata -ingestexclude=/Sysdb/cell/1/agent,/Sysdb/cell/2/agent -ingestvrf=mgmt
+   no shutdown
+!
+service routing protocols model multi-agent
+!
+hostname $hostname
+ip name-server vrf mgmt 172.22.22.10
+ip name-server vrf mgmt 172.22.22.40
+ip domain-name aristanetworks.com
+!
+ntp server vrf mgmt 172.22.22.10 source Management1
+ntp server vrf mgmt 172.22.22.50 source Management1
+!
+aaa authorization exec default local
+!
+no aaa root
+!
+route-map dist-loopback permit 10
+   match ip address prefix-list loopback
+!
+username admin privilege 15 role network-admin secret sha512 $6$ZCSCA.RPkhSCgQNG$corRPsvSr.jfxVR/rBEsjojOYC7UXBKpmA/ESkaogcnAABE010ylGz32TQqbXg/pfo6wRpELr8ayGmbxPAWnU0
+username cvpadmin privilege 15 secret sha512 $6$S3rkW7cgCoqnRkD2$o.wbM/R3Z25PFnygeqwaowqS93P/1YOZBuQGkCkPE4iRAUsA9/J4XqdcVBcxHmg.IPWN3ORmiZ78NJQGqGY2T/
+!
+vrf definition mgmt
+ip route vrf mgmt 0.0.0.0/0 10.92.62.1
+!
+ip routing
+ip routing vrf mgmt
+!
+management api http-commands
+   protocol unix-socket
+   no shutdown
+   !
+   vrf mgmt
+      no shutdown

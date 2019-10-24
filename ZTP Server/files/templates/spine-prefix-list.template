@@ -1,0 +1,2 @@
+ip prefix-list loopback
+   seq 10 permit $leaf_loop0_ip
