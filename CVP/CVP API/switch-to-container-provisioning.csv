@@ -1,8 +1,8 @@
 switch,containerName
 10.92.61.205,Harness-SJC
 10.92.61.206,Leaves-SJC
-10.92.61.207,Leaves-SJC
-10.92.61.208,Leaves-SJC
+10.92.61.207,Leaves-SJC-MLAG
+10.92.61.208,Leaves-SJC-MLAG
 10.92.61.210,Harness-SJC
 10.92.62.47,Spines-SJC
 10.92.62.48,Spines-SJC
