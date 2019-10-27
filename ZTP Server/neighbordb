@@ -26,9 +26,13 @@
 patterns:
   - name: leaf3 definition file
     definition: leaf3_def
-    node: 444ca8250559
     interfaces:
-      - any: any
+      - Ethernet49/1:
+          device: includes('dm1-263sw22')
+          port: Ethernet13/1
+      - Ethernet51/1:
+          device: includes('dm1-263sw21')
+          port: Ethernet13/1
 
   - name: leaf1 definition file
     definition: leaf1_def
