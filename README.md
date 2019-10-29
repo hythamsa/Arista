@@ -293,3 +293,7 @@ Leverages the CVP Configlet Builder tool to dynamically generate MLAG configurat
 Leverages the CVP Configlet Builder tool to dynamically generate a single VLAN configuration along with the option to create an associated SVI if required. Download the .zip file, & import directly into CVP to run.
 
 # **ZTP Server**
+
+Arista's zero touch provisioning model allowing organizations to leverage the power of EOS and LINUX to instantiate a device from scratch without ever having to touch the command line interface.
+
+For a full explanation of each of the directories and their corresponding files is located here: [Arista ZTP Server](https://ztpserver.readthedocs.io/en/master/)
