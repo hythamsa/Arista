@@ -296,4 +296,8 @@ Leverages the CVP Configlet Builder tool to dynamically generate a single VLAN c
 
 Arista's zero touch provisioning model allowing organizations to leverage the power of EOS and LINUX to instantiate a device from scratch without ever having to touch the command line interface.
 
-For a full explanation of each of the directories and their corresponding files is located here: [Arista ZTP Server](https://ztpserver.readthedocs.io/en/master/)
+For a full explanation of each of the directories and their corresponding files can be found here: [Arista ZTP Server](https://ztpserver.readthedocs.io/en/master/overview.html)
+
+The example I have provided will turn-up an entire EVPN VXLAN Symmetric IRB environment comprised of two spine swtiches, 2 leaf swtiches configured in an MLAG domain, and a single orphan leaf switch) from initial boot-up, along with an image upgrade if necessary without once touching the command-line interface. 
+
+Looking at the neighbourdb (misspelled to account for proper Canadian spelling :)) file you'll notice that there is a slight modification between leaf1/2 topology definitions when contrasted against leaf3. Leaf1/2 leverage the use of correlation between the SystemMac aka NodeID, and the definition file. Whereas leaf3 leverages a topology definition using LLDP signalling to verify accuracy of the topology to push the correct definition file.
