@@ -51,9 +51,9 @@ actions:
     attributes:
       url: files/templates/spine-p2p.template
       variables:
-        iptoleaf1: 10.0.0.8/31
-        iptoleaf2: 10.0.0.10/31
-        iptoleaf3: 10.0.0.12/31
+        iptoleaf1: 10.0.0.0/31
+        iptoleaf2: 10.0.0.2/31
+        iptoleaf3: 10.0.0.4/31
     name: "Configure /31 P2P BGP Links"
     onstart: "Configure all /31 P2P Links Now"
     onsuccess: "/31 configuration complete"

@@ -69,6 +69,7 @@ def exportdevices(cvpsvcauth,provisioned):
 
 		print(color.HEADER + color.BOLD + "Process completed in {}\n".format(exec_time) + color.END)
 
+
 def main():
 	options = Arguments()
 
