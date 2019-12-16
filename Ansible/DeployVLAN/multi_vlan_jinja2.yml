@@ -1,0 +1,17 @@
+---
+
+- name: Configure VLAN
+  hosts: leaf
+  gather_facts: no
+  connection: local
+  vars_files:
+    - vlans.yml
+
+  tasks:
+    - name: Configure VLAN 
+      eos_config:
+        src: vlans.j2
+    
+    - name: Save running-config to startup-config if modified
+      eos_config:
+        save_when: changed

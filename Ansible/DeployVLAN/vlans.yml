@@ -1,0 +1,5 @@
+vlans:
+  - id: 1812
+    name: test1812
+  - id: 1813
+    name: test1813

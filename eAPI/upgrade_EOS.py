@@ -15,6 +15,33 @@ class color:
     END = '\033[0m'
 
 
+def Arguments():
+    parser = argprase.ArgumentParser()
+    parser.add_argument("-u", "--user", dest='user', default='admin', help'Username used for switch authenticaion')
+    parser.add_argument("-p", "--pass", dest='passwd', help='Password for switch authentication')
+    parser.add_argument("-m", "--method", dest='method', help='Select SSL or non-SSL', choices=['http', 'https'])
+    parser.add_argument("-e", "--enable", dest='enable', help='Provide an enable password if configured')
+    parser.add_argument("-s", "--switch", dest='switch', help='Provide a switch or a list of switches separated by a comma (,). Name or IP address are accepted')
+    parser.add_argument("-up", "--upload", dest='upload', help='Specify binary image to upload. Full path is only required IF script is executed in a different directory where image is stored')
+    parser.add_argument("-bn", "--bname", dest='bname', help='Specify the name of the binary image in flash. EG: EOS-4.21.5F')
+    parser.add_argument("-po", "--port", dest='port', default='443', help='Specify the SSH port to be used for file transfer', type=int)
+    parser.add_argument("-o", "--csvoutfile", dest='csvoutfile', help='Specify the name of the CSV file to output failed upgrades')
+    args = parser.parse_args()
+
+    if len(sys.argv[1:]) == 0:
+        parser.print_help()
+        parser.exit()
+
+    return verifyargs(args)
+
+
+def verifyargs():
+    if ars.passwd is None:
+        args.passwd = getpass.getpass()
+
+    return args
+
+
 def main():
     # Set today's date
     today = datetime.date.today()
@@ -25,6 +52,9 @@ def main():
     # Define minimum uptime as 1 week (604800s)
     min_time = 604800
 
+    options = Arguments()
+
+    #Argument Parser
     parser = argparse.ArgumentParser()
     parser.add_argument("-u", "--user", dest='user', help='Username used for switch authentication')
     parser.add_argument("-p", "--pass", dest='passwd', help='Password for switch authentication')

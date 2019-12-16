@@ -1,0 +1,58 @@
+---
+- name: Create a container topology
+  hosts: cvp_2019
+  gather_facts: no
+  collections:
+    - arista.cvp
+  
+  vars:
+    verbose: False
+    containers_provision:
+      YYZ:
+        parent_container: Tenant
+      Spines-YYZ:
+        parent_container: YYZ
+      Leaves-YYZ:
+        parent_container: YYZ
+      Leaves-MLAG-YYZ:
+        parent_container: Leaves-YYZ
+      Leaves-StandAlone-YYZ:
+        parent_container: Leaves-YYZ
+      Hosts-YYZ:
+        parent_container: YYZ
+      SJC:
+        parent_container: Tenant
+      Spines-SJC:
+        parent_container: SJC
+      Leaves-SJC:
+        parent_container: SJC
+      Leaves-StandAlone-SJC:
+        parent_container: Leaves-SJC
+      Leaves-MLAG:
+        parent_container: Leaves-SJC
+      Hosts-SJC:
+        parent_container: SJC
+        devices:
+          - dm1-262sw35
+          - dm1-262sw40
+
+  tasks:
+  - name: "Retrieve CVP facts from {{ inventory_hostname }}"
+    cv_facts:
+    register: cvp_facts
+    tags:
+      - always
+
+  - name: "Build container topology on {{ inventory_hostname }}"
+    tags:
+      - provision
+    cv_container:
+      topology: '{{ containers_provision }}'
+      cvp_facts: '{{ cvp_facts.ansible_facts }}'
+      save_topology: true
+      mode: 'merge'
+    register: cv_container
+
+  - name: "Print cv_container output"
+    debug:
+      msg: "{{ cv_container }}"  

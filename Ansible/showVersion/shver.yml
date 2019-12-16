@@ -1,0 +1,16 @@
+---
+
+- name: Configure VLAN
+  hosts: all
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - name: Configure VLAN 
+      eos_command:
+        commands: "show version | json"
+      register: sh_ver
+
+    - name: Display "show version" output
+      debug:
+        msg: "Device is running {{sh_ver['stdout_lines'][0]['version']}}"

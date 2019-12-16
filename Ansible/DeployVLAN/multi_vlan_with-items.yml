@@ -1,0 +1,38 @@
+---
+
+- name: Configure VLAN
+  hosts: leaf
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - name: Configure VLAN 
+      eos_config:
+        lines:
+          - name {{ item.name }}
+        parents:
+          -  vlan {{ item.vlan }}
+      with_items:
+        - { name: 'test1812', vlan: '1812' }
+        - { name: 'test1813', vlan: '1813' }
+        - { name: 'test1814', vlan: '1814' }
+        - { name: 'test1815', vlan: '1815' }
+    
+    - name: Verfiy VLAN Configuration
+      eos_command:
+        commands:
+          - show vlan {{ item.vlan }}
+      with_items:
+        - { vlan: '1812' }
+        - { vlan: '1813' }
+        - { vlan: '1814' }
+        - { vlan: '1815' }
+      register: output
+
+    - name: Print the output
+      debug:
+        var: output
+
+    - name: Save running-config to startup-config if modified
+      eos_config:
+        save_when: changed

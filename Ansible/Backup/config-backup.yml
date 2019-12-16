@@ -1,0 +1,12 @@
+---
+
+- name: Configuration Backup
+  hosts: all
+  gather_facts: no
+  connection: local
+  
+  tasks:
+    - name: Backup all EOS configurations
+      eos_config:
+        backup: yes
+      register: backup_eos_location

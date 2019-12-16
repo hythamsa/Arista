@@ -30,12 +30,14 @@ def readme():
 	print(color.RED + color.BOLD + color.UNDERLINE + 'Note:' + color.END)
 	print('The intent of the command flag "--execute" is to give control to the user in deciding whether or not to execute tasks upon completion of inventory import into its container')
 	print('The default is set to "True", requiring "False" to be set explicitly. As one can see in the usage exmaples, "--execute" has not been set, but defaults to "True" based on argparse config.\n')
-	print(color.RED + color.BOLD + color.UNDERLINE + 'Usage to create container topology:' + color.END)
+	print(color.RED + color.BOLD + color.UNDERLINE + 'Example usage to create container topology:' + color.END)
 	print('python provision-container.py --user cvpadmin --password cvpadmin --cvpserver <IP of CVP server> --container containers.csv\n')
-	print(color.RED + color.BOLD + color.UNDERLINE + 'Usage to import switch inventory into container topology:' + color.END)
+	print(color.RED + color.BOLD + color.UNDERLINE + 'Example usage to import switch inventory into container topology:' + color.END)
 	print('python provision-container.py --user cvpadmin --password cvpadmin --cvpserver <IP of CVP server> --inventory switch-to-container-provisioning.csv\n')
-	print(color.RED + color.BOLD + color.UNDERLINE + 'Usage to import inventory and place into container topology:' + color.END)
+	print(color.RED + color.BOLD + color.UNDERLINE + 'Example usage to import inventory and place into container topology:' + color.END)
 	print('python provision-container.py --user cvpadmin --password cvpadmin --cvpserver <IP of CVP server> --container containers.csv --inventory switch-to-container-provisioning.csv\n')
+	print(color.RED + color.BOLD + color.UNDERLINE + 'Example usage to execute compliance check against all hosts under container "Tenant":' + color.END)
+	print('python provision-container.py --user cvpadmin --password cvpadmin --cvpserver <IP OF CVP server> --compliance Tenant\n')
 
 
 def Arguments():
@@ -48,6 +50,9 @@ def Arguments():
 	parser.add_argument('--cvpserver', dest='cvpserver', nargs='?', help='Name of IP address of CVP server')
 	parser.add_argument('--port', dest='port', default='443', type=int, help='Web port service CVP is listening on')
 	parser.add_argument('--compliance', dest='compliance', help='Specify the name of the container to run a compliance check against')
+	parser.add_argument('--configlet', dest='configlet', help='Name of the configlet to upload')
+	parser.add_argument('--configlet_name', dest='configlet_name', help='Configlet name in CVP')
+	parser.add_argument('--container_name', dest='container_name', help='Container name in CVP')
 	args = parser.parse_args()
 
 	if len(sys.argv[1:]) == 0:
@@ -137,8 +142,6 @@ def importinventory(cvpauth,inventory,execute):
 def chkcompliance(cvpauth,compliance):
 	get_cont = cvpauth.getContainer(compliance)
 	chk_compliance = cvpauth.containerComplianceCheck(get_cont,True)
-
-	#print(len(chk_compliance))
 	
 	print('')
 	print(color.HEADER + color.BOLD + 'Verifying compliance within {}:'.format(get_cont) + color.END)
@@ -151,6 +154,23 @@ def chkcompliance(cvpauth,compliance):
 		#geteventid = cvpauth.getEvent(chk_compliance[i])
 		print(chk_compliance[i])
 
+'''
+def addconfiglet(cvpsvcauth,configlet):
+	conf = 'interface Ethernet1\n'
+	conf += '  switchport mode trunk'
+	cvpsvcauth.addConfiglet(configlet,conf)
+
+
+def configletocontainer(cvpsvcauth,container_name,configlet_name):
+	#Get container_name key
+	cont_key = cvpsvcauth.searchContainer(container_name)
+	print(cont_key[0]['Key'])
+
+	config_key = cvpsvcauth.getConfigletByName("Trunk")
+	print(config_key['key'])
+	
+	cvpsvcauth.applyConfigletToContainer(container_name,cont_key,configlet_name,config_key)
+'''
 
 def main():
 	options = Arguments()
@@ -171,6 +191,12 @@ def main():
 
 	if (options.compliance is not None):
 		chkcompliance(cvpauth,options.compliance)
+
+	if (options.configlet is not None):
+		addconfiglet(cvpsvcauth,options.configlet)
+
+	if (options.configlet_name is not None and options.container_name is not None):
+		configletocontainer(cvpsvcauth,options.container_name,options.configlet_name)
 
 if __name__ == '__main__':
 	main()

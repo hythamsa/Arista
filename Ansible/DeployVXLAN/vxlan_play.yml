@@ -1,0 +1,28 @@
+---
+
+- name: Configure VXLAN
+  hosts: leaf
+  gather_facts: no
+  connection: local
+  vars_files:
+    - vlans.yml
+
+  tasks:
+    - name: Configure L2 VXLAN
+      tags:
+        - l2vxlan
+      eos_config:
+        src: l2vxlan_config.j2
+
+    - name: Configure L3 VXLAN
+      tags:
+        - l3vxlan
+      eos_config:
+        src: l3vxlan_config.j2
+
+    - name: Save running-config to startup-config if modified
+      tags:
+        - l2vxlan
+        - l3vxlan 
+      eos_config:
+        save_when: changed

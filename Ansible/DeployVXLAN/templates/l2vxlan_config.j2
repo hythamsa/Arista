@@ -1,0 +1,19 @@
+{% for item in vlans %}
+vlan {{ item.id }}
+  name {{ item.name }}
+{% endfor %}
+
+interface vxlan1
+{% for item in vlans %}
+  {% set vni_id = item.id | int + 10000 %}
+  vxlan vlan add {{ item.id }} vni {{ vni_id }}
+{% endfor %}
+
+router bgp {{ asn }}
+{% for item in vlans %}
+  {% set vni_id = item.id | int + 10000 %}
+  vlan {{ item.id }}
+    rd {{ loopback1 }}:{{ vni_id }}
+    route-target both {{ item.id }}:{{ vni_id }}
+    redistribute learned
+{% endfor %} 
