@@ -1,0 +1,14 @@
+{% for item in vlans %}
+no vlan {{ item.id }}
+{% endfor %}
+
+interface vxlan1
+{% for item in vlans %}
+  {% set vni_id = item.id | int + 10000 %}
+  no vxlan vlan {{ item.id }} vni {{ vni_id }}
+{% endfor %}
+
+router bgp {{ asn }}
+{% for item in vlans %}
+  no vlan {{ item.id }}
+{% endfor %}

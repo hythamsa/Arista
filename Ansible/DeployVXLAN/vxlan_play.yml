@@ -5,7 +5,7 @@
   gather_facts: no
   connection: local
   vars_files:
-    - vlans.yml
+    - vars_files/vlans.yml
 
   tasks:
     - name: Configure L2 VXLAN
@@ -13,6 +13,12 @@
         - l2vxlan
       eos_config:
         src: l2vxlan_config.j2
+
+    - name: Delete L2 VXLAN
+      tags:
+        - deletel2
+      eos_config:
+        src: delete_l2vxlan.j2
 
     - name: Configure L3 VXLAN
       tags:
@@ -23,6 +29,7 @@
     - name: Save running-config to startup-config if modified
       tags:
         - l2vxlan
-        - l3vxlan 
+        - l3vxlan
+        - deletel2 
       eos_config:
         save_when: changed
