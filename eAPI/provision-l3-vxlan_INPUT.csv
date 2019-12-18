@@ -1,4 +1,4 @@
 switch,vlan-id,vlan_name,ip_address,vrf,description
-leaf1,100,corporate_hr,192.168.1.1/24,red,corporate_hr
-leaf2,100,corporate_hr,192.168.1.1/24,red,corporate_hr
-leaf3,100,corporate_hr,192.168.1.1/24,red,corporate_hr
+leaf1,100,Corp,192.168.100.1/24,Corp,Corp VRF
+leaf2,100,Corp,192.168.100.1/24,Corp,Corp VRF
+leaf3,100,Corp,192.168.100.1/24,Corp,Corp VRF
