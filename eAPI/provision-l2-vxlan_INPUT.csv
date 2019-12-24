@@ -1,4 +1,13 @@
 switch,vlan-id,vlname
-leaf1,5,test
-leaf2,5,test
-leaf3,5,test
+leaf1,10,corp
+leaf1,20,dev
+leaf1,30,qa
+leaf1,40,compute
+leaf2,10,corp
+leaf2,20,dev
+leaf2,30,qa
+leaf2,40,compute
+leaf3,10,corp
+leaf3,20,dev
+leaf3,30,qa
+leaf3,40,compute
