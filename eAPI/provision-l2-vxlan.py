@@ -34,7 +34,7 @@ with open (csvinfile, 'r') as csvfile:
 		#use vlan ID as VNI
 		cmdapi = Server("{}://{}:{}@{}/command-api".format(method,user,passwd,host))
 		config_vlan = cmdapi.runCmds(1,["enable", "configure", "vlan " + vlid, "name " + vname])
-		config_vxlan = cmdapi.runCmds(1,["enable", "configure", "interface vxlan1", "vxlan vlan " + vlid + " vni " + vlid])
+		config_vxlan = cmdapi.runCmds(1,["enable", "configure", "interface vxlan1", "vxlan vlan add " + vlid + " vni " + vlid])
 
 		#Retrieve BGP ASN and Router ID for RD and RT assignment
 		shipbgp = cmdapi.runCmds(1,["show ip bgp summary"])
