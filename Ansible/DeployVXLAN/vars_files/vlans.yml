@@ -1,5 +1,5 @@
 vlans:
-  - id: 1812
-    name: MACVRFA
-  - id: 1813
-    name: MACVRFB
+  - id: 100
+    name: Corp
+  - id: 200
+    name: Dev
