@@ -1,12 +1,12 @@
 ---
 
-- name: Configure VLAN
+- name: Retrieve Version Info
   hosts: all
   gather_facts: no
   connection: local
 
   tasks:
-    - name: Configure VLAN 
+    - name: Show Version with JSON Output 
       eos_command:
         commands: "show version | json"
       register: sh_ver
