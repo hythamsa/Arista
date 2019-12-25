@@ -1,0 +1,18 @@
+{% for item in vrfs %}
+vrf def {{ item.name }}
+ip routing vrf {{ item.name }}
+{% endfor %}
+
+interface vx1
+{% for item in vrfs %}
+  vxlan vrf {{ item.name }} vni {{ item.vni }}
+{% endfor %}
+
+router bgp {{ asn }}
+{% for item in vrfs %}
+  vrf {{ item.name }}
+    rd {{ loopback1 }}:{{ item.vni }}
+    route-target import evpn {{ item.vni }}:{{ item.vni }}
+    route-target export evpn {{ item.vni }}:{{ item.vni }}
+    redistribute connected
+{% endfor %}

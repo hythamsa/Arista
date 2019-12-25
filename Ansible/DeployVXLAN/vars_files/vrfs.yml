@@ -1,0 +1,7 @@
+vrfs:
+  - name: Corp
+    vni: 50000
+  - name: Dev
+    vni: 50001
+  - name: QA
+    vni: 50002

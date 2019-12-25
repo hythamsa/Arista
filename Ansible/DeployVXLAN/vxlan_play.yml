@@ -6,6 +6,7 @@
   connection: local
   vars_files:
     - vars_files/vlans.yml
+    - vars_files/vrfs.yml
 
   tasks:
     - name: Configure L2 VXLAN
@@ -26,10 +27,17 @@
       eos_config:
         src: l3vxlan_config.j2
 
+    - name: Delete L3 VXLAN
+      tags:
+        - deletel3
+      eos_config:
+        src: delete_l3vxlan.j2
+
     - name: Save running-config to startup-config if modified
       tags:
         - l2vxlan
         - l3vxlan
-        - deletel2 
+        - deletel2
+        - deletel3
       eos_config:
         save_when: changed

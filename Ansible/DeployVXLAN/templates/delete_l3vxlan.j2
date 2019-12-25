@@ -1,0 +1,14 @@
+{% for item in vrfs %}
+no vrf def {{ item.name }}
+no ip routing vrf {{ item.name }}
+{% endfor %}
+
+interface vx1
+{% for item in vrfs %}
+  no vxlan vrf {{ item.name }} vni {{ item.vni }}
+{% endfor %}
+
+router bgp {{ asn }}
+{% for item in vrfs %}
+  no vrf {{ item.name }}
+{% endfor %}
