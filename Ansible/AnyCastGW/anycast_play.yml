@@ -1,0 +1,28 @@
+---
+
+- name: Configure Anycast Gateway
+  hosts: leaf
+  gather_facts: no
+  connection: local
+  vars_files:
+    - vars_files/anycast.yml
+
+  tasks:
+    - name: Configure Anycast GWs
+      tags:
+        - anycast
+      eos_config:
+        src: anycast_config.j2
+
+    - name: Delete Anycast GW
+      tags:
+        - deleteanycast
+      eos_config:
+        src: delete_anycast_config.j2
+
+    - name: Save running-config to startup-config if modified
+      tags:
+        - anycast
+        - deleteanycast
+      eos_config:
+        save_when: changed

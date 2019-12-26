@@ -1,0 +1,8 @@
+{% for item in anycast %}
+no vlan {{ item.vlanid }}
+{% endfor %}
+
+
+{% for item in anycast %}
+no int vlan {{ item.vlanid }}
+{% endfor %}

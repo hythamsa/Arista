@@ -1,0 +1,21 @@
+{% for item in anycast %}
+
+vlan {{ item.vlanid }}
+  name {{ item.name }}
+
+{% endfor %}
+
+
+{% for item in anycast %}
+
+int vlan {{ item.vlanid }}
+  {% if item.vrf is defined and item.vrf != "" %}
+  vrf forward {{ item.vrf }}
+  ip address {{ item.ipaddress }}
+
+  {% else %}
+
+  ip address {{ item.ipaddress }}
+  {% endif %}
+
+{% endfor %}
