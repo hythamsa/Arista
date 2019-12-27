@@ -164,10 +164,10 @@ def uploadConfiglet(cvpsvcauth,configlet,configlet_name):
 
 def assignConfigletToContainer(rcvauth,container_name,configlet_name):
 	configlet_name = configlet_name.split()
-	rcvauth.addContainerConfiglets(container_name,'configlet_name')
+	rcvauth.addContainerConfiglets(container_name,configlet_name)
 	rcvauth.applyConfigletsContainers(container_name)
-	foo2 = rcvauth.saveTopology
-
+	savetopo = rcvauth.saveTopology
+	print(savetopo)
 
 
 def main():
