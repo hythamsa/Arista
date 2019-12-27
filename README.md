@@ -201,7 +201,7 @@ Usage:\
 *python3 post_inventory.py -u cvpadmin -p cvpadmin --server cvp -s 10.92.62.47,10.92.62.48,10.92.61.208,10.92.61.207,10.92.61.206,10.92.61.210,10.92.61.205*\
 *python3 post_inventory.py -u cvpadmin -p cvpadmin --server cvp -c post_inventory_upload.csv*\
 
-## [*provision-container.py (Python 2.7.x) - leverages CVP API*](https://github.com/hythamsa/Arista/blob/master/CVP/CVP%20API/provision-container.py)
+## [*provision-cvp.py (Python 2.7.x) - leverages CVP API*](https://github.com/hythamsa/Arista/blob/master/CVP/CVP%20API/provision-cvp.py)
 The purpose of the script is to create the container topology, and then import switches into their respective containers. You have the option of creating the containers without inventory import, or importing inventory into existing containers without the need to create new containers, and as already stated... creating containers and importing inventory. This will further allow the user to execute container move automatically during script execution or to wait until completion with manual execution.
 
 
@@ -219,7 +219,7 @@ Supporting CSV input files:\
 Usage:
 
 **Create containers, import switches into their respective container with a compliance check across entire "Tenant":**  
-_python provision-container.py --user cvpadmin --password arista123 --cvpserver cvp --execute True --container containers.csv --inventory switch-to-container-provisioning.csv --compliance Tenant_\
+_python provision-cvp.py --user cvpadmin --password arista123 --cvpserver cvp --execute True --container containers.csv --inventory switch-to-container-provisioning.csv --compliance Tenant_\
 
 Creating Toronto container beneath parent container Tenant\
 Creating San Jose container beneath parent container Tenant\
