@@ -1,4 +1,5 @@
 import argparse, sys, cvp, cvpServices, getpass, csv, time
+from rcvpapi.rcvpapi import *
 
 class color:
 	HEADER = '\033[95m'
@@ -50,8 +51,8 @@ def Arguments():
 	parser.add_argument('--cvpserver', dest='cvpserver', nargs='?', help='Name of IP address of CVP server')
 	parser.add_argument('--port', dest='port', default='443', type=int, help='Web port service CVP is listening on')
 	parser.add_argument('--compliance', dest='compliance', help='Specify the name of the container to run a compliance check against')
-	parser.add_argument('--configlet', dest='configlet', help='Name of the configlet to upload')
-	parser.add_argument('--configlet_name', dest='configlet_name', help='Configlet name in CVP')
+	parser.add_argument('--configlet', dest='configlet', help='Name of static configlet to upload into CVP')
+	parser.add_argument('--configlet_name', dest='configlet_name', help='Configlet name assinged within CVP')
 	parser.add_argument('--container_name', dest='container_name', help='Container name in CVP')
 	args = parser.parse_args()
 
@@ -154,26 +155,23 @@ def chkcompliance(cvpauth,compliance):
 		#geteventid = cvpauth.getEvent(chk_compliance[i])
 		print(chk_compliance[i])
 
-'''
-def addconfiglet(cvpsvcauth,configlet):
-	conf = 'interface Ethernet1\n'
-	conf += '  switchport mode trunk'
-	cvpsvcauth.addConfiglet(configlet,conf)
+
+def uploadConfiglet(cvpsvcauth,configlet,configlet_name):
+	with open(configlet) as l:
+		configletData = l.read()
+	cvpsvcauth.addConfiglet(configlet_name,configletData)
 
 
-def configletocontainer(cvpsvcauth,container_name,configlet_name):
-	#Get container_name key
-	cont_key = cvpsvcauth.searchContainer(container_name)
-	print(cont_key[0]['Key'])
+def assignConfigletToContainer(rcvauth,container_name,configlet_name):
+	print(container_name,configlet_name)
+	rcvauth.addContainerConfiglets(container_name,configlet_name)
 
-	config_key = cvpsvcauth.getConfigletByName("Trunk")
-	print(config_key['key'])
-	
-	cvpsvcauth.applyConfigletToContainer(container_name,cont_key,configlet_name,config_key)
-'''
 
 def main():
 	options = Arguments()
+
+	#Authentication using rcvpapi module
+	rcvauth = CVPCON(options.cvpserver,options.user,options.passwd)
 
 	#Authentication for cvpServices module
 	cvpsvcauth = cvpServices.CvpService(options.cvpserver, ssl=True, port=options.port)
@@ -192,11 +190,11 @@ def main():
 	if (options.compliance is not None):
 		chkcompliance(cvpauth,options.compliance)
 
-	if (options.configlet is not None):
-		addconfiglet(cvpsvcauth,options.configlet)
+	if (options.configlet is not None and options.configlet_name is not None):
+		uploadConfiglet(cvpsvcauth,options.configlet,options.configlet_name)
 
 	if (options.configlet_name is not None and options.container_name is not None):
-		configletocontainer(cvpsvcauth,options.container_name,options.configlet_name)
+		assignConfigletToContainer(rcvauth,options.container_name,options.configlet_name)
 
 if __name__ == '__main__':
 	main()
