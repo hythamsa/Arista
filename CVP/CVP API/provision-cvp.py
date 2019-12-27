@@ -32,13 +32,13 @@ def readme():
 	print('The intent of the command flag "--execute" is to give control to the user in deciding whether or not to execute tasks upon completion of inventory import into its container')
 	print('The default is set to "True", requiring "False" to be set explicitly. As one can see in the usage exmaples, "--execute" has not been set, but defaults to "True" based on argparse config.\n')
 	print(color.RED + color.BOLD + color.UNDERLINE + 'Example usage to create container topology:' + color.END)
-	print('python provision-container.py --user cvpadmin --password cvpadmin --cvpserver <IP of CVP server> --container containers.csv\n')
+	print('python provision-cvp.py --user cvpadmin --password cvpadmin --cvpserver <IP of CVP server> --container containers.csv\n')
 	print(color.RED + color.BOLD + color.UNDERLINE + 'Example usage to import switch inventory into container topology:' + color.END)
-	print('python provision-container.py --user cvpadmin --password cvpadmin --cvpserver <IP of CVP server> --inventory switch-to-container-provisioning.csv\n')
+	print('python provision-cvp.py --user cvpadmin --password cvpadmin --cvpserver <IP of CVP server> --inventory switch-to-container-provisioning.csv\n')
 	print(color.RED + color.BOLD + color.UNDERLINE + 'Example usage to import inventory and place into container topology:' + color.END)
-	print('python provision-container.py --user cvpadmin --password cvpadmin --cvpserver <IP of CVP server> --container containers.csv --inventory switch-to-container-provisioning.csv\n')
+	print('python provision-cvp.py --user cvpadmin --password cvpadmin --cvpserver <IP of CVP server> --container containers.csv --inventory switch-to-container-provisioning.csv\n')
 	print(color.RED + color.BOLD + color.UNDERLINE + 'Example usage to execute compliance check against all hosts under container "Tenant":' + color.END)
-	print('python provision-container.py --user cvpadmin --password cvpadmin --cvpserver <IP OF CVP server> --compliance Tenant\n')
+	print('python provision-cvp.py --user cvpadmin --password cvpadmin --cvpserver <IP OF CVP server> --compliance Tenant\n')
 
 
 def Arguments():
@@ -162,13 +162,12 @@ def uploadConfiglet(cvpsvcauth,configlet,configlet_name):
 	cvpsvcauth.addConfiglet(configlet_name,configletData)
 
 
-def assignConfigletToContainer(rcvauth,container_name,configlet_name):
-	configlet_name = configlet_name.split()
-	rcvauth.addContainerConfiglets(container_name,configlet_name)
+def assignConfigletToContainer(rcvauth,configlet_name,container_name):
+	li = configlet_name.split(',')
+	rcvauth.addContainerConfiglets(container_name,li)
 	rcvauth.applyConfigletsContainers(container_name)
-	savetopo = rcvauth.saveTopology
-	print(savetopo)
-
+	rcvauth.saveTopology()
+	
 
 def main():
 	options = Arguments()
@@ -197,7 +196,7 @@ def main():
 		uploadConfiglet(cvpsvcauth,options.configlet,options.configlet_name)
 
 	if (options.configlet_name is not None and options.container_name is not None):
-		assignConfigletToContainer(rcvauth,options.container_name,options.configlet_name)
+		assignConfigletToContainer(rcvauth,options.configlet_name,options.container_name)
 
 if __name__ == '__main__':
 	main()
