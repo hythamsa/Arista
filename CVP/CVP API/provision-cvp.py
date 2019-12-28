@@ -32,15 +32,15 @@ def readme():
 	print('The intent of the command flag "--execute" is to give control to the user in deciding whether or not to execute tasks upon completion of inventory import into its container')
 	print('The default is set to "True", requiring "False" to be set explicitly. As one can see in the usage exmaples, "--execute" has not been set, but defaults to "True" based on argparse config')
 	print(color.RED + color.BOLD + color.UNDERLINE + 'Example usage to create container topology:' + color.END)
-	print('python provision-cvp.py --user cvpadmin --password cvpadmin --cvpserver <IP of CVP server> --container containers.csv')
+	print('python provision-cvp.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --container containers.csv')
 	print(color.RED + color.BOLD + color.UNDERLINE + 'Example usage to import switch inventory into container topology:' + color.END)
-	print('python provision-cvp.py --user cvpadmin --password cvpadmin --cvpserver <IP of CVP server> --inventory switch-to-container-provisioning.csv')
+	print('python provision-cvp.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --inventory switch-to-container-provisioning.csv')
 	print(color.RED + color.BOLD + color.UNDERLINE + 'Example usage to import inventory and place into container topology:' + color.END)
-	print('python provision-cvp.py --user cvpadmin --password cvpadmin --cvpserver <IP of CVP server> --container containers.csv --inventory switch-to-container-provisioning.csv')
+	print('python provision-cvp.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --container containers.csv --inventory switch-to-container-provisioning.csv')
 	print(color.RED + color.BOLD + color.UNDERLINE + 'Example usage to upload a static configlet into CVP:' + color.END)
-	print('python provision-cvp.py --user cvpadmin --password cvpadmin --cvpserver <IP OF CVP server> --configlet configlets/anycast --configlet_name leafanycast')
+	print('python provision-cvp.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --configlet configlets/anycast --configlet_name leafanycast')
 	print(color.RED + color.BOLD + color.UNDERLINE + 'Example usage to: add, apply, and save one or more configlets to ONE (for now) container:' + color.END)
-	print('python provision-cvp.py --user cvpadmin --password cvpadmin --cvpserver <IP OF CVP server> --configlet_name leafanycast,trunk --container_name Spines-SJC')
+	print('python provision-cvp.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --configlet_name leafanycast,trunk --container_name Spines-SJC')
 
 
 def Arguments():

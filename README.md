@@ -209,8 +209,8 @@ The purpose of the script is to create the container topology, and then import s
 
 * Upon detection of (a) duplicate container(s), or inventory, script will terminate. Error handling to be added in a future revision to allow for continued execution
 * Container creation is limited to two levels only as can be seen in the "switch-to-container-provisioning.csv" file. I absolutely plan on correcting this to allow for larger container topology creation
-* Compliance check does not associate host ID to non-compliance for now. Reports that devices in inventory under Container "X" are out of compliance. A manual check of the GUI highlights the devices out of compliance in yellow
-* Written in Python 2.7.x because the CVP API does not support Python 3.x (as of 2019.1.0)
+* When assigning a configlet to the container, the saveTopology() will not autoexecute the tasks created to finalize assignment. I've left it manual to allow for proper change controls
+* Written in Python 2.7.x 
 
 Supporting CSV input files:\
 [Containers CSV](https://github.com/hythamsa/Arista/blob/master/CVP/CVP%20API/provision-container.py)\
@@ -219,7 +219,7 @@ Supporting CSV input files:\
 Usage:
 
 **Create containers, import switches into their respective container with a compliance check across entire "Tenant":**  
-_python provision-cvp.py --user cvpadmin --password arista123 --cvpserver cvp --execute True --container containers.csv --inventory switch-to-container-provisioning.csv --compliance Tenant_\
+_python provision-cvp.py --user cvpadmin --password arista123 --cvpserver cvp --execute True --container containers.csv --inventory switch-to-container-provisioning.csv_\
 
 Creating Toronto container beneath parent container Tenant\
 Creating San Jose container beneath parent container Tenant\
@@ -251,20 +251,18 @@ Process completed in 5.31286692619
 Importing 10.92.62.48 into container Spines-SJC...\
 Process completed in 4.19532990456
 
-=> Device not in compliance\
-=> Device not in compliance\
-=> Device not in compliance\
-=> Device not in compliance\
-=> Device not in compliance
 
 **Create containers only:**\
-_python provision-container.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --container containers.csv --inventory_
+_python provision-cvp.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --container containers.csv --inventory_
 
 **Import switches only:**\
-_python provision-container.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --inventory switch-to-container-provisioning.csv_
+_python provision-cvp.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --inventory switch-to-container-provisioning.csv_
 
-**Run compliance check only:**\
-_python provision-container.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --compliance Tenant_
+**Upload a static configlet:**\
+_python provision-cvp.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --configlet configlets/anycast --configlet_name leafanycast_
+
+**Assign configlet (or configlets) to container and save topology:**\
+_python provision-cvp.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --configlet_name leafanycast,trunk --container_name Spines-SJC_
 
 
 ## [*export-devices.py (Python 2.7.x) - leverages CVP API*](https://github.com/hythamsa/Arista/blob/master/CVP/CVP%20API/export-devices.py)
