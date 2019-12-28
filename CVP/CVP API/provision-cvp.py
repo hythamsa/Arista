@@ -37,8 +37,10 @@ def readme():
 	print('python provision-cvp.py --user cvpadmin --password cvpadmin --cvpserver <IP of CVP server> --inventory switch-to-container-provisioning.csv\n')
 	print(color.RED + color.BOLD + color.UNDERLINE + 'Example usage to import inventory and place into container topology:' + color.END)
 	print('python provision-cvp.py --user cvpadmin --password cvpadmin --cvpserver <IP of CVP server> --container containers.csv --inventory switch-to-container-provisioning.csv\n')
-	print(color.RED + color.BOLD + color.UNDERLINE + 'Example usage to execute compliance check against all hosts under container "Tenant":' + color.END)
-	print('python provision-cvp.py --user cvpadmin --password cvpadmin --cvpserver <IP OF CVP server> --compliance Tenant\n')
+	print(color.RED + color.BOLD + color.UNDERLINE + 'Example usage to upload a static configlet into CVP:' + color.END)
+	print('python provision-cvp.py --user cvpadmin --password cvpadmin --cvpserver <IP OF CVP server> --configlet configlets/anycast --configlet_name leafanycast\n')
+	print(color.RED + color.BOLD + color.UNDERLINE + 'Example usage to: add, apply, and save one or more configlets to ONE (for now) container:' + color.END)
+	print('python provision-cvp.py --user cvpadmin --password cvpadmin --cvpserver <IP OF CVP server> --configlet_name leafanycast,trunk --container_name Spines-SJC\n')
 
 
 def Arguments():
@@ -140,22 +142,6 @@ def importinventory(cvpauth,inventory,execute):
 			print('')
 
 
-def chkcompliance(cvpauth,compliance):
-	get_cont = cvpauth.getContainer(compliance)
-	chk_compliance = cvpauth.containerComplianceCheck(get_cont,True)
-	
-	print('')
-	print(color.HEADER + color.BOLD + 'Verifying compliance within {}:'.format(get_cont) + color.END)
-	for i in chk_compliance:
-		if i is not None:
-			print("Device is not in compliance")
-	print('')
-
-	for i in range(len(chk_compliance)):
-		#geteventid = cvpauth.getEvent(chk_compliance[i])
-		print(chk_compliance[i])
-
-
 def uploadConfiglet(cvpsvcauth,configlet,configlet_name):
 	with open(configlet) as l:
 		configletData = l.read()
@@ -189,14 +175,12 @@ def main():
 	if (options.inventory is not None):
 		importinventory(cvpauth,options.inventory,options.execute)
 
-	if (options.compliance is not None):
-		chkcompliance(cvpauth,options.compliance)
-
 	if (options.configlet is not None and options.configlet_name is not None):
 		uploadConfiglet(cvpsvcauth,options.configlet,options.configlet_name)
 
 	if (options.configlet_name is not None and options.container_name is not None):
 		assignConfigletToContainer(rcvauth,options.configlet_name,options.container_name)
+
 
 if __name__ == '__main__':
 	main()
