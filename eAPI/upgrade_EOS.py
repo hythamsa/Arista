@@ -24,7 +24,7 @@ def Arguments():
     parser.add_argument("-s", "--switch", dest='switch', help='Provide a switch or a list of switches separated by a comma (,). Name or IP address are accepted')
     parser.add_argument("-up", "--upload", dest='upload', help='Specify binary image to upload. Full path is only required IF script is executed in a different directory where image is stored')
     parser.add_argument("-bn", "--bname", dest='bname', help='Specify the name of the binary image in flash. EG: EOS-4.21.5F')
-    parser.add_argument("-po", "--port", dest='port', default='443', help='Specify the SSH port to be used for file transfer', type=int)
+    parser.add_argument("-po", "--port", dest='port', default='22', help='Specify the SSH port to be used for file transfer', type=int)
     parser.add_argument("-o", "--csvoutfile", dest='csvoutfile', help='Specify the name of the CSV file to output failed upgrades')
     args = parser.parse_args()
 
