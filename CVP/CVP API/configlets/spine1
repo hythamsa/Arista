@@ -1,2 +1,0 @@
-interface Ethernet2/1
-  switch mod trunk

@@ -10,7 +10,7 @@ vlan {{ item.vlanid }}
 
 int vlan {{ item.vlanid }}
   {% if item.vrf is defined and item.vrf != "" %}
-  vrf forward {{ item.vrf }}
+  vrf forwarding {{ item.vrf }}
   ip address {{ item.ipaddress }}
 
   {% else %}
