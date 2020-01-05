@@ -54,7 +54,7 @@ def Arguments():
 	parser.add_argument('--port', dest='port', default='443', type=int, help='Web port service CVP is listening on')
 	parser.add_argument('--compliance', dest='compliance', help='Specify the name of the container to run a compliance check against')
 	parser.add_argument('--configlet', dest='configlet', help='Name of static configlet to upload into CVP')
-	parser.add_argument('--configlet_name', dest='configlet_name', help='Configlet name assinged within CVP')
+	parser.add_argument('--configlet_name', dest='configlet_name', help='Configlet name assinged within CVP. Used for configlet assignment to container')
 	parser.add_argument('--container_name', dest='container_name', help='Container name in CVP')
 	args = parser.parse_args()
 
