@@ -2,3 +2,7 @@
 CVP/.DS_Store
 CVP/CVP API/.DS_Store
 .DS_Store
+Ansible/DeployAnyCastGW/vars_files/anycast.yml
+Ansible/DeployAnyCastGW/vars_files/anycast.yml
+Ansible/DeployVXLAN/vars_files/vlans.yml
+Ansible/DeployVXLAN/vars_files/vrfs.yml
