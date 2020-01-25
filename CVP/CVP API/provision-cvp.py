@@ -50,7 +50,7 @@ def Arguments():
 	parser.add_argument('-i','--inventory', dest='inventory', help='CSV file with the names/IPs of switches with their associated container')
 	parser.add_argument('-e','--execute', dest='execute', default=True, type=bool, choices=[True, False], help='Execute tasks immediately after import.')
 	parser.add_argument('--container', dest='container', help='CSV File with the name of containers to be created')
-	parser.add_argument('--cvpserver', dest='cvpserver', nargs='?', help='Name of IP address of CVP server')
+	parser.add_argument('--cvpserver', dest='cvpserver', nargs='?', help='Name or IP address of CVP server')
 	parser.add_argument('--port', dest='port', default='443', type=int, help='Web port service CVP is listening on')
 	parser.add_argument('--compliance', dest='compliance', help='Specify the name of the container to run a compliance check against')
 	parser.add_argument('--configlet', dest='configlet', help='Name of static configlet to upload into CVP')
