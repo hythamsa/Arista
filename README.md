@@ -284,6 +284,19 @@ _python export-devices.py --user cvpadmin --password cvpadmin --cvpserver <CVPSE
 **Export only provisioned devices:**\
 _python export-devices.py --user cvpadmin --password cvpadmin --cvpserver <CVPSERVER-IP> --provisioned True_
 
+## [*check_compliance.py (Python 2.7.x) - leverages CVP API*](https://github.com/hythamsa/Arista/blob/master/CVP/CVP%20API/check_compliance.py)
+This script is only written to resolve device configurations that are out of sync. When executed a compliance check is initiated against all devices in CVP inventory. If devices are found to be out of compliance, a message is dumped to console, and a subsequent reconcile is performed against the Tenant container.
+
+**Sample run:**\
+_python check_compliance.py -u cvpadmin -p cvpadmin --cvpserver cvp2019_
+Device "dm1-262sw39.aristanetworks.com" is not in compliance due to Config out of sync\
+Device "dm1-262sw40.aristanetworks.com" is not in compliance due to Config out of sync\
+
+Reconciliation of all devices completed successfully\
+
+_python check_compliance.py -u cvpadmin -p cvpadmin --cvpserver cvp2019_
+All devices are in compliance, and no reconciliation required
+
 ## [*ConfigureMLAG.zip (CVP Configlet Builder)*](https://github.com/hythamsa/Arista/blob/master/CVP/Configlet%20Builder/ConfigureMLAG.zip)
 Leverages the CVP Configlet Builder tool to dynamically generate MLAG configurations for switch pairs. Download the .zip file, & import directly into CVP to run.
 
