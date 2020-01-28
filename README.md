@@ -290,11 +290,11 @@ This script is only written to resolve device configurations that are out of syn
 **Sample run:**\
 _python check_compliance.py -u cvpadmin -p cvpadmin --cvpserver cvp2019_
 Device "dm1-262sw39.aristanetworks.com" is not in compliance due to Config out of sync\
-Device "dm1-262sw40.aristanetworks.com" is not in compliance due to Config out of sync\
+Device "dm1-262sw40.aristanetworks.com" is not in compliance due to Config out of sync
 
-Reconciliation of all devices completed successfully\
+Reconciliation of all devices completed successfully
 
-_python check_compliance.py -u cvpadmin -p cvpadmin --cvpserver cvp2019_
+_python check_compliance.py -u cvpadmin -p cvpadmin --cvpserver cvp2019_\
 All devices are in compliance, and no reconciliation required
 
 ## [*ConfigureMLAG.zip (CVP Configlet Builder)*](https://github.com/hythamsa/Arista/blob/master/CVP/Configlet%20Builder/ConfigureMLAG.zip)
