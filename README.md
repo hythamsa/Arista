@@ -297,7 +297,7 @@ Reconciliation of all devices completed successfully
 _python check_compliance.py -u cvpadmin -p cvpadmin --cvpserver cvp2019_\
 All devices are in compliance, and no reconciliation required
 
-To do:
+**To do:**
 * Run compliance check
 * Determine device parent container using retrieveInventory()
 * Once I've determined the parent container of each device, I'll initiate reconcileAll=True only on the pertinent containers using reconcileContainer()
