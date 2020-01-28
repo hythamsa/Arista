@@ -1,4 +1,4 @@
-import cvp, sys, argparse
+import cvp, sys, argparse, cvpServices
 
 class color:
 	HEADER = '\033[95m'
@@ -100,24 +100,27 @@ def chkcompliance(cvpauth):
 			message = i['Compliance Code']
 			print(color.BOLD + "{} is not in compliance due to {}".format(device,message) + color.END)
 
-
-	if nonCompliantDevices:
+		print('')
+		print(color.BOLD + "Commencing device reconciliation now..." + color.END)
 		get_container = cvpauth.getContainer("Tenant")
 		cvpauth.reconcileContainer(get_container,reconcileAll=True)
 		print('')
-		print(color.BOLD + "Commencing device reconciliation now..." + color.END)
 		print(color.BOLD + "Reconciliation of all devices completed successfully" + color.END)
 		print('')
 	else:
 		print('')
 		print(color.BOLD + "All devices are in compliance, and no reconciliation required" + color.END)
-
+		print('')
 
 def main():
 	options = Arguments()
 
 	cvpauth = cvp.Cvp(options.cvpserver, ssl=True, port=options.port)
 	cvpauth.authenticate(options.user,options.passwd)
+
+	#Authentication for cvpServices module
+	cvpsvcauth = cvpServices.CvpService(options.cvpserver, ssl=True, port=options.port)
+	cvpsvcauth.authenticate(options.user,options.passwd)
 
 	chkcompliance(cvpauth)
 
