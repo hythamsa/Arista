@@ -297,6 +297,12 @@ Reconciliation of all devices completed successfully
 _python check_compliance.py -u cvpadmin -p cvpadmin --cvpserver cvp2019_\
 All devices are in compliance, and no reconciliation required
 
+To do:
+* Run compliance check
+* Determine device parent container using retrieveInventory()
+* Once I've determined the parent container of each device, I'll initiate reconcileAll=True only on the pertinent containers using reconcileContainer()
+* Generate a report, and email distro list or user (whatever customer wants... they can configure it on command line)
+
 ## [*ConfigureMLAG.zip (CVP Configlet Builder)*](https://github.com/hythamsa/Arista/blob/master/CVP/Configlet%20Builder/ConfigureMLAG.zip)
 Leverages the CVP Configlet Builder tool to dynamically generate MLAG configurations for switch pairs. Download the .zip file, & import directly into CVP to run.
 
