@@ -288,7 +288,7 @@ _python export-devices.py --user cvpadmin --password cvpadmin --cvpserver <CVPSE
 This script is only written to resolve device configurations that are out of sync. When executed a compliance check is initiated against all devices in CVP inventory. If devices are found to be out of compliance, a message is dumped to console, and a subsequent reconcile is performed against the Tenant container.
 
 **Sample run:**\
-_python check_compliance.py -u cvpadmin -p cvpadmin --cvpserver cvp2019_
+_python check_compliance.py -u cvpadmin -p cvpadmin --cvpserver cvp2019_\
 Device "dm1-262sw39.aristanetworks.com" is not in compliance due to Config out of sync\
 Device "dm1-262sw40.aristanetworks.com" is not in compliance due to Config out of sync
 
