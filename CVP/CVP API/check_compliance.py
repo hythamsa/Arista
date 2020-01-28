@@ -1,4 +1,4 @@
-import cvp, sys, argparse, cvpServices
+import cvp, sys, argparse
 
 class color:
 	HEADER = '\033[95m'
@@ -114,9 +114,6 @@ def main():
 
 	cvpauth = cvp.Cvp(options.cvpserver, ssl=True, port=options.port)
 	cvpauth.authenticate(options.user,options.passwd)
-
-	cvpsvcauth = cvpServices.CvpService(options.cvpserver, ssl=True, port=options.port)
-	cvpsvcauth.authenticate(options.user,options.passwd)
 
 	chkcompliance(cvpauth)
 
