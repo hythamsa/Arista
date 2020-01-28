@@ -104,8 +104,12 @@ def chkcompliance(cvpauth):
 	if nonCompliantDevices:
 		get_container = cvpauth.getContainer("Tenant")
 		cvpauth.reconcileContainer(get_container,reconcileAll=True)
+		print('')
+		print(color.BOLD + "Commencing device reconciliation now..." + color.END)
 		print(color.BOLD + "Reconciliation of all devices completed successfully" + color.END)
+		print('')
 	else:
+		print('')
 		print(color.BOLD + "All devices are in compliance, and no reconciliation required" + color.END)
 
 
