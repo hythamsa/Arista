@@ -41,3 +41,22 @@
         - deletel3
       eos_config:
         save_when: changed
+
+    - name: Verify Configuration Changes
+      tags:
+        - l2vxlan
+        - l3vxlan
+        - deletel2
+        - deletel3
+      eos_command:
+        commands: "show vxlan vni | json"
+      register: sh_vni
+
+    - name: Display "show vxlan vni" output
+      tags:
+        - l2vxlan
+        - l3vxlan
+        - deletel2
+        - deletel3
+      debug:
+        msg: "VNI Configuration: {{sh_vni['stdout_lines'][0]}}"
