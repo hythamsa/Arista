@@ -1,0 +1,62 @@
+---
+
+- name: Upgrade EOS
+  hosts: all
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - name: Collect all facts about {{ inventory_hostname }}
+      tags:
+        - collect_facts
+      eos_facts:
+        gather_subset: all
+
+
+    - name: Verify gathered facts against current EOS image
+      tags:
+        - verify_facts
+      set_fact:
+        upgrade_verification={{ target_rev > ansible_net_version }}
+
+
+    - name: EOS image upload, and install to {{ inventory_hostname }}
+      tags:
+        - image_install
+      eos_command:
+        commands:
+          - 'install source {{ url }} destination {{ file_name }} now'
+      when: upgrade_verification
+
+
+    - name: Reboot switch {{ inventory_hostname }}
+      tags:
+        - reboot_sw
+      eos_command:
+        commands:
+          - 'reload now'
+      when: upgrade_verification
+
+
+    - name: Wait for switch to come back online
+      wait_for: 
+        host: '{{ inventory_hostname }}'
+        port: 22
+        delay: 120
+        sleep: 1
+        timeout: 600
+      delegate_to: localhost
+      when: upgrade_verification
+
+
+    - name: Collect all facts about switch to perform upgrade upgrade verification
+      tags:
+        - post_install_facts
+      eos_facts:
+        gather_subset: all
+
+   
+    - name: Verify EOS revsion is {{ target_rev }}
+      assert:
+        that:
+          - target_rev == ansible_net_version

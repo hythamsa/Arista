@@ -1,0 +1,17 @@
+[leaf]
+leaf1
+leaf2
+leaf3
+
+[spine]
+spine1
+spine2
+
+[harness]
+host1
+host2
+
+[eos:children]
+leaf
+spine
+harness
