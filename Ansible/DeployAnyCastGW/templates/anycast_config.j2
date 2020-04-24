@@ -11,11 +11,11 @@ vlan {{ item.vlanid }}
 int vlan {{ item.vlanid }}
   {% if item.vrf is defined and item.vrf != "" %}
   vrf forwarding {{ item.vrf }}
-  ip address {{ item.ipaddress }}
+  ip address virtual {{ item.ipaddress }}
 
   {% else %}
 
-  ip address {{ item.ipaddress }}
+  ip address virtual {{ item.ipaddress }}
   {% endif %}
 
 {% endfor %}
