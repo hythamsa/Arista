@@ -49,7 +49,7 @@
       when: upgrade_verification
 
 
-    - name: Collect all facts about switch to perform upgrade upgrade verification
+    - name: Collect all facts about switch to perform post upgrade verification
       tags:
         - post_install_facts
       eos_facts:
