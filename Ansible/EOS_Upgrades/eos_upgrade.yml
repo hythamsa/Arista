@@ -44,7 +44,7 @@
         port: 22
         delay: 120
         sleep: 1
-        timeout: 600
+        timeout: 900
       delegate_to: localhost
       when: upgrade_verification
 
@@ -56,7 +56,7 @@
         gather_subset: all
 
    
-    - name: Verify EOS revsion is {{ target_rev }}
+    - name: Verify EOS revision is {{ target_rev }}
       assert:
         that:
           - target_rev == ansible_net_version
