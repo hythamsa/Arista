@@ -326,34 +326,32 @@ A collection of Ansible playbooks that of course will evolve over time to accomm
 Written for a customer demonstrating the ability to perform upgrades against Arista's EOS across an inventory. The playbook gathers basic facts, performs a pre-upgrade check to ensure that the target revision of the EOS image is greater than the EOS image currently installed. Future revisions may further incorporate pre-checks for md5 verification, switch uptime, hadware compatibility, and flash size. Once the one, and only pre-check is completed the playbook will upload the EOS image, and execute a reboot. Once the reboot has been executed the "wait_for" module is initialized attemping to connect to 22/tcp after a 2 minute grace period. When the switch returns eos_facts module is executed to gather facts for post-upgrade verification ensuring the target revision, and what is now installed on the switch match.
 
 **Sample run:**\
-_[root@ansibleZTP EOS_Upgrades]# ansible-playbook eos_upgrade.yml --limit=harness_\
+_[root@ansibleZTP EOS_Upgrades]# ansible-playbook eos_upgrade.yml --limit=harness_
 
 PLAY [Upgrade EOS] ***************************************************************************************************
 
 TASK [Collecting Facts] **********************************************************************************************
-[WARNING]: default value for `gather_subset` will be changed to `min` from `!config` v2.11 onwards
-
-ok: [host1]
+ok: [host1]\
 ok: [host2]
 
 TASK [Verify current EOS image against target revision] **************************************************************
-ok: [host1]
+ok: [host1]\
 ok: [host2]
 
 TASK [EOS image upload, and install] *********************************************************************************
-ok: [host1]
+ok: [host1]\
 ok: [host2]
 
 TASK [Reboot switch(es) for new EOS image to take effect] ************************************************************
-ok: [host1]
+ok: [host1]\
 ok: [host2]
 
 TASK [Waiting for switch to come back online] ************************************************************************
-ok: [host1 -> localhost]
+ok: [host1 -> localhost]\
 ok: [host2 -> localhost]
 
 TASK [Collecting post upgrade facts] *********************************************************************************
-ok: [host1]
+ok: [host1]\
 ok: [host2]
 
 TASK [Verify EOS revision matches 4.23.3M] ***************************************************************************
@@ -367,5 +365,5 @@ ok: [host2] => {
 }
 
 PLAY RECAP ***********************************************************************************************************
-host1                      : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+host1                      : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0\
 host2                      : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
