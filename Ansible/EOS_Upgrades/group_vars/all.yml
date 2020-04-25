@@ -8,6 +8,6 @@ ansible_become_method: enable
 
 #EOS Upgrade variable verfication
 target_rev: 4.23.3M
-#md5: 2fa447b21aa1cc085aac45c5167ee2d6 #Comment out once md5 verification task has been written
+md5: 2fa447b21aa1cc085aac45c5167ee2d6 #Comment out once md5 verification task has been written
 file_name: EOS-4.23.3M.swi
 url: http://dist/release/EOS-4.23.3M/final/images/EOS.swi

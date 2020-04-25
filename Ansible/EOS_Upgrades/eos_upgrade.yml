@@ -6,21 +6,21 @@
   connection: local
 
   tasks:
-    - name: Collect all facts about {{ inventory_hostname }}
+    - name: Collecting Facts
       tags:
         - collect_facts
       eos_facts:
         gather_subset: all
 
 
-    - name: Verify gathered facts against current EOS image
+    - name: Verify current EOS image against target revision
       tags:
         - verify_facts
       set_fact:
         upgrade_verification={{ target_rev > ansible_net_version }}
 
 
-    - name: EOS image upload, and install to {{ inventory_hostname }}
+    - name: EOS image upload, and install
       tags:
         - image_install
       eos_command:
@@ -29,7 +29,7 @@
       when: upgrade_verification
 
 
-    - name: Reboot switch {{ inventory_hostname }}
+    - name: Reboot switch(es) for new EOS image to take effect
       tags:
         - reboot_sw
       eos_command:
@@ -38,7 +38,7 @@
       when: upgrade_verification
 
 
-    - name: Wait for switch to come back online
+    - name: Waiting for switch to come back online
       wait_for: 
         host: '{{ inventory_hostname }}'
         port: 22
@@ -49,14 +49,14 @@
       when: upgrade_verification
 
 
-    - name: Collect all facts about switch to perform post upgrade verification
+    - name: Collecting post upgrade facts
       tags:
         - post_install_facts
       eos_facts:
         gather_subset: all
 
    
-    - name: Verify EOS revision is {{ target_rev }}
+    - name: Verify EOS revision matches {{ target_rev }}
       assert:
         that:
           - target_rev == ansible_net_version
