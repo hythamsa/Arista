@@ -328,7 +328,7 @@ Written for a customer demonstrating the ability to perform upgrades against Ari
 **Sample run:**\
 _[root@ansibleZTP EOS_Upgrades]# ansible-playbook eos_upgrade.yml --limit=harness_
 
-PLAY [Upgrade EOS] ***************************************************************************************************\
+PLAY [Upgrade EOS] ***************************************************************************************************
 
 TASK [Collecting Facts] **********************************************************************************************\
 ok: [host1]\
