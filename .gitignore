@@ -2,16 +2,6 @@
 CVP/.DS_Store
 CVP/CVP API/.DS_Store
 .DS_Store
-Ansible/DeployAnyCastGW/vars_files/anycast.yml
-Ansible/DeployAnyCastGW/vars_files/anycast.yml
-Ansible/DeployVXLAN/vars_files/vlans.yml
-Ansible/DeployVXLAN/vars_files/vrfs.yml
 ZTP Server/files/extensions/TA-1.6.1-1.swix
-Ansible/DeployVXLAN/vars_files/vlans.yml
-Ansible/DeployExtensions/inventory
-Ansible/DeployVXLAN/vars_files/vlans.yml
-Ansible/DeployVXLAN/vars_files/vrfs.yml
-Ansible/DeployVXLAN/vars_files/vlans.yml
-Ansible/DeployVXLAN/vars_files/vrfs.yml
 Ansible/DeployVXLAN/vars_files/vlans.yml
 Ansible/DeployVXLAN/vars_files/vrfs.yml
