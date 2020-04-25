@@ -328,42 +328,42 @@ Written for a customer demonstrating the ability to perform upgrades against Ari
 **Sample run:**\
 _[root@ansibleZTP EOS_Upgrades]# ansible-playbook eos_upgrade.yml --limit=harness_
 
-PLAY [Upgrade EOS] ***************************************************************************************************
+PLAY [Upgrade EOS] ***************************************************************************************************\
 
-TASK [Collecting Facts] **********************************************************************************************
+TASK [Collecting Facts] **********************************************************************************************\
 ok: [host1]\
 ok: [host2]
 
-TASK [Verify current EOS image against target revision] **************************************************************
+TASK [Verify current EOS image against target revision] **************************************************************\
 ok: [host1]\
 ok: [host2]
 
-TASK [EOS image upload, and install] *********************************************************************************
+TASK [EOS image upload, and install] *********************************************************************************\
 ok: [host1]\
 ok: [host2]
 
-TASK [Reboot switch(es) for new EOS image to take effect] ************************************************************
+TASK [Reboot switch(es) for new EOS image to take effect] ************************************************************\
 ok: [host1]\
 ok: [host2]
 
-TASK [Waiting for switch to come back online] ************************************************************************
+TASK [Waiting for switch to come back online] ************************************************************************\
 ok: [host1 -> localhost]\
 ok: [host2 -> localhost]
 
-TASK [Collecting post upgrade facts] *********************************************************************************
+TASK [Collecting post upgrade facts] *********************************************************************************\
 ok: [host1]\
 ok: [host2]
 
-TASK [Verify EOS revision matches 4.23.3M] ***************************************************************************
+TASK [Verify EOS revision matches 4.23.3M] ***************************************************************************\
 ok: [host1] => {
     "changed": false,
     "msg": "All assertions passed"
-}
+}\
 ok: [host2] => {
     "changed": false,
     "msg": "All assertions passed"
 }
 
-PLAY RECAP ***********************************************************************************************************
+PLAY RECAP ***********************************************************************************************************\
 host1                      : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0\
 host2                      : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
