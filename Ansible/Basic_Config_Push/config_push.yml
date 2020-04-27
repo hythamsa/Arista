@@ -1,0 +1,46 @@
+---
+
+- name: Push Configuration Template to devices
+  hosts: all
+  gather_facts: no
+  connection: local
+
+
+  tasks:
+    - name: Push Configuration from Template
+      tags:
+        - template
+      eos_config:
+        src: ./configs/template.cfg
+
+
+    - name: Delete Configuration from Template
+      tags:
+        - delete_template
+      eos_config:
+        src: ./configs/delete_template.cfg
+
+
+    - name: Save running-config to startup-config if modified
+      tags:
+        - template
+        - delete_template
+      eos_config:
+        save_when: changed
+
+
+    - name: Verify Configuration Changes
+      tags:
+        - template
+        - delete_template
+      eos_command:
+        commands: "show vlan | json"
+      register: sh_vlan
+
+
+    - name: Display "show vxlan vni" output
+      tags:
+        - template
+        - delete_template
+      debug:
+        msg: "VLAN Configuration: {{sh_vlan['stdout_lines'][0]['vlans']}}"
