@@ -337,7 +337,7 @@ changed: [leaf3]\
 changed: [leaf1]\
 changed: [spine2]\
 changed: [host2]\
-changed: [host1]\
+changed: [host1]
 
 PLAY RECAP ***********************************************************************************************************************************************************************************************************************************\
 host1                      : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0\
@@ -346,12 +346,12 @@ leaf1                      : ok=1    changed=1    unreachable=0    failed=0    s
 leaf2                      : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0\
 leaf3                      : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0\
 spine1                     : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0\
-spine2                     : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0\
+spine2                     : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 
 
 [root@ansibleZTP backup]# ls -l\
 total 0\
-drwxr-xr-x 2 root root 288 Apr 28 23:12 2020_04_28\
+drwxr-xr-x 2 root root 288 Apr 28 23:12 2020_04_28
 
 [root@ansibleZTP 2020_04_28]# ls -l\
 total 48\
@@ -361,7 +361,7 @@ total 48\
 -rw-r--r-- 1 root root 6598 Apr 28 23:11 leaf2_config.2020-04-28@23:11:56\
 -rw-r--r-- 1 root root 6173 Apr 28 23:11 leaf3_config.2020-04-28@23:11:55\
 -rw-r--r-- 1 root root 4171 Apr 28 23:11 spine1_config.2020-04-28@23:11:55\
--rw-r--r-- 1 root root 4005 Apr 28 23:11 spine2_config.2020-04-28@23:11:55\
+-rw-r--r-- 1 root root 4005 Apr 28 23:11 spine2_config.2020-04-28@23:11:55
 
 
 ## [*EOS Upgrades*](https://github.com/hythamsa/Arista/tree/master/Ansible/EOS_Upgrades)
