@@ -9,7 +9,7 @@
   tasks:
     - name: Push Configuration from Template
       tags:
-        - template
+        - push_template
       eos_config:
         src: ./configs/template.cfg
 
@@ -23,7 +23,7 @@
 
     - name: Save running-config to startup-config if modified
       tags:
-        - template
+        - push_template
         - delete_template
       eos_config:
         save_when: changed
@@ -31,7 +31,7 @@
 
     - name: Verify Configuration Changes
       tags:
-        - template
+        - push_template
         - delete_template
       eos_command:
         commands: "show vlan | json"
@@ -40,7 +40,7 @@
 
     - name: Display "show vlan" configuration output
       tags:
-        - template
+        - push_template
         - delete_template
       debug:
         msg: "VLAN Configuration: {{sh_vlan['stdout_lines'][0]['vlans']}}"
