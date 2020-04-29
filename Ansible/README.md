@@ -61,7 +61,7 @@ The above will execute all tasks tagged with "delete_template", and further limi
 
 
 ## [*EOS Upgrades*](https://github.com/hythamsa/Arista/tree/master/Ansible/EOS_Upgrades)
-Written for a customer demonstrating the ability to perform upgrades against Arista's EOS across an inventory. The playbook gathers basic facts, performs a pre-upgrade check to ensure that the target revision of the EOS image is greater than the EOS image currently installed. Future revisions may further incorporate pre-checks for md5 verification, switch uptime, hadware compatibility, and flash size. Once the one, and only pre-check is completed the playbook will upload the EOS image, and execute a reboot. Once the reboot has been executed the "wait_for" module is initialized attemping to connect to 22/tcp after a 2 minute grace period. When the switch returns eos_facts module is executed to gather facts for post-upgrade verification ensuring the target revision, and what is now installed on the switch match.
+Written for a customer demonstrating the ability to perform upgrades against Arista's EOS across an inventory. The playbook gathers basic facts, performs a pre-upgrade check to ensure that the target revision of the EOS image is greater than the EOS image currently installed. Future revisions may further incorporate pre-checks for md5 verification, switch uptime, hadware compatibility, and flash size. Once the one, and only pre-check is completed the playbook will upload the EOS image, and execute a reboot. When the reboot of the switch is initiated, the "wait_for" module is initialized attemping to connect to port 22/tcp after a 2 minute grace period. When the switch returns eos_facts module is executed to gather facts for post-upgrade verification ensuring the target revision that is now installed on the switch is correct.
 
 **Sample run:**\
 _ansible-playbook eos_upgrade.yml --limit=harness_
@@ -105,3 +105,12 @@ ok: [host2] => {
 PLAY RECAP ***********************************************************************************************************\
 host1                      : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0\
 host2                      : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+## [*Deploy AnyCast GW*](https://github.com/hythamsa/Arista/tree/master/Ansible/DeployAnyCastGW)
+Written for my EVPN lab environment to quickly deploy, and remove anycast gateways.
+
+Looking more closely at the [anycast_config.j2](https://github.com/hythamsa/Arista/blob/master/Ansible/DeployAnyCastGW/templates/anycast_config.j2) there is some minor intelligence built into the template that will look for the "item.vrf" variable in the [anycast_.yml](https://github.com/hythamsa/Arista/blob/master/Ansible/DeployAnyCastGW/vars_files/anycast.yml) vars file. If configured, then vrf forwarding will be configured on the interface, and if not a standard L3 interface is configured without vrf forwarding
+
+
+**Sample run:**\
+_ansible-playbook anycast_play.yml --tags anycast --limit=leaf_
