@@ -1,0 +1,4 @@
+username:
+  - user: cvpadmin
+    password: arista123
+    priv: 15

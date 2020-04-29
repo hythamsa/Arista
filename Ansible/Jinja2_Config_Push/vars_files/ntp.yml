@@ -1,0 +1,5 @@
+ntp:
+  - ntpserver: 172.22.22.10
+    interface: Management1
+  - ntpserver: 172.22.22.40
+    interface: Management1

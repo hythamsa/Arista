@@ -1,0 +1,55 @@
+---
+
+- name: Push Configuration Template to devices
+  hosts: all
+  gather_facts: no
+  connection: local
+  vars_files:
+    - vars_files/ntp.yml
+    - vars_files/dns.yml
+    - vars_files/username.yml
+    - vars_files/vlans.yml
+    - vars_files/domain-name.yml
+
+
+  tasks:
+    - name: Push Configuration from Template
+      tags:
+        - push_template
+      eos_config:
+        src: push_template.j2
+
+
+    - name: Delete Configuration from Template
+      tags:
+        - delete_template
+      eos_config:
+        src: delete_template.cfg
+
+
+    - name: Save running-config to startup-config if modified
+      tags:
+        - push_template
+        - delete_template
+      eos_config:
+        save_when: changed
+
+
+    - name: Verify VLAN Configuration
+      tags:
+        - push_template
+        - delete_template
+      eos_command:
+         commands: 
+           - show vlan {{ item.vlanid }}
+      loop: "{{ vlans }}"
+
+
+    - name: Verify User Configuration
+      tags:
+        - push_template
+        - delete_template
+      eos_command:
+         commands:
+            - show run sec username | sec {{ item.user }}
+      loop: "{{ username }}"

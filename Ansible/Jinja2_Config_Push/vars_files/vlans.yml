@@ -1,0 +1,7 @@
+vlans:
+  - vlanid: 300
+    name: corp.300
+  - vlanid: 400
+    name: corp.400
+  - vlanid: 500
+    name: corp.500

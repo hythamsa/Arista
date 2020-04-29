@@ -1,0 +1,3 @@
+dns:
+  - dnsserver: 172.22.22.10
+  - dnsserver: 172.22.22.40
