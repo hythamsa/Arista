@@ -44,7 +44,7 @@ total 48\
 -rw-r--r-- 1 root root 4005 Apr 28 23:11 spine2_config.2020-04-28@23:11:55
 
 
-##[*Basic Config Push*](https://github.com/hythamsa/Arista/tree/master/Ansible/Basic_Config_Push)
+## [*Basic Config Push*](https://github.com/hythamsa/Arista/tree/master/Ansible/Basic_Config_Push)
 Written for a customer to quickly demonstrate how one may leverage Ansible to push a template running-configuration to a switch, or multiple switches within your inventory.
 
 Looking more closely at the config_push.yml file you'll notice that I've widely deployed the use of tags (you'll see this across all of my playbooks). If you're not familiar with Ansible playbooks, and their execution the tasks in a playbook are executed in sequential order. By leveraging "tags" this allows me to uniquely identify, and execute a single task, and/or a group of tasks in a playbook without the need to execute the entire playbook in order. I can now either push new configurations, or remove them based on the task I execute.
