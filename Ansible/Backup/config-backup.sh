@@ -1,9 +1,9 @@
 #!/bin/bash
 
-basedir=/etc/ansible/Backup/
+basedir=/etc/ansible/Arista/Backup
 tdate=`date +%Y_%m_%d`
 
-ansible-playbook -i $basedir/hosts $basedir/config-backup.yml
+ansible-playbook -i $basedir/inventory $basedir/config-backup.yml
 
 cd $basedir/backup
 
