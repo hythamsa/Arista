@@ -7,6 +7,11 @@ leaf3
 spine1
 spine2
 
+[harness]
+host1
+host2
+
 [eos:children]
 leaf
 spine
+harness
