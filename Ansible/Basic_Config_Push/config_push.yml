@@ -38,7 +38,7 @@
       register: sh_vlan
 
 
-    - name: Display "show vxlan vni" output
+    - name: Display "show vlan" configuration output
       tags:
         - template
         - delete_template
