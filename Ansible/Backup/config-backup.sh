@@ -7,7 +7,7 @@ ansible-playbook -i $basedir/inventory $basedir/config-backup.yml
 
 cd $basedir/backup
 
-if [ ! -d ]
+if [ ! -d $tdate ]
   then
       mkdir $tdate
 fi
