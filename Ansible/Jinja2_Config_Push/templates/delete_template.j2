@@ -1,0 +1,52 @@
+# Generate DNS configuration
+{% for item in dns %}
+
+{% if item.vrf is defined and item.vrf != "" %}
+no ip name-server vrf {{ item.vrf }} {{ item.dnsserver }}
+
+{% else %}
+no ip name-server {{ item.dnsserver }}
+{% endif %}
+
+{% endfor %}
+
+
+
+# Generate NTP configuration
+{% for item in ntp %}
+
+{% if item.vrf is defined and item.vrf != "" %}
+no ntp server vrf {{ item.vrf }} {{ item.ntpserver }} source {{ item.interface }}
+
+{% else %}
+no ntp server {{ item.ntpserver }} source {{ item.interface }}
+{% endif %}
+
+{% endfor %}
+
+
+
+# Generate Username configuration
+{% for item in username %}
+
+no username {{ item.user }} priv {{ item.priv }} secret {{ item.password }}
+
+{% endfor %}
+
+
+
+# Generate VLAN configuration
+{% for item in vlans %}
+
+no vlan {{ item.vlanid }}
+
+{% endfor %}
+
+
+
+# Generate Domain configuration
+{% for item in domain %}
+
+no dns domain {{ item.name }}
+
+{% endfor %}
