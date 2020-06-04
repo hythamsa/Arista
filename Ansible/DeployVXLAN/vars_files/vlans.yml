@@ -1,5 +1,5 @@
 vlans:
   - id: 100
-    name: Corp
+    name: Corp.100
   - id: 200
-    name: Dev
+    name: Corp.200

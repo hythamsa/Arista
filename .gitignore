@@ -5,3 +5,4 @@ CVP/CVP API/.DS_Store
 ZTP Server/files/extensions/TA-1.6.1-1.swix
 Ansible/DeployVXLAN/vars_files/vlans.yml
 Ansible/DeployVXLAN/vars_files/vrfs.yml
+Ansible/DeployVXLAN/vars_files/vrfs.yml
