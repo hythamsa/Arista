@@ -1,28 +1,17 @@
-[cvp]
-cvp2019 ansible_httpapi_host=10.92.59.17
-cvp2018 ansible_httpapi_host=10.92.59.22
+---
 
-[cvp_2018]
-cvp2018
-
-[cvp_2019]
-cvp2019 
-
-[cvp:vars]
-ansible_httpapi_port=443
-ansible_user='cvpadmin'
-ansible_password='arista123'
-ansible_connection=httpapi
-ansible_httpapi_use_ssl=True
-ansible_httpapi_validate_certs=False
-ansible_network_os=eos
-
-[cvp_2019:vars]
-ansible_httpapi_host=10.92.59.17
-ansible_httpapi_port=443
-ansible_user='cvpadmin'
-ansible_password='arista123'
-ansible_connection=httpapi
-ansible_httpapi_use_ssl=True
-ansible_httpapi_validate_certs=False
-ansible_network_os=eos
+all:
+  children:
+    CVP:
+      hosts:
+        cvp_server:
+          ansible_httpapi_host: 10.92.59.17
+          ansible_host: 10.92.59.17
+          ansible_user: cvpadmin
+          ansible_password: arista123
+          ansible_connection: httpapi
+          ansible_httpapi_use_ssl: true
+          ansible_httpapi_validate_certs: false
+          ansible_network_os: eos
+          ansible_httpapi_port: 443
+          ansible_python_interpreter: $(which python)

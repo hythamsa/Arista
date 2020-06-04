@@ -1,6 +1,7 @@
 ---
+
 - name: Create a container topology
-  hosts: cvp_2019
+  hosts: cvp_server
   gather_facts: no
   collections:
     - arista.cvp
@@ -8,28 +9,22 @@
   vars:
     verbose: False
     containers_provision:
-      YYZ:
-        parent_container: Tenant
-      Spines-YYZ:
-        parent_container: YYZ
-      Leaves-YYZ:
-        parent_container: YYZ
-      Leaves-MLAG-YYZ:
-        parent_container: Leaves-YYZ
-      Leaves-StandAlone-YYZ:
-        parent_container: Leaves-YYZ
-      Hosts-YYZ:
-        parent_container: YYZ
       SJC:
         parent_container: Tenant
       Spines-SJC:
         parent_container: SJC
-      Leaves-SJC:
+        devices:
+          - dm1-263sw21
+          - dm1-263sw22
+      Leaves-SJC-StandAlone:
         parent_container: SJC
-      Leaves-StandAlone-SJC:
-        parent_container: Leaves-SJC
-      Leaves-MLAG:
-        parent_container: Leaves-SJC
+        devices:
+          - dm1-262sw39
+      Leaves-SJC-MLAG:
+        parent_container: SJC
+        devices:
+          - dm1-262sw37
+          - dm1-262sw38
       Hosts-SJC:
         parent_container: SJC
         devices:
@@ -55,4 +50,4 @@
 
   - name: "Print cv_container output"
     debug:
-      msg: "{{ cv_container }}"  
+      msg: "{{ cv_container }}"
