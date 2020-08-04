@@ -122,6 +122,7 @@ def createcontainer(cvpsvcauth,container):
 	print(color.HEADER + color.BOLD + "Process completed in {}\n".format(exec_time) + color.END)
 
 
+
 def importinventory(cvpauth,inventory,execute):
 	with open(inventory, 'r') as rf:
 		reader = csv.DictReader(rf)
