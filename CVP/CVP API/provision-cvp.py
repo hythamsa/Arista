@@ -23,7 +23,7 @@ def readme():
 	print('argparase')
 	print('cvpServices')
 	print('getpass')
-	print('This script has been tested against 2019.1.0 BETA release of CVP, and not yet tested against the current production release of CVP 2018.2.4. Further tests are required')
+	print('This script has been tested against 2019.1.x release of CVP, and not yet tested against the current production release of CVP 2020.1.1. Further tests are required')
 	print('to determine performance')
 	print('The purpose of the script is to create the container topology, and then import switches into their respective containers. You have the option of only creating the containers')
 	print('without inventory import, or importing inventory into existing containers without the need to create new ones, and as already stated... both')
