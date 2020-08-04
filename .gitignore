@@ -7,3 +7,4 @@ Ansible/DeployVXLAN/vars_files/vlans.yml
 Ansible/DeployVXLAN/vars_files/vrfs.yml
 Ansible/DeployVXLAN/vars_files/vrfs.yml
 Ansible/DeployVXLAN/vars_files/vrfs.yml
+Ansible/DeployVXLAN/vars_files/vrfs.yml
