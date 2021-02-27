@@ -5,10 +5,10 @@ all:
     CVP:
       hosts:
         cvp_server:
-          ansible_httpapi_host: 10.92.59.17
-          ansible_host: 10.92.59.17
+          ansible_httpapi_host: 10.10.10.10
+          ansible_host: 10.10.10.10
           ansible_user: cvpadmin
-          ansible_password: arista123
+          ansible_password: cvpadmin
           ansible_connection: httpapi
           ansible_httpapi_use_ssl: true
           ansible_httpapi_validate_certs: false

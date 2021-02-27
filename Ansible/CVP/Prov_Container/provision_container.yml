@@ -5,31 +5,30 @@
   gather_facts: no
   collections:
     - arista.cvp
-  
+
   vars:
     verbose: False
     containers_provision:
-      SJC:
-        parent_container: Tenant
-      Spines-SJC:
-        parent_container: SJC
+      SE-LAB:
+        parent_container: Vantage-Lab
+      SuperSpine:
+        parent_container: SE-LAB
         devices:
-          - dm1-263sw21
-          - dm1-263sw22
-      Leaves-SJC-StandAlone:
-        parent_container: SJC
+          - superspine1
+          - superspine2
+      Spine:
+        parent_container: SE-LAB
         devices:
-          - dm1-262sw39
-      Leaves-SJC-MLAG:
-        parent_container: SJC
+          - spine1
+          - spine2
+          - spine3
+      Leaves:
+        parent_container: SE-LAB
         devices:
-          - dm1-262sw37
-          - dm1-262sw38
-      Hosts-SJC:
-        parent_container: SJC
-        devices:
-          - dm1-262sw35
-          - dm1-262sw40
+          - leaf1r1
+          - leaf2r1
+          - leaf1r2
+          - leaf2r2
 
   tasks:
   - name: "Retrieve CVP facts from {{ inventory_hostname }}"
@@ -44,7 +43,6 @@
     cv_container:
       topology: '{{ containers_provision }}'
       cvp_facts: '{{ cvp_facts.ansible_facts }}'
-      save_topology: true
       mode: 'merge'
     register: cv_container
 
